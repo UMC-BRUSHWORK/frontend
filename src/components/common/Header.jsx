@@ -1,21 +1,21 @@
 import React from 'react';
 import { GoSearch, GoBell } from 'react-icons/go';
-import { Wrapper, MenuWrapper, Logo, IconWrapper, Icon } from './Header.style';
+import * as H from './Header.style';
 
 export default function Header() {
   return (
-    <Wrapper>
-      <MenuWrapper>
-        <Logo />
-        <IconWrapper>
-          <Icon>
+    <H.Wrapper>
+      <H.MenuWrapper>
+        <H.Logo />
+        <H.IconWrapper>
+          <H.Icon>
             <GoSearch size={24} />
-          </Icon>
-          <Icon>
+          </H.Icon>
+          <H.Icon>
             <GoBell size={24} />
-          </Icon>
-        </IconWrapper>
-      </MenuWrapper>
-    </Wrapper>
+          </H.Icon>
+        </H.IconWrapper>
+      </H.MenuWrapper>
+    </H.Wrapper>
   );
 }
