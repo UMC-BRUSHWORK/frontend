@@ -8,23 +8,25 @@ import ArtworkUploadPage from './pages/ArtworkUpload';
 import ArtworkDetailPage from './pages/ArtworkDetail';
 import ArtistPage from './pages/Artist';
 import MyPage from './pages/Mypage';
+import Review from './pages/Review';
 
 export default function Router() {
-    return (
-        <>
-            <BrouserRouter>
-                <Routes>
-                    <Route path="/" element={<Mainpage/>}/>
-                    <Route path="/signIn" element={<SignInPage/>}/>
-                    <Route path="/signUp" element={<SignUpPage/>}/>
-                    <Route path="/search" element={<SearchPage/>}/>
-                    <Route path="/favorites" element={<FavoritesPage/>}/>
-                    <Route path="/artworkUpload" element={<ArtworkUploadPage/>}/>
-                    <Route path="/artworkDetail" element={<ArtworkDetailPage/>}/>
-                    <Route path="/artist" element={<ArtistPage/>}/>
-                    <Route path="/mypage" element={<MyPage/>}/>
-                </Routes>
-            </BrouserRouter>
-        </>
-    );
+  return (
+    <>
+      <BrouserRouter>
+        <Routes>
+          <Route path="/" element={<Mainpage />} />
+          <Route path="/signIn" element={<SignInPage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/artworkUpload" element={<ArtworkUploadPage />} />
+          <Route path="/artworkDetail" element={<ArtworkDetailPage />} />
+          <Route path="/artist" element={<ArtistPage />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/review" element={<Review />} />
+        </Routes>
+      </BrouserRouter>
+    </>
+  );
 }
