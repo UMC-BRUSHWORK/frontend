@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-    margin-left: 20px;
-    margin-right: 20px;
-`
-
 export const Title = styled.div`
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 1rem;
     margin-bottom: 1rem;
 `
+
 export const TextArea = styled.textarea`
     border: 1px solid #BEBEBE;
     border-radius: 3px;
