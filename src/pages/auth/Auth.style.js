@@ -30,15 +30,14 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2.4rem;
-  border-top: ${(props) => (props.hasborders ? '1px solid #4812a3' : 'none')};
-  border-bottom: ${(props) =>
-    props.hasborders ? '1px solid #4812a3' : 'none'};
 `;
 export const InputWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 31.2rem;
-  border-bottom: 1px solid #bebebe;
+  border-top: ${(props) => (props.top ? '1px solid #4812a3' : 'none')};
+  border-bottom: ${(props) =>
+    props.bottom ? '1px solid #4812a3' : '1px solid #bebebe'};
   padding: 0.5rem 0.8rem;
 `;
 export const InputBox = styled.input`
@@ -51,6 +50,7 @@ export const InputBox = styled.input`
 `;
 export const ErrorText = styled.div`
   color: #ea0000;
+  padding: 0.2rem 0.5rem;
 `;
 export const Button = styled.button`
   width: 31.2rem;
@@ -60,6 +60,7 @@ export const Button = styled.button`
   background: ${color.gradation_dark};
   color: ${color.white};
   ${() => font.medium_17};
+  margin-bottom: 1.6rem;
 `;
 export const Txt = styled.div`
   text-align: center;
@@ -67,5 +68,4 @@ export const Txt = styled.div`
   ${() => font.medium_13};
   text-decoration: underline;
   text-underline-position: under;
-  margin-top: 1.6rem;
 `;
