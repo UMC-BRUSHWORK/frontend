@@ -1,8 +1,7 @@
 import React from 'react';
-import Profile from './Components/Common/Profile/Profile';
 
 function App() {
-  return <Profile />;
+  return <div />
 }
 
 export default App;
