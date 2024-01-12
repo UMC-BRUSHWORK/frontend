@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import font from '../../styles/font';
 import color from '../../styles/color';
 import LogoImg from '../../assets/images/Logo.png';
@@ -39,6 +39,12 @@ export const InputWrapper = styled.div`
   border-bottom: ${(props) =>
     props.bottom ? '1px solid #4812a3' : '1px solid #bebebe'};
   padding: 0.5rem 0.8rem;
+
+  ${(props) =>
+    props.error &&
+    css`
+      border-bottom: 1px solid #ea0000;
+    `}
 `;
 export const InputBox = styled.input`
   width: 100%;

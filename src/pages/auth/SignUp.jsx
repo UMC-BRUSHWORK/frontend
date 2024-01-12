@@ -53,7 +53,7 @@ export default function SignUp() {
       <A.Title>Brushwork가 처음이신가요?</A.Title>
       <form onSubmit={handleSubmit(onSubmit)}>
         <A.FormWrapper>
-          <A.InputWrapper top>
+          <A.InputWrapper top error={!!errors.email}>
             <IoMailOpenOutline size={24} color="#888" />
             <A.InputBox
               id="email"
@@ -64,7 +64,7 @@ export default function SignUp() {
           </A.InputWrapper>
           {errors.email && <A.ErrorText>{errors.email.message}</A.ErrorText>}
 
-          <A.InputWrapper>
+          <A.InputWrapper error={!!errors.password}>
             <IoLockClosedOutline size={24} color="#888" />
             <A.InputBox
               id="password"
@@ -77,7 +77,7 @@ export default function SignUp() {
             <A.ErrorText>{errors.password.message}</A.ErrorText>
           )}
 
-          <A.InputWrapper bottom>
+          <A.InputWrapper bottom error={!!errors.passwordConfirm}>
             <IoLockClosedOutline size={24} color="#888" />
             <A.InputBox
               id="passwordConfirm"
@@ -92,7 +92,7 @@ export default function SignUp() {
         </A.FormWrapper>
 
         <A.FormWrapper>
-          <A.InputWrapper top>
+          <A.InputWrapper top error={!!errors.name}>
             <IoPersonOutline size={24} color="#888" />
             <A.InputBox
               id="name"
@@ -103,7 +103,7 @@ export default function SignUp() {
           </A.InputWrapper>
           {errors.name && <A.ErrorText>{errors.name.message}</A.ErrorText>}
 
-          <A.InputWrapper>
+          <A.InputWrapper error={!!errors.nickname}>
             <IoHappyOutline size={24} color="#888" />
             <A.InputBox
               id="nickname"
@@ -115,7 +115,7 @@ export default function SignUp() {
           {errors.nickname && (
             <A.ErrorText>{errors.nickname.message}</A.ErrorText>
           )}
-          <A.InputWrapper bottom>
+          <A.InputWrapper bottom error={!!errors.phone}>
             <IoPhonePortraitOutline size={24} color="#888" />
             <A.InputBox
               id="phone"

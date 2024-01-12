@@ -2,7 +2,17 @@ import React from 'react';
 import { IoMailOpenOutline, IoLockClosedOutline } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as A from './Auth.style';
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required('이메일을 입력해주세요')
+    .email('이메일 형식이 올바르지않습니다.'),
+  password: yup.string().required('비밀번호를 입력해주세요.'),
+});
 
 export default function SignIn() {
   const {
@@ -10,7 +20,9 @@ export default function SignIn() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: 'onBlur',
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = (data) => {
@@ -28,7 +40,7 @@ export default function SignIn() {
               id="email"
               type="text"
               placeholder="이메일"
-              {...register('email', { required: '이메일을 입력해주세요' })}
+              {...register('email')}
             />
           </A.InputWrapper>
           {errors.email && <A.ErrorText>{errors.email.message}</A.ErrorText>}
@@ -38,7 +50,7 @@ export default function SignIn() {
               id="password"
               type="password"
               placeholder="비밀번호"
-              {...register('password', { required: '비밀번호를 입력해주세요' })}
+              {...register('password')}
             />
           </A.InputWrapper>
           {errors.password && (
@@ -47,7 +59,7 @@ export default function SignIn() {
         </A.FormWrapper>
         <A.Button type="submit">로그인</A.Button>
       </form>
-      <Link to="/auth/signUp">
+      <Link to="/signUp">
         <A.Txt>Brushwork가 처음이신가요?</A.Txt>
       </Link>
     </A.Wrapper>

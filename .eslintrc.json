@@ -10,5 +10,8 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": { "react/jsx-props-no-spreading": ["off"] }
+  "rules": {
+    "react/jsx-props-no-spreading": ["off"],
+    "react/prop-types": ["off"]
+  }
 }
