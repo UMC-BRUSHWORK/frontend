@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import LogoImage from '../../assets/images/Logo.png';
+import LogoImage from '../../../assets/images/Logo.png';
 
 export const Wrapper = styled.div`
   position: sticky;
