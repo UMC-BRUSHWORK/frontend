@@ -10,10 +10,16 @@ function App() {
       duration={500}
       monitorImagesLoaded
       appearDelay={1000}
+      gutterWidth={10}
+      gutterHeight={10}
     >
       {dummy.map((item) => (
         <div key={item.id}>
-          <ArtWork artName={item.artname} artist={item.artist} />
+          <ArtWork
+            artSrc={item.artSrc}
+            artName={item.artname}
+            artist={item.artist}
+          />
         </div>
       ))}
     </StackGrid>
