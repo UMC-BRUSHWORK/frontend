@@ -1,7 +1,8 @@
 import React from 'react';
+import ArtWork from './Components/Common/ArtWork/ArtWork';
 
 function App() {
-  return <div />;
+  return <ArtWork />;
 }
 
 export default App;
