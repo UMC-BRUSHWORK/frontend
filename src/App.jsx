@@ -2,7 +2,7 @@ import React from 'react';
 import Router from './Router';
 
 function App() {
-  return <Router />;
+  return <div />;
 }
 
 export default App;

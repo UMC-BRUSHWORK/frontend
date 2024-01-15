@@ -11,7 +11,8 @@ const font = {
   medium_13: FONT({ weight: 500, size: 1.3 }),
   medium_15: FONT({ weight: 500, size: 1.5 }),
   medium_17: FONT({ weight: 500, size: 1.7 }), // 17px
-  medium_19: FONT({ weight: 500, size: 1.9 }),
+  medium_19: FONT({ weight:
+  regular_12: FONT({ weight: 400, size: 1.2 }), // 12px
 };
 
 export default font;
