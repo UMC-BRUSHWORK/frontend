@@ -1,4 +1,4 @@
-const dummy = [
+const reviewDummy = [
   {
     id: 1,
     nickname: 'test1',
@@ -68,4 +68,4 @@ const dummy = [
   },
 ];
 
-export default dummy;
+export default reviewDummy;
