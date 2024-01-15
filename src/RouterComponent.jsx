@@ -7,7 +7,7 @@ import SignInPage from './pages/Auth/SignIn';
 import SignUpPage from './pages/Auth/SignUp';
 import ArtworkUploadPage from './pages/ArtworkUpload';
 import ArtworkDetailPage from './pages/ArtworkDetail';
-import ArtistPage from './pages/Artist';
+import ArtistPage from './pages/Artist/Artist';
 import MyPage from './pages/Mypage';
 
 export default function RouterComponent() {
