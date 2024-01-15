@@ -4,22 +4,19 @@ import IMAGES from '../../../assets';
 import * as S from './Dropdown.style';
 import useDetectClose from './useDetectClose';
 
-function DropDown({ handleClick }) {
+export default function Dropdown() {
   const [myPageIsOpen, myPageRef, myPageHandler] = useDetectClose(false);
-  const [selected, setSelected] = useState('전체보기');
+  const [selected, setSelected] = useState('전체 보기');
 
   const handleAllClick = () => {
-    handleClick('all');
-    setSelected('전체보기');
+    setSelected('전체 보기');
   };
 
   const handleSaleClick = () => {
-    handleClick('sale');
     setSelected('판매중');
   };
 
   const handleSoldOutClick = () => {
-    handleClick('soldOut');
     setSelected('판매 완료');
   };
 
@@ -36,7 +33,7 @@ function DropDown({ handleClick }) {
       <S.Menu $isDropped={myPageIsOpen}>
         <S.Ul>
           <S.Li onClick={handleAllClick}>
-            <p id="name">전체보기</p>
+            <p id="name">전체 보기</p>
           </S.Li>
           <S.Li onClick={handleSaleClick}>
             <p id="newest">판매중</p>
@@ -49,5 +46,3 @@ function DropDown({ handleClick }) {
     </S.Container>
   );
 }
-
-export default DropDown;

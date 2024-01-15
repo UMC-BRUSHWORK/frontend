@@ -5,6 +5,7 @@ import artWork3 from './art_works/art_work_3.png';
 import artWork4 from './art_works/art_work_4.png';
 import artWork5 from './art_works/art_work_5.png';
 import artWork6 from './art_works/art_work_6.png';
+import arrowDropDown from './arrow_drop_down.svg';
 
 const IMAGES = {
   profile,
@@ -14,6 +15,7 @@ const IMAGES = {
   artWork4,
   artWork5,
   artWork6,
+  arrowDropDown,
 };
 
 export default IMAGES;
