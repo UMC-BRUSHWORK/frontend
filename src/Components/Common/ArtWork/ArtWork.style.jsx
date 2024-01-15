@@ -3,16 +3,18 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 16rem;
-`;
-
-export const Image = styled.img`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   min-width: 9rem;
   max-width: 16rem;
   max-height: 12rem;
-  margin-bottom: 0.5rem;
+`;
 
-  background-color: blue;
+export const Image = styled.img`
+  /* min-width: 9rem;
+  max-width: 16rem;
+  max-height: 12rem; */
+  margin-bottom: 0.5rem;
 `;
 
 export const ArtName = styled.div`
