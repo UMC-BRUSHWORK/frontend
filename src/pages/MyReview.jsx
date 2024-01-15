@@ -1,5 +1,5 @@
-function MyReview() {
-  return <>내가 쓴 후기</>;
-}
+import React from 'react';
 
-export default MyReview;
+export default function MyReview() {
+  return <div>MyReview</div>;
+}

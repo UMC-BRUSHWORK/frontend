@@ -1,5 +1,5 @@
-function ArtistPage() {
-    return <></>
-}
+import React from 'react';
 
-export default ArtistPage;
+export default function Artist() {
+  return <div>Artist</div>;
+}

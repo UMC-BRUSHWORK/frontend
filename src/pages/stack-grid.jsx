@@ -1,6 +1,6 @@
 import React from 'react';
 import StackGrid from 'react-stack-grid';
-import ArtWork from '../Components/Common/ArtWork/ArtWork';
+import ArtWork from '../components/common/ArtWork/ArtWork';
 import dummy from '../constants/dummy';
 
 function App() {

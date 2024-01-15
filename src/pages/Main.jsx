@@ -1,5 +1,5 @@
-function MainPage() {
-    return <></>
-}
+import React from 'react';
 
-export default MainPage;
+export default function Main() {
+  return <div>Main</div>;
+}
