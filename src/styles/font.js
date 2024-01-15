@@ -9,6 +9,7 @@ function FONT({ weight, size }) {
 const font = {
   // 10px = 1rem
   medium_17: FONT({ weight: 500, size: 1.7 }), // 17px
+  regular_12: FONT({ weight: 400, size: 1.2 }), // 12px
 };
 
 export default font;
