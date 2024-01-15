@@ -9,9 +9,11 @@ import ArtworkUploadPage from './pages/ArtworkUpload';
 import ArtworkDetailPage from './pages/ArtworkDetail';
 import ArtistPage from './pages/Artist';
 import MyPage from './pages/Mypage';
+import Review from './pages/Review';
+import MyReview from './pages/MyReview';
 
 export default function Router() {
-  return (
+  return 
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Mainpage />} />
