@@ -1,5 +1,6 @@
 import React from 'react';
 import * as A from './ArtWorkInfo.style';
+import ReviewWriteButton from '../button/ReviewWriteButton';
 
 function ArtWorkInfo({ img, name, artist, price }) {
   return (
@@ -9,6 +10,7 @@ function ArtWorkInfo({ img, name, artist, price }) {
         <A.ArtName>{name}</A.ArtName>
         <A.ArtistName>{artist}</A.ArtistName>
         <A.ArtPrice>{price.toLocaleString()}원</A.ArtPrice>
+        <ReviewWriteButton />
       </A.ArtWrapper>
     </A.ArtInfoWrapper>
   );

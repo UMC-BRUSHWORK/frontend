@@ -35,4 +35,5 @@ export const ArtPrice = styled.p`
   color: ${color.black};
   ${() => font.regular_12}
   margin-top: 0.2rem;
+  margin-bottom: 1.8rem;
 `;
