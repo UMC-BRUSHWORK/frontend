@@ -12,13 +12,31 @@ export const StatusWrapper = styled.div`
 `;
 
 export const PercentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  position: relative;
   width: 100%;
+
+  margin-top: 3.5rem;
+  padding-bottom: 5px;
+`;
+
+export const ArrowWrapper = styled.div`
+  position: absolute;
+  top: -30px;
+  left: ${(props) => props.percent};
+  transform: translate(-50%, 0);
 `;
 
 export const Percent = styled.div`
   ${() => font.regular_12}
+`;
+
+export const Arrow = styled.img`
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+
+  position: absolute;
+  top: 10px;
 `;
 
 export const Img = styled.img`
@@ -32,5 +50,16 @@ export const StatusBar = styled.div`
   height: 1rem;
   border-radius: 5px;
   background-color: ${() => color.grayscale_ea};
-  margin-bottom: 5px;
+`;
+
+export const Gage = styled.div`
+  width: ${(props) => props.percent};
+  height: 1rem;
+  border-radius: 5px;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 5px;
+
+  background-color: ${() => color.primary_light};
 `;
