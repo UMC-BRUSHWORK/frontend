@@ -7,7 +7,7 @@ import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
 import ArtworkUploadPage from './pages/ArtworkUpload';
 import ArtworkDetailPage from './pages/ArtworkDetail';
-import ArtistPage from './pages/Artist';
+import ArtistPage from './pages/artist/Artist';
 import MyPage from './pages/MyPage';
 // import Review from './pages/Review';
 // import MyReview from './pages/MyReview';
