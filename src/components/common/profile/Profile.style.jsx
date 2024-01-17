@@ -5,8 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: row;
   gap: 1.8rem;
   align-items: center;
-
-  background-color: aliceblue;
 `;
 
 export const Profile = styled.img`

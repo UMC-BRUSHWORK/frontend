@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import IMAGES from '../../../assets';
 import * as S from './Dropdown.style';
