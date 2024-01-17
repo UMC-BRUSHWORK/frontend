@@ -11,6 +11,7 @@ export const GoReviewButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
+  padding: 0;
 `;
 
 export const RightButton = styled.img`
