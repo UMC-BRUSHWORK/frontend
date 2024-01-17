@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MainPage from './pages/Main';
+import MainPage from './pages/main/Main';
 import SearchPage from './pages/Seach';
 import FavoritesPage from './pages/Favorites';
 import SignInPage from './pages/auth/SignIn';
