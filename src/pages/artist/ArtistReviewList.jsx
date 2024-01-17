@@ -1,5 +1,7 @@
 import React from 'react';
+import RowArtWorkList from '../../components/common/artworkList/RowArtWorkList';
+import dummy from '../../constants/dummy';
 
 export default function ArtistReviewList() {
-  return <div>ArtistReviewList</div>;
+  return <RowArtWorkList data={dummy} />;
 }

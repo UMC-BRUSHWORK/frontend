@@ -3,13 +3,11 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: auto;
 `;
 
 export const Image = styled.img`
-  width: 100%;
-  height: auto;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin-bottom: 0.5rem;
 `;
 
