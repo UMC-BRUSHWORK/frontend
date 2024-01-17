@@ -10,7 +10,7 @@ import ArtworkDetailPage from './pages/ArtworkDetail';
 import ArtistPage from './pages/artist/Artist';
 import MyPage from './pages/MyPage';
 // import Review from './pages/Review';
-// import MyReview from './pages/MyReview';
+import MyReview from './pages/MyReview';
 
 export default function Router() {
   return (
@@ -25,6 +25,7 @@ export default function Router() {
         <Route path="/artworkDetail" element={<ArtworkDetailPage />} />
         <Route path="/artist" element={<ArtistPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/myReview" element={<MyReview />} />
       </Routes>
     </BrowserRouter>
   );
