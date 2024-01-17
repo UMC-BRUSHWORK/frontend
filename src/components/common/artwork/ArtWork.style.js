@@ -3,17 +3,11 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  min-width: 9rem;
-  max-width: 16rem;
-  max-height: 12rem;
 `;
 
 export const Image = styled.img`
-  /* min-width: 9rem;
-  max-width: 16rem;
-  max-height: 12rem; */
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin-bottom: 0.5rem;
 `;
 
