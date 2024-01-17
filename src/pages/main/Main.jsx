@@ -4,7 +4,7 @@ import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Main.style';
 import RowArtWorkList from '../../components/common/artworkList/RowArtWorkList';
-import dummy from '../../constants/dummy';
+import dummy from '../../constants/artWorkDummy';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
 
 const Wrapper = styled.div`
