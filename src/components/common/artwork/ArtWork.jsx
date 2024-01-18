@@ -7,6 +7,7 @@ export default function ArtWork({
   artName = '작품 이름',
   artist = '작가명',
   direction = 'row',
+  size = '12rem',
 }) {
   const imgSrc = IMAGES[artSrc];
   const [favorite, setFavorite] = useState('off');
@@ -21,7 +22,7 @@ export default function ArtWork({
         src={imgSrc}
         alt="artWork"
         width={direction === 'row' ? 'auto' : '100%'}
-        height={direction === 'row' ? '12rem' : 'auto'}
+        height={direction === 'row' ? size : 'auto'}
       />
       <S.InfoWrapper>
         <S.ArtName>{artName}</S.ArtName>
