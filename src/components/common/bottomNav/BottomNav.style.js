@@ -22,6 +22,7 @@ export const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 1rem;
+  cursor: pointer;
 `;
 export const MenuTxt = styled.div`
   margin-top: 0.2rem;

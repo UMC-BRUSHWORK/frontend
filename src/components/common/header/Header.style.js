@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   height: 5.2rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   background-color: ${color.white};
+  padding: 0 1.6rem;
 `;
 export const MenuWrapper = styled.div`
   height: 100%;
@@ -29,7 +30,6 @@ export const Logo = styled.div`
 `;
 export const IconWrapper = styled.div`
   display: flex;
-  margin-right: 1rem;
 `;
 export const Icon = styled.div`
   margin: 0 1rem;
