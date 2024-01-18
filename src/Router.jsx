@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/main/Main';
-import SearchPage from './pages/Seach';
+import SearchPage from './pages/main/Seach';
 import FavoritesPage from './pages/Favorites';
 import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
