@@ -6,7 +6,6 @@ const color = {
   grayscale_ea: '#EAEAEA',
   black: '#000000',
   grayscale_11: '#111111',
-  grayscale_be: '#BEBEBE',
 };
 
 export default color;
