@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import LogoImage from '../../../assets/images/Logo.png';
 
 export const Wrapper = styled.div`
+  z-index: 11;
   position: sticky;
   top: 0;
   left: 0;
