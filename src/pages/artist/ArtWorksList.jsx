@@ -7,7 +7,7 @@ export default function ArtWorksList() {
   return (
     <div>
       <Dropdown />
-      <ColumnArtworkList data={dummy} direction="column" />
+      <ColumnArtworkList data={dummy} />
     </div>
   );
 }

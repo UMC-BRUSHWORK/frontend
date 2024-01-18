@@ -2,7 +2,7 @@ import React from 'react';
 import StackGrid from 'react-stack-grid';
 import ArtWork from '../artwork/ArtWork';
 
-export default function ColumnArtworkList({ data, direction }) {
+export default function ColumnArtworkList({ data }) {
   return (
     <StackGrid
       columnWidth="50%"
@@ -13,7 +13,7 @@ export default function ColumnArtworkList({ data, direction }) {
       gutterHeight={10}
     >
       {data.map((item) => (
-        <div key={`${item.id}-${direction}`}>
+        <div key={`${item.id}`}>
           <ArtWork
             artSrc={item.artSrc}
             artName={item.artname}

@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import ArtWork from '../artwork/ArtWork';
 
-export default function RowArtWorkList({ data }) {
+export default function RowArtWorkList({ data, size }) {
+  console.log('RowArtWorkList');
+  console.log(size);
+
   return (
     <Wrapper>
       {data.map((item) => (
@@ -11,6 +14,7 @@ export default function RowArtWorkList({ data }) {
           artName={item.artName}
           artist={item.artist}
           direction="row"
+          size={size}
         />
       ))}
     </Wrapper>
