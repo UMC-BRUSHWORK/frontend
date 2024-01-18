@@ -1,17 +1,17 @@
 import React from 'react';
 import * as P from './PurchaseReview.style';
 
-const PurchaseReview = ({ nickname, date, review }) => {
+function PurchaseReview({ nickname, date, review }) {
   return (
-    <>
-      <P.PurchaseReviewContainer>
+    <P.PurchaseReviewContainer>
+      <P.ContextWrapper>
         <P.NicknameAndDate>
           {nickname} | {date}
         </P.NicknameAndDate>
         <P.ReviewText>{review}</P.ReviewText>
-      </P.PurchaseReviewContainer>
-    </>
+      </P.ContextWrapper>
+    </P.PurchaseReviewContainer>
   );
-};
+}
 
 export default PurchaseReview;
