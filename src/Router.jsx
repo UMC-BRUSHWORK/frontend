@@ -9,6 +9,7 @@ import ArtworkUploadPage from './pages/ArtworkUpload';
 import ArtworkDetailPage from './pages/ArtworkDetail';
 import ArtistPage from './pages/Artist';
 import MyPage from './pages/MyPage';
+import Purchased from './pages/Purchased';
 // import Review from './pages/Review';
 // import MyReview from './pages/MyReview';
 
@@ -25,6 +26,7 @@ export default function Router() {
         <Route path="/artworkDetail" element={<ArtworkDetailPage />} />
         <Route path="/artist" element={<ArtistPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/purchased" element={<Purchased />} />
       </Routes>
     </BrowserRouter>
   );
