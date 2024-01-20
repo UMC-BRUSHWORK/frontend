@@ -3,18 +3,18 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  min-width: 9rem;
-  max-width: 16rem;
-  max-height: 12rem;
 `;
 
 export const Image = styled.img`
-  /* min-width: 9rem;
-  max-width: 16rem;
-  max-height: 12rem; */
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin-bottom: 0.5rem;
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const ArtName = styled.div`
@@ -25,6 +25,11 @@ export const ArtName = styled.div`
   line-height: normal;
 
   margin-bottom: 0.2rem;
+`;
+
+export const Favorite = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
 `;
 
 export const Artist = styled.div`
