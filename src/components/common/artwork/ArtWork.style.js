@@ -11,6 +11,12 @@ export const Image = styled.img`
   margin-bottom: 0.5rem;
 `;
 
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const ArtName = styled.div`
   font-family: Pretendard;
   font-size: 13px;
@@ -19,6 +25,11 @@ export const ArtName = styled.div`
   line-height: normal;
 
   margin-bottom: 0.2rem;
+`;
+
+export const Favorite = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
 `;
 
 export const Artist = styled.div`

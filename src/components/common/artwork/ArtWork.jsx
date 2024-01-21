@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from './ArtWork.style';
 import IMAGES from '../../../assets';
@@ -8,8 +8,14 @@ export default function ArtWork({
   artName = '',
   artist = '',
   direction = 'row',
+  size = '12rem',
 }) {
   const imgSrc = IMAGES[artSrc];
+  const [favorite, setFavorite] = useState('off');
+
+  const handleClick = () => {
+    setFavorite('on');
+  };
 
   const navigate = useNavigate();
   const handleMoveToArtWorkDetail = () => {
@@ -25,7 +31,14 @@ export default function ArtWork({
         height={direction === 'row' ? '9rem' : 'auto'}
         onClick={handleMoveToArtWorkDetail}
       />
-      <S.ArtName>{artName}</S.ArtName>
+      <S.InfoWrapper>
+        <S.ArtName>{artName}</S.ArtName>
+        <S.Favorite
+          onClick={handleClick}
+          src={favorite === 'off' ? IMAGES.favoriteOff : IMAGES.favoriteOn}
+          alt="favorite"
+        />
+      </S.InfoWrapper>
       <S.Artist>{artist}</S.Artist>
     </S.Wrapper>
   );

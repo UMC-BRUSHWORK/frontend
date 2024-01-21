@@ -10,7 +10,7 @@ import ArtworkDetailPage from './pages/ArtworkDetail';
 import ArtistPage from './pages/artist/Artist';
 // import Review from './pages/Review';
 import MyReview from './pages/MyReview';
-import MyPage from './pages/MyPage';
+import MyPage from './pages/myPage/MyPage';
 
 export default function Router() {
   return (
