@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 export const Logo = styled.div`
-  background-image: url(${IMAGES.LogoImg});
+  background-image: url(${IMAGES.brushworkLogo});
   background-position: center;
   background-size: cover;
   width: 18rem;

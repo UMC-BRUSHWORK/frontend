@@ -1,12 +1,11 @@
 import React from 'react';
 import * as A from './ArtworkDetail.style';
-import Image from '../../assets/art_works/art_work_2.png';
 import IMAGES from '../../assets';
 
 function ArtworkDetail() {
   return (
     <>
-      <A.Image src={Image} />
+      <A.Image src={IMAGES.artWork2} />
       <A.Wrapper>
         <A.TitleWrapper>
           <A.Title>작품 제목</A.Title>

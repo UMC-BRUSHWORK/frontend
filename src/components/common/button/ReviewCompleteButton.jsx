@@ -5,7 +5,7 @@ import {
   GoMyReviewButton,
   RightButton,
 } from './ReviewCompleteButton.style';
-import RightButtonImg from '../../../assets/images/right_button_black.svg';
+import IMAGES from '../../../assets';
 
 function ReviewCompleteButton() {
   const navigate = useNavigate();
@@ -18,7 +18,10 @@ function ReviewCompleteButton() {
       <GoMyReviewButton onClick={handleMoveToMyReview}>
         후기 작성 완료
       </GoMyReviewButton>
-      <RightButton src={RightButtonImg} onClick={handleMoveToMyReview} />
+      <RightButton
+        src={IMAGES.rightButtonBlack}
+        onClick={handleMoveToMyReview}
+      />
     </ReviewContainer>
   );
 }

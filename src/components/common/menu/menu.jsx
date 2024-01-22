@@ -1,10 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import PurchaseImg from '../../../assets/shopping_bag.svg';
-import ReviewImg from '../../../assets/contract.svg';
-import AccountImg from '../../../assets/account_box.svg';
-import LogoutImg from '../../../assets/logout.svg';
 import * as M from './menu.style';
+import IMAGES from '../../../assets';
 
 function MenuItem({ icon, text, onClick }) {
   return (
@@ -39,13 +36,13 @@ function Menu() {
       <M.MenuContainer>
         <M.Line />
         <MenuItem
-          icon={PurchaseImg}
+          icon={IMAGES.shoppingBag}
           text="구매 내역"
           onClick={handleMoveToPurchased}
         />
         <M.GrayLine />
         <MenuItem
-          icon={ReviewImg}
+          icon={IMAGES.ReviewImg}
           text="내가 쓴 후기"
           onClick={handleMoveToMyReview}
         />
@@ -55,12 +52,12 @@ function Menu() {
       <M.MenuContainer>
         <M.Line />
         <MenuItem
-          icon={AccountImg}
+          icon={IMAGES.accountBox}
           text="계정 관리"
           onClick={handleMoveToSettings}
         />
         <M.GrayLine />
-        <MenuItem icon={LogoutImg} text="로그아웃" onClick={handleLogout} />
+        <MenuItem icon={IMAGES.logout} text="로그아웃" onClick={handleLogout} />
         <M.Line />
       </M.MenuContainer>
     </>

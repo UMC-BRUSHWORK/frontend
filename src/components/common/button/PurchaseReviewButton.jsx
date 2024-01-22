@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as P from './PurchaseReviewButton.style';
-import RightButtonImg from '../../../assets/images/right_button_black.svg';
+import IMAGES from '../../../assets';
 
 function PurchaseReviewButton() {
   const navigate = useNavigate();
@@ -15,7 +15,10 @@ function PurchaseReviewButton() {
       <P.GoArtistButton onClick={handleMoveToArtist}>
         거래 후기
       </P.GoArtistButton>
-      <P.RightButton src={RightButtonImg} onClick={handleMoveToArtist} />
+      <P.RightButton
+        src={IMAGES.rightButtonBlack}
+        onClick={handleMoveToArtist}
+      />
     </P.PurchaseContainer>
   );
 }

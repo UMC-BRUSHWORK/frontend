@@ -23,7 +23,7 @@ export const MenuWrapper = styled.div`
 export const Logo = styled.div`
   width: 11.1rem;
   height: 3.4rem;
-  background-image: url(${IMAGES.logo});
+  background-image: url(${IMAGES.brushworkLogo});
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 1.6rem;

@@ -9,7 +9,6 @@ import ArtworkUploadPage from './pages/artworkUpload/ArtworkUpload';
 import ArtworkDetailPage from './pages/artworkDetail/ArtworkDetail';
 import MyArtworkDetailPage from './pages/artworkDetail/MyArtworkDetail';
 import ArtistPage from './pages/artist/Artist';
-// import Review from './pages/Review';
 import MyReview from './pages/myPage/MyReview';
 import MyPage from './pages/myPage/MyPage';
 import Purchased from './pages/myPage/Purchased';
@@ -20,18 +19,18 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/signIn" element={<SignInPage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/artworkUpload" element={<ArtworkUploadPage />} />
-        <Route path="/artworkDetail" element={<ArtworkDetailPage />} />
-        <Route path="/myArtworkDetail" element={<MyArtworkDetailPage />} />
+        <Route path="/artwork-upload" element={<ArtworkUploadPage />} />
+        <Route path="/artwork-detail" element={<ArtworkDetailPage />} />
+        <Route path="/myArtwork-detail" element={<MyArtworkDetailPage />} />
         <Route path="/artist" element={<ArtistPage />} />
-        <Route path="/myReview" element={<MyReview />} />
-        <Route path="/myPage" element={<MyPage />} />
+        <Route path="/my-review" element={<MyReview />} />
+        <Route path="/my-page" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />
-        <Route path="imageList" element={<ImageList />} />
+        <Route path="/imageList" element={<ImageList />} />
       </Routes>
     </BrowserRouter>
   );
