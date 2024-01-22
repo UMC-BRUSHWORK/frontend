@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './ArtWork.style';
 import IMAGES from '../../../assets';
 
 export default function ArtWork({
   artSrc = 'artWork2',
-  artName = '작품 이름',
-  artist = '작가명',
+  artName = '',
+  artist = '',
   direction = 'row',
   size = '12rem',
 }) {
@@ -16,13 +17,19 @@ export default function ArtWork({
     setFavorite('on');
   };
 
+  const navigate = useNavigate();
+  const handleMoveToArtWorkDetail = () => {
+    navigate('/artworkDetail');
+  };
+
   return (
     <S.Wrapper>
       <S.Image
         src={imgSrc}
         alt="artWork"
         width={direction === 'row' ? 'auto' : '100%'}
-        height={direction === 'row' ? size : 'auto'}
+        height={direction === 'row' ? '9rem' : 'auto'}
+        onClick={handleMoveToArtWorkDetail}
       />
       <S.InfoWrapper>
         <S.ArtName>{artName}</S.ArtName>
