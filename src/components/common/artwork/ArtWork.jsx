@@ -8,7 +8,6 @@ export default function ArtWork({
   artName = '',
   artist = '',
   direction = 'row',
-  size = '12rem',
 }) {
   const imgSrc = IMAGES[artSrc];
   const [favorite, setFavorite] = useState('off');

@@ -13,6 +13,7 @@ import ArtistPage from './pages/artist/Artist';
 import MyReview from './pages/myPage/MyReview';
 import MyPage from './pages/myPage/MyPage';
 import Purchased from './pages/myPage/Purchased';
+import WriteReviewPage from './pages/myPage/WriteReviewPage';
 
 export default function Router() {
   return (
@@ -30,6 +31,7 @@ export default function Router() {
         <Route path="/myReview" element={<MyReview />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />
+        <Route path="/writeReview" element={<WriteReviewPage />} />
       </Routes>
     </BrowserRouter>
   );
