@@ -28,6 +28,7 @@ export const ArrowWrapper = styled.div`
 
 export const Percent = styled.div`
   ${() => font.regular_12}
+  color: ${() => color.grayscale_88};
 `;
 
 export const Arrow = styled.img`
@@ -61,5 +62,5 @@ export const Gage = styled.div`
   z-index: 1;
   bottom: 5px;
 
-  background-color: ${() => color.primary_light};
+  background-color: ${() => color.primary_normal};
 `;
