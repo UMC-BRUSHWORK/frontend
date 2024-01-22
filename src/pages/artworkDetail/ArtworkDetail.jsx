@@ -26,7 +26,7 @@ function ArtworkDetail() {
         </A.SubWrapper>
         <A.Divider />
         <A.BottomWrapper>
-          <A.FavoriteBtn src={IMAGES.favorite} />
+          <A.FavoriteBtn src={IMAGES.favoriteOff} />
           <A.AskBtn>문의하기</A.AskBtn>
         </A.BottomWrapper>
       </A.Wrapper>

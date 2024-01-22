@@ -13,6 +13,7 @@ import ArtistPage from './pages/artist/Artist';
 import MyReview from './pages/myPage/MyReview';
 import MyPage from './pages/myPage/MyPage';
 import Purchased from './pages/myPage/Purchased';
+import ImageList from './pages/ImageList';
 
 export default function Router() {
   return (
@@ -30,6 +31,7 @@ export default function Router() {
         <Route path="/myReview" element={<MyReview />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />
+        <Route path="imageList" element={<ImageList />} />
       </Routes>
     </BrowserRouter>
   );
