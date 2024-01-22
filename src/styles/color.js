@@ -6,6 +6,7 @@ const color = {
   primary_dark: '#4812A3',
   gradation_dark: 'linear-gradient(225deg, #8C4FF2 0%, #4812A3 100%)',
   grayscale_ea: '#EAEAEA',
+  grayscale_11: '#111111',
   grayscale_88: '#888',
   grayscale_be: '#BEBEBE',
   gray: '#6C6C6C',
