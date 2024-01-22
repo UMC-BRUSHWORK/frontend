@@ -8,8 +8,8 @@ import SignUpPage from './pages/auth/SignUp';
 import ArtworkUploadPage from './pages/ArtworkUpload';
 import ArtworkDetailPage from './pages/ArtworkDetail';
 import ArtistPage from './pages/artist/Artist';
-// import Review from './pages/Review';
 import MyReview from './pages/MyReview';
+import MyPage from './pages/myPage/MyPage';
 
 export default function Router() {
   return (
@@ -24,6 +24,7 @@ export default function Router() {
         <Route path="/artworkDetail" element={<ArtworkDetailPage />} />
         <Route path="/artist" element={<ArtistPage />} />
         <Route path="/myReview" element={<MyReview />} />
+        <Route path="/myPage" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );
