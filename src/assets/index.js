@@ -6,6 +6,10 @@ import artWork4 from './art_works/art_work_4.png';
 import artWork5 from './art_works/art_work_5.png';
 import artWork6 from './art_works/art_work_6.png';
 import arrowDropDown from './arrow_drop_down.svg';
+import satisfied from './satisfied.svg';
+import dissatisfied from './dissatisfied.svg';
+import favoriteOn from './favorite_on.svg';
+import favoriteOff from './favorite_off.svg';
 
 const IMAGES = {
   profile,
@@ -16,6 +20,10 @@ const IMAGES = {
   artWork5,
   artWork6,
   arrowDropDown,
+  satisfied,
+  dissatisfied,
+  favoriteOn,
+  favoriteOff,
 };
 
 export default IMAGES;

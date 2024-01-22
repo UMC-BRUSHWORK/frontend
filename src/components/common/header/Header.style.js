@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 import LogoImage from '../../../assets/images/Logo.png';
+import color from '../../../styles/color';
 
 export const Wrapper = styled.div`
+  z-index: 11;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   height: 5.2rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: ${color.white};
+  padding: 0 1.6rem;
 `;
 export const MenuWrapper = styled.div`
   height: 100%;
@@ -26,7 +30,6 @@ export const Logo = styled.div`
 `;
 export const IconWrapper = styled.div`
   display: flex;
-  margin-right: 1rem;
 `;
 export const Icon = styled.div`
   margin: 0 1rem;
