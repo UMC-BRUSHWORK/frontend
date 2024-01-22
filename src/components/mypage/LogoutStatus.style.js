@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import font from '../../styles/font';
 import color from '../../styles/color';
-import LogoImg from '../../assets/images/Logo.png';
+import IMAGES from '../../assets';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 export const Logo = styled.div`
-  background-image: url(${LogoImg});
+  background-image: url(${IMAGES.logo});
   background-position: center;
   background-size: cover;
   width: 18rem;

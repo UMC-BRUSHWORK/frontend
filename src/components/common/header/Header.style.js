@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import LogoImage from '../../../assets/images/Logo.png';
 import color from '../../../styles/color';
+import IMAGES from '../../../assets';
 
 export const Wrapper = styled.div`
   z-index: 11;
@@ -23,7 +23,7 @@ export const MenuWrapper = styled.div`
 export const Logo = styled.div`
   width: 11.1rem;
   height: 3.4rem;
-  background-image: url(${LogoImage});
+  background-image: url(${IMAGES.logo});
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 1.6rem;

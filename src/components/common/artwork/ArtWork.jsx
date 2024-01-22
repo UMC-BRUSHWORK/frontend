@@ -28,7 +28,7 @@ export default function ArtWork({
         src={imgSrc}
         alt="artWork"
         width={direction === 'row' ? 'auto' : '100%'}
-        height={direction === 'row' ? '9rem' : 'auto'}
+        height={direction === 'row' ? size : 'auto'}
         onClick={handleMoveToArtWorkDetail}
       />
       <S.InfoWrapper>
