@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/main/Main';
 import SearchPage from './pages/Seach';
-import FavoritesPage from './pages/Favorites';
+import FavoritesPage from './pages/favorites/Favorites';
 import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
 import ArtworkUploadPage from './pages/ArtworkUpload';
