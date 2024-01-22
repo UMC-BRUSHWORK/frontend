@@ -2,8 +2,7 @@ import React from 'react';
 import * as S from './Temperature.style';
 import IMAGES from '../../../assets';
 
-export default function Temperature() {
-  const percent = '30%';
+export default function Temperature({ percent }) {
   return (
     <S.Wrapper>
       <S.StatusWrapper>

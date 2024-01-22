@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import ArtWork from '../artwork/ArtWork';
 
 export default function RowArtWorkList({ data, size }) {
-  console.log('RowArtWorkList');
-  console.log(size);
-
   return (
     <Wrapper>
       {data.map((item) => (
