@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import * as U from './ArtworkUpload.style';
-import Category from '../../components/common/category/Category';
-import Description from '../../components/common/description/Description';
-import WriteCompleteButton from '../../components/common/button/WriteCompleteButton';
-import IMAGES from '../../assets';
+import Category from '../../../components/common/category/Category';
+import Description from '../../../components/common/description/Description';
+import WriteCompleteButton from '../../../components/common/button/WriteCompleteButton';
+import IMAGES from '../../../assets';
 
 function ArtworkUpload() {
   const CATEGORY = [

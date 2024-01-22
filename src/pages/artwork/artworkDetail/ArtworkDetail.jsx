@@ -1,15 +1,15 @@
 import React from 'react';
 import * as A from './ArtworkDetail.style';
-import IMAGES from '../../assets';
+import IMAGES from '../../../assets';
 
-function MyArtworkDetail() {
+function ArtworkDetail() {
   return (
     <>
       <A.Image src={IMAGES.artWork2} />
       <A.Wrapper>
         <A.TitleWrapper>
           <A.Title>작품 제목</A.Title>
-          <A.Report src={IMAGES.edit} />
+          <A.Report src={IMAGES.emergency} />
         </A.TitleWrapper>
         <A.Artist>작가명</A.Artist>
         <A.Description>
@@ -25,11 +25,12 @@ function MyArtworkDetail() {
         </A.SubWrapper>
         <A.Divider />
         <A.BottomWrapper>
-          <A.CompleteBtn>판매완료</A.CompleteBtn>
+          <A.FavoriteBtn src={IMAGES.favoriteOff} />
+          <A.AskBtn>문의하기</A.AskBtn>
         </A.BottomWrapper>
       </A.Wrapper>
     </>
   );
 }
 
-export default MyArtworkDetail;
+export default ArtworkDetail;
