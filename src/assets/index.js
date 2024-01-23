@@ -39,6 +39,10 @@ import photo from './artwork/photo.svg';
 import rightButtonBlack from './artwork/right_button_black.svg';
 import rightButtonGrey from './artwork/right_button_grey.svg';
 
+// chatting
+import send from './chatting/send.svg';
+import add from './chatting/add.svg';
+
 const IMAGES = {
   artWork1,
   artWork2,
@@ -68,6 +72,9 @@ const IMAGES = {
   search,
   settings,
   shoppingBag,
+
+  send,
+  add,
 };
 
 export default IMAGES;

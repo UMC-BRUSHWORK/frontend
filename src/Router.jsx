@@ -14,6 +14,8 @@ import MyPage from './pages/myPage/MyPage';
 import Purchased from './pages/myPage/Purchased';
 import WriteReviewPage from './pages/myPage/WriteReviewPage';
 import ImageList from './pages/ImageList';
+import ChattingList from './pages/chatting/ChattingList';
+import Chatting from './pages/chatting/Chatting';
 
 export default function Router() {
   return (
@@ -26,12 +28,15 @@ export default function Router() {
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/artwork-upload" element={<ArtworkUploadPage />} />
         <Route path="/artwork-detail" element={<ArtworkDetailPage />} />
-        <Route path="/myArtwork-detail" element={<MyArtworkDetailPage />} />
+        <Route path="/my-artwork-detail" element={<MyArtworkDetailPage />} />
         <Route path="/artist" element={<ArtistPage />} />
         <Route path="/my-review" element={<MyReview />} />
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />
-        <Route path="/writeReview" element={<WriteReviewPage />} />
+        <Route path="/write-review" element={<WriteReviewPage />} />
+        <Route path="/chatting-list" element={<ChattingList />} />
+        <Route path="/chatting-list/chatting" element={<Chatting />} />
+
         <Route path="/imageList" element={<ImageList />} />
       </Routes>
     </BrowserRouter>
