@@ -27,7 +27,7 @@ export default function BottomNav() {
           <BsPlusCircle size={28} />
           <B.MenuTxt>작성</B.MenuTxt>
         </B.MenuWrapper>
-        <B.MenuWrapper onClick={() => navigate('/')}>
+        <B.MenuWrapper onClick={() => navigate('/chatting-list')}>
           <BsChatLeftText size={28} />
           <B.MenuTxt>채팅</B.MenuTxt>
         </B.MenuWrapper>
