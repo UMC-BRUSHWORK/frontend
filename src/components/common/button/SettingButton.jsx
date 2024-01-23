@@ -1,11 +1,11 @@
 import React from 'react';
-import settingBtn from '../../../assets/images/settings.svg';
 import { StyledSettingButton, SettingButtonImg } from './SettingButton.style';
+import IMAGES from '../../../assets';
 
 function SettingButton() {
   return (
     <StyledSettingButton>
-      <SettingButtonImg src={settingBtn} alt="setting-button-image" />
+      <SettingButtonImg src={IMAGES.settings} alt="setting-button-image" />
     </StyledSettingButton>
   );
 }
