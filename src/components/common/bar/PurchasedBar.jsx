@@ -28,11 +28,11 @@ function PurchasedBar() {
       </P.TabButton>
 
       <P.TabButton
-        active={activeTab === 'myReview'}
-        onClick={() => handleTabChange('myReview')}
+        active={activeTab === 'my-review'}
+        onClick={() => handleTabChange('my-review')}
       >
         내가 쓴 후기
-        <P.TabIndicator active={activeTab === 'myReview'} />
+        <P.TabIndicator active={activeTab === 'my-review'} />
       </P.TabButton>
       <P.TabSeparator />
     </P.TabContainer>

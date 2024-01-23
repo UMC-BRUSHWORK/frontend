@@ -31,6 +31,7 @@ export default function ImageList() {
         <img src={IMAGES.shoppingBag} alt="shoppingBag" />
         <img src={IMAGES.logout} alt="logout" />
         <img src={IMAGES.settings} alt="settings" />
+        <img src={IMAGES.moreVert} alt="moreVert" />
       </div>
 
       <div>
