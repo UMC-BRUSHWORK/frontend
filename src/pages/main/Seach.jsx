@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  margin-bottom: 6rem;
 `;
 
 export default function Seach() {

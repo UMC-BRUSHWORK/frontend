@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 6rem;
 `;
 export default function MyPage() {
   return (

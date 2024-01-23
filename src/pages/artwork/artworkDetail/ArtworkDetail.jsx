@@ -1,10 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
 
+const Wrapper = styled.div`
+  margin-bottom: 6rem;
+`;
+
 function ArtworkDetail() {
   return (
-    <>
+    <Wrapper>
       <A.Image src={IMAGES.artWork2} />
       <A.Wrapper>
         <A.TitleWrapper>
@@ -29,7 +34,7 @@ function ArtworkDetail() {
           <A.AskBtn>문의하기</A.AskBtn>
         </A.BottomWrapper>
       </A.Wrapper>
-    </>
+    </Wrapper>
   );
 }
 
