@@ -1,17 +1,15 @@
 import React from 'react';
-import {
-  WriteOnButton,
-  WriteOffButton,
-  WriteOnMypageButton,
-} from './WriteCompleteButton.style';
+import * as S from './WriteCompleteButton.style';
 
-function WriteCompleteButton() {
+function WriteCompleteButton({ state }) {
   return (
-    <>
-      <WriteOnButton>작성 완료</WriteOnButton>
-      <WriteOffButton>작성 완료</WriteOffButton>
-      <WriteOnMypageButton>작성 완료</WriteOnMypageButton>
-    </>
+    <div>
+      {state ? (
+        <S.WriteOnButton>작성 완료</S.WriteOnButton>
+      ) : (
+        <S.WriteOffButton>작성 완료</S.WriteOffButton>
+      )}
+    </div>
   );
 }
 

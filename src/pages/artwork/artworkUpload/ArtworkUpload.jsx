@@ -24,6 +24,9 @@ function ArtworkUpload() {
 
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
+  const [state, setState] = useState(false);
+
+  console.log(setState);
 
   return (
     <U.Wrapper>
@@ -51,7 +54,7 @@ function ArtworkUpload() {
         style={{ marginBottom: '2rem' }}
       />
       <Description />
-      <WriteCompleteButton />
+      <WriteCompleteButton state={state} />
     </U.Wrapper>
   );
 }
