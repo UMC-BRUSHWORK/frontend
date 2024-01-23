@@ -7,6 +7,7 @@ export default function ArtWork({
   artName = '작품 이름',
   artist = '작가명',
   direction = 'row',
+  size = '12rem',
 }) {
   const imgSrc = IMAGES[artSrc];
   const [favorite, setFavorite] = useState('off');
