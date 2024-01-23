@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './ChattingInput.style';
-import IMAGES from '../../assets';
+import IMAGES from '../../../assets';
 
 export default function ChattingInput() {
   return (

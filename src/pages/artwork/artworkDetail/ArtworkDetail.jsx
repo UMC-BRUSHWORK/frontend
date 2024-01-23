@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
 
 function ArtworkDetail() {
+  const name = 'sen';
+  const room = 'test';
+
   return (
     <>
       <A.Image src={IMAGES.artWork2} />
@@ -26,7 +30,9 @@ function ArtworkDetail() {
         <A.Divider />
         <A.BottomWrapper>
           <A.FavoriteBtn src={IMAGES.favoriteOff} />
-          <A.AskBtn>문의하기</A.AskBtn>
+          <Link to={`/chat?name=${name}&room=${room}`}>
+            <A.AskBtn>문의하기</A.AskBtn>
+          </Link>
         </A.BottomWrapper>
       </A.Wrapper>
     </>
