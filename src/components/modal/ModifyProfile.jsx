@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import * as M from './ModifyProfile.style';
-import profile from '../../assets/profile_image.png';
-import camera from '../../assets/photo_camera.svg';
+import IMAGES from '../../assets';
 
 function ModifyProfile({ onSave, onClose }) {
   const [nickname, setNickname] = useState('');
@@ -18,9 +17,9 @@ function ModifyProfile({ onSave, onClose }) {
   return (
     <M.ModalWrapper>
       <M.ProfileContainer>
-        <M.ProfileImage src={profile} />
+        <M.ProfileImage src={IMAGES.profile} />
         <M.CameraBackground />
-        <M.CameraIcon src={camera} />
+        <M.CameraIcon src={IMAGES.photo} />
       </M.ProfileContainer>
 
       <M.Nickname

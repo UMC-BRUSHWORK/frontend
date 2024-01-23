@@ -1,21 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as T from './Topbar.style';
-import ArrowBack from '../../../assets/images/arrow_back.svg';
-import Search from '../../../assets/images/search.svg';
-import Notif from '../../../assets/images/notif.svg';
+import IMAGES from '../../../assets';
 
 function Topbar() {
-    return(
-        <T.Wrapper>
-            <T.Left>
-                <T.Icon src={ArrowBack}/>
-            </T.Left>
-            <T.Right>
-                <T.Icon src={Search} style={{ marginRight: '1rem' }}/>
-                <T.Icon src={Notif}/>
-            </T.Right>
-        </T.Wrapper>
-    )
+  const navigate = useNavigate();
+
+  return (
+    <T.Wrapper>
+      <T.Left>
+        <T.Icon src={IMAGES.ArrowBack} />
+      </T.Left>
+      <T.Right>
+        <T.IconWrapper>
+          <T.Icon src={IMAGES.search} onClick={() => navigate('/search')} />
+          <T.Icon src={IMAGES.notif} />
+        </T.IconWrapper>
+      </T.Right>
+    </T.Wrapper>
+  );
 }
 
 export default Topbar;

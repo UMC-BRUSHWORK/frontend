@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import RightButtonImg from '../../../assets/images/right_button_black.svg';
 import * as A from './MyArtWork.style';
+import IMAGES from '../../../assets';
 
 function MyArtWork() {
   const navigate = useNavigate();
@@ -12,7 +12,10 @@ function MyArtWork() {
   return (
     <A.ArtWorkContainer>
       <A.GoArtistButton onClick={handleMoveToArtist}>내 작품</A.GoArtistButton>
-      <A.RightButton src={RightButtonImg} onClick={handleMoveToArtist} />
+      <A.RightButton
+        src={IMAGES.rightButtonBlack}
+        onClick={handleMoveToArtist}
+      />
     </A.ArtWorkContainer>
   );
 }

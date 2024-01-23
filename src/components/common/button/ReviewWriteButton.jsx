@@ -5,7 +5,7 @@ import {
   GoReviewButton,
   RightButton,
 } from './ReviewWriteButton.style';
-import RightButtonImg from '../../../assets/images/right_button.svg';
+import IMAGES from '../../../assets';
 
 function ReviewWriteButton() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function ReviewWriteButton() {
       <GoReviewButton onClick={handleMoveToReview}>
         후기 작성하기
       </GoReviewButton>
-      <RightButton src={RightButtonImg} onClick={handleMoveToReview} />
+      <RightButton src={IMAGES.rightButtonBlack} onClick={handleMoveToReview} />
     </ReviewContainer>
   );
 }
