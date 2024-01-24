@@ -5,6 +5,7 @@ import color from '../../../styles/color';
 export const PurchasedArtInfoWrapper = styled.div`
   display: flex;
   margin-top: 1.7rem;
+  margin-left: 1.6rem;
 `;
 
 export const PurchasedArtworkImage = styled.img`
@@ -26,7 +27,7 @@ export const PurchasedArtName = styled.h1`
 `;
 
 export const PurchasedArtistName = styled.p`
-  color: ${color.gray};
+  color: ${color.grayscale_6c};
   ${() => font.regular_10}
   margin-top: 0.2rem;
 `;

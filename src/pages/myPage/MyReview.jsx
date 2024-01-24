@@ -6,7 +6,7 @@ export default function MyReview() {
   return (
     <>
       <PurchasedBar />
-      <WrittenReview reviewData={dummyData} />
+      <WrittenReview />
     </>
   );
 }

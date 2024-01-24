@@ -6,6 +6,7 @@ import color from '../../../styles/color';
 export const TabContainer = styled.div`
   display: flex;
   position: relative;
+  margin-top: 2.4rem;
 `;
 
 export const TabButton = styled.div`
