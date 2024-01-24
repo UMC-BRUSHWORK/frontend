@@ -9,7 +9,7 @@ function Topbar() {
   return (
     <T.Wrapper>
       <T.Left>
-        <T.Icon src={IMAGES.ArrowBack} />
+        <T.Icon src={IMAGES.arrowBack} />
       </T.Left>
       <T.Right>
         <T.IconWrapper>

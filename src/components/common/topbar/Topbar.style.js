@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import font from '../../../styles/font';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -13,6 +14,11 @@ export const Wrapper = styled.div`
 
 export const Left = styled.div`
   display: flex;
+`;
+
+export const LogoText = styled.div`
+  ${() => font.medium_19};
+  margin-left: 1.2rem;
 `;
 
 export const Right = styled.div`

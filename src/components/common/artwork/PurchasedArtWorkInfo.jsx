@@ -9,7 +9,7 @@ function PurchasedArtWorkInfo({ img, name, artist, price }) {
       <A.PurchasedArtWrapper>
         <A.PurchasedArtName>{name}</A.PurchasedArtName>
         <A.PurchasedArtistName>{artist}</A.PurchasedArtistName>
-        <A.PurchasedArtPrice>{price.toLocaleString()}원</A.PurchasedArtPrice>
+        <A.PurchasedArtPrice>{price}원</A.PurchasedArtPrice>
         <ReviewWriteButton />
       </A.PurchasedArtWrapper>
     </A.PurchasedArtInfoWrapper>
