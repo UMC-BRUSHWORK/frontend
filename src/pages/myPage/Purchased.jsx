@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PurchasedBar from '../../components/common/bar/PurchasedBar';
-import Header from '../../components/common/header/Header';
-import BottomNav from '../../components/common/bottomNav/BottomNav';
+import PurchasedTopbar from '../../components/common/topbar/PurchasedTopbar';
 import PurchasedArtWorkInfo from '../../components/common/artwork/PurchasedArtWorkInfo';
 import IMAGES from '../../assets';
 
@@ -22,7 +21,7 @@ export default function Purchased() {
 
   return (
     <>
-      <Header />
+      <PurchasedTopbar />
       <Wrapper>
         <PurchasedBar />
         <PurchasedArtWorkInfo
@@ -32,7 +31,6 @@ export default function Purchased() {
           price={artworkData.price.toLocaleString()}
         />
       </Wrapper>
-      <BottomNav />
     </>
   );
 }
