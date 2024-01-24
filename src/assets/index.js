@@ -27,6 +27,7 @@ import shoppingBag from './myPage/shopping_bag.svg';
 import logout from './myPage/logout.svg';
 import settings from './myPage/settings.svg';
 import moreVert from './myPage/more_vert.svg';
+import trash from './myPage/trash.svg';
 
 // artist
 import arrowDropDown from './artist/arrow_drop_down.svg';
@@ -74,6 +75,7 @@ const IMAGES = {
   settings,
   shoppingBag,
   moreVert,
+  trash,
 
   send,
   add,
