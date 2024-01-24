@@ -6,6 +6,7 @@ export const StyledSettingButton = styled.button`
   display: flex;
   align-items: center;
   padding: 0;
+  border: none;
 `;
 
 export const SettingButtonImg = styled.img`

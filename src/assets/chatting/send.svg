@@ -1,0 +1,16 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon_send">
+<mask id="mask0_1039_85" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_1039_85)">
+<path id="send" d="M22 12L3 4V10L10 12L3 14V20L22 12Z" fill="url(#paint0_linear_1039_85)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1039_85" x1="22" y1="4" x2="6.23339" y2="22.7229" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8C4FF2"/>
+<stop offset="1" stop-color="#4812A3"/>
+</linearGradient>
+</defs>
+</svg>

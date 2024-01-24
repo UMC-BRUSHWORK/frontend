@@ -9,7 +9,8 @@ const color = {
   grayscale_11: '#111111',
   grayscale_88: '#888',
   grayscale_be: '#BEBEBE',
-  gray: '#6C6C6C',
+  grayscale_f5: '#F5F5F5',
+  grayscale_6c: '#6C6C6C',
 };
 
 export default color;

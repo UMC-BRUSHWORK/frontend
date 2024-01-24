@@ -3,7 +3,7 @@ import color from '../../../styles/color';
 import font from '../../../styles/font';
 
 export const MenuContainer = styled.div`
-  margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
 `;
 
 export const Line = styled.div`
