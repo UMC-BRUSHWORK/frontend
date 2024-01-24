@@ -1,12 +1,28 @@
-import React from 'react';
-import { StyledSettingButton, SettingButtonImg } from './SettingButton.style';
+import React, { useState } from 'react';
+import * as S from './SettingButton.style';
 import IMAGES from '../../../assets';
+import ModifyProfile from '../../modal/ModifyProfile';
 
 function SettingButton() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <StyledSettingButton>
-      <SettingButtonImg src={IMAGES.settings} alt="setting-button-image" />
-    </StyledSettingButton>
+    <>
+      <S.StyledSettingButton onClick={openModal}>
+        <S.SettingButtonImg src={IMAGES.settings} alt="setting-button-image" />
+      </S.StyledSettingButton>
+      {isModalOpen && (
+        <ModifyProfile onSave={closeModal} onClose={closeModal} />
+      )}
+    </>
   );
 }
 
