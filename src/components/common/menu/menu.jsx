@@ -42,7 +42,7 @@ function Menu() {
         />
         <M.GrayLine />
         <MenuItem
-          icon={IMAGES.ReviewImg}
+          icon={IMAGES.contract}
           text="내가 쓴 후기"
           onClick={handleMoveToMyReview}
         />

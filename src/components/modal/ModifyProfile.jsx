@@ -15,32 +15,35 @@ function ModifyProfile({ onSave, onClose }) {
   };
 
   return (
-    <M.ModalWrapper>
-      <M.ProfileContainer>
-        <M.ProfileImage src={IMAGES.profile} />
-        <M.CameraBackground />
-        <M.CameraIcon src={IMAGES.photo} />
-      </M.ProfileContainer>
+    <>
+      <M.ModalBackground />
+      <M.ModalWrapper>
+        <M.ProfileContainer>
+          <M.ProfileImage src={IMAGES.profile} />
+          <M.CameraBackground />
+          <M.CameraIcon src={IMAGES.photo} />
+        </M.ProfileContainer>
 
-      <M.Nickname
-        placeholder="내 닉네임"
-        value={nickname}
-        onChange={(e) => setNickname(e.target.value)}
-      />
-      <M.Separator />
-      <M.Introduction
-        placeholder="소개글을 자유롭게 작성해주세요. (최대 300자)"
-        value={introduction}
-        onChange={(e) => setIntroduction(e.target.value)}
-      />
+        <M.Nickname
+          placeholder="내 닉네임"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+        />
+        <M.Separator />
+        <M.Introduction
+          placeholder="소개글을 자유롭게 작성해주세요. (최대 300자)"
+          value={introduction}
+          onChange={(e) => setIntroduction(e.target.value)}
+        />
 
-      <M.Separator />
+        <M.Separator />
 
-      <M.ButtonContainer>
-        <M.CancelButton onClick={onClose}>취소</M.CancelButton>
-        <M.CompleteButton onClick={handleSave}>수정 완료</M.CompleteButton>
-      </M.ButtonContainer>
-    </M.ModalWrapper>
+        <M.ButtonContainer>
+          <M.CancelButton onClick={onClose}>취소</M.CancelButton>
+          <M.CompleteButton onClick={handleSave}>수정 완료</M.CompleteButton>
+        </M.ButtonContainer>
+      </M.ModalWrapper>
+    </>
   );
 }
 

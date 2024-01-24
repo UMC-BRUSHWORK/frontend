@@ -11,6 +11,17 @@ export const ModalWrapper = styled.div`
   border-radius: 0.6rem;
   background: ${color.white};
   box-shadow: 0rem 0.1rem 0.15rem 0rem rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+`;
+
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 `;
 
 export const ProfileContainer = styled.div`

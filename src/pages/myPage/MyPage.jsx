@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
-import LogoutStatus from '../../components/mypage/LogoutStatus';
+import LogInStatus from '../../components/mypage/LoginStatus';
 
 const Wrapper = styled.div`
   height: calc(100vh - 11.2rem);
@@ -15,7 +15,7 @@ export default function MyPage() {
     <>
       <Header />
       <Wrapper>
-        <LogoutStatus />
+        <LogInStatus />
       </Wrapper>
       <BottomNav />
     </>
