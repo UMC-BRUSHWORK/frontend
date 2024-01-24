@@ -4,10 +4,12 @@ import font from '../../../styles/font';
 
 export const ReviewContainer = styled.div`
   display: flex;
+  margin-left: 1.6rem;
 `;
 
 export const ReviewWrapper = styled.div`
   ${() => font.medium_13};
+  margin-left: 1.6rem;
 `;
 
 export const ReviewTextButton = styled.button`

@@ -5,6 +5,9 @@ import artWork3 from './art_works/art_work_3.png';
 import artWork4 from './art_works/art_work_4.png';
 import artWork5 from './art_works/art_work_5.png';
 import artWork6 from './art_works/art_work_6.png';
+import artWork7 from './art_works/art_work_7.png';
+import artWork8 from './art_works/art_work_8.png';
+import artWork9 from './art_works/art_work_9.png';
 
 // example images (dummy)
 import profileImage from './dummy_images/profile_image.png';
@@ -51,6 +54,9 @@ const IMAGES = {
   artWork4,
   artWork5,
   artWork6,
+  artWork7,
+  artWork8,
+  artWork9,
 
   accountBox,
   arrowBack,

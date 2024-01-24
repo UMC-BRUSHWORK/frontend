@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import font from '../../../styles/font';
 import color from '../../../styles/color';
 
-export const ArtInfoWrapper = styled.div``;
+export const ArtInfoWrapper = styled.div`
+  margin-left: 1.6rem;
+`;
 
 export const ArtworkImageContainer = styled.div`
   border: 1px solid ${color.grayscale_be};
@@ -34,4 +36,11 @@ export const ArtPrice = styled.p`
   color: ${color.black};
   ${() => font.medium_17}
   margin-top: 0.8rem;
+`;
+
+export const Line = styled.div`
+  width: 32.8rem;
+  height: 0.1rem;
+  background-color: ${color.primary_normal};
+  margin: 1.2rem 0 3.2rem 1.6rem;
 `;

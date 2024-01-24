@@ -10,6 +10,9 @@ export const WriteOffButton = styled.button`
   ${() => font.medium_17}
   border: none;
   cursor: pointer;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
 `;
 
 export const WriteOnButton = styled.button`
@@ -20,6 +23,9 @@ export const WriteOnButton = styled.button`
   ${() => font.medium_17}
   border: none;
   cursor: pointer;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
 `;
 
 export const WriteOnMypageButton = styled.button`
@@ -30,4 +36,7 @@ export const WriteOnMypageButton = styled.button`
   ${() => font.medium_17}
   border: none;
   cursor: pointer;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
 `;
