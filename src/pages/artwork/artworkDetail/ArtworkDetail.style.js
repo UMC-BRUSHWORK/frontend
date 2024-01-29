@@ -21,7 +21,7 @@ export const Top = styled.div`
 
 export const Image = styled.img`
     width: 100%;
-    height: 27rem;
+    height: 28rem;
     position: sticky;
 `
 
@@ -37,7 +37,6 @@ export const Wrapper = styled.div`
     border-style: dotted;
   }
     width: 100%;
-    height: 100rem;
     padding: 2rem;
     position: relative;
     display: flex;
@@ -118,19 +117,24 @@ export const Divider = styled.div`
     width: 100%;
     height: 0.1rem;
     background-color: #BEBEBE;
-    margin-top: 1.5rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2.4rem;  
+`
+
+export const Margin = styled.div`
+    margin-bottom: 2.4rem;
 `
 
 export const BottomWrapper = styled.div`
     width: 100%;
-    position: fixed;
+    position: sticky;
     left: 0;
     bottom: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
     background: #FFF;
     box-shadow: 0px -1px 1.5px 0px rgba(0, 0, 0, 0.15);
 `

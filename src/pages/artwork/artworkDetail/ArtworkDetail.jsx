@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
+import Profile from '../../../components/common/profile/Profile';
+import RowArtworkList from '../../../components/common/artworkList/RowArtWorkList';
+import ReviewList from '../../../components/artist/reviewList/ReviewList';
+import artworkDummy from '../../../constants/artWorkDummy';
+import reviewDummy from '../../../constants/reviewsDummy';
 
 function ArtworkDetail() {
+
+  const [favorite, setFavorite] = useState('off');
+
+  const handleClick = () => {
+    setFavorite('on');
+  };
+
   return (
     <>
       <A.Image src={IMAGES.artWork2} />
@@ -24,11 +36,20 @@ function ArtworkDetail() {
           <A.Delivery>택배</A.Delivery>
         </A.SubWrapper>
         <A.Divider />
-        <A.BottomWrapper>
-          <A.FavoriteBtn src={IMAGES.favoriteOff} />
-          <A.AskBtn>문의하기</A.AskBtn>
-        </A.BottomWrapper>
+        <A.Margin>
+          <Profile />
+        </A.Margin>
+        <A.Margin>
+          <RowArtworkList data={artworkDummy} />
+        </A.Margin>
+        <ReviewList data={reviewDummy}/>
       </A.Wrapper>
+      <A.BottomWrapper>
+          <A.FavoriteBtn 
+            onClick={handleClick}
+            src={favorite === 'off' ? IMAGES.favoriteOff : IMAGES.favoriteOn}/>
+          <A.AskBtn>문의하기</A.AskBtn>
+      </A.BottomWrapper>
     </>
   );
 }
