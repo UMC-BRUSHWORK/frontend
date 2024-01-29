@@ -1,58 +1,20 @@
 import React, { useState } from 'react';
 import * as C from './Category.style';
 
-const CATEGORY = [
-  { id: 1, label: '조소' },
-  { id: 2, label: '한국화' },
-  { id: 3, label: '동양화' },
-  { id: 4, label: '서양화' },
-  { id: 5, label: '일러스트' },
-  { id: 6, label: '디자인' },
-  { id: 7, label: '공예' },
-  { id: 8, label: '수채화' },
-];
-
-function Category({ chips = CATEGORY, title = '카테고리' }) {
-  const [chipClicked, setChipClicked] = useState(() => {
-    const initialState = Object.fromEntries(
-      Object.keys(chips).map((label) => [label, false]),
+function CategoryTest({
+    chipName = '카테고리'
+}) {
+    const [isClicked, setClicked] = useState(false);
+  
+    const handleClick = () => {
+      setClicked(!isClicked);
+    };
+  
+    return (
+        <C.Chip clicked={isClicked} onClick={handleClick}>
+          {chipName}
+        </C.Chip>
     );
-    return initialState;
-  });
-
-  const handleChipClick = (label) => {
-    setChipClicked((prevState) => ({
-      ...prevState,
-      [label]: !prevState[label],
-    }));
   };
-
-  return (
-    <>
-      <C.Title>{title}</C.Title>
-      {chips.map((chip) => (
-        <React.Fragment key={chip.id}>
-          {chip.id < 4 ? (
-            <C.ChipTop>
-              <C.CustomChip
-                label={chip.label}
-                onClick={() => handleChipClick(chip.label)}
-                color={chipClicked[chip.label] ? 'primary' : 'default'}
-              />
-            </C.ChipTop>
-          ) : (
-            <C.ChipBottom>
-              <C.CustomChip
-                label={chip.label}
-                onClick={() => handleChipClick(chip.label)}
-                color={chipClicked[chip.label] ? 'primary' : 'default'}
-              />
-            </C.ChipBottom>
-          )}
-        </React.Fragment>
-      ))}
-    </>
-  );
-}
-
-export default Category;
+  
+  export default CategoryTest;
