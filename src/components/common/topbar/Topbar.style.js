@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import font from '../../../styles/font';
+// import color from '../../../styles/color';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -46,4 +47,14 @@ export const Icon = styled.img`
   width: 2.4rem;
   height: 2.4rem;
   flex-shrink: 0;
+`;
+
+export const SearchInput = styled.input`
+  width: 100%;
+  height: 100%;
+  margin-left: 1.3rem;
+
+  outline: none;
+  border: none;
+  ${() => font.title}
 `;
