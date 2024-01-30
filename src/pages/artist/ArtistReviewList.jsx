@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 2.8rem;
   margin-top: 1.7rem;
+  margin-bottom: 6rem;
 `;
 
 export default function ArtistReviewList() {
