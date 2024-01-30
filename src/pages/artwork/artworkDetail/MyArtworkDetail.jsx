@@ -2,12 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
+import Profile from '../../../components/common/profile/Profile';
+import RowArtworkList from '../../../components/common/artworkList/RowArtWorkList';
+import ReviewList from '../../../components/artist/reviewList/ReviewList';
+import artworkDummy from '../../../constants/artWorkDummy';
+import reviewDummy from '../../../constants/reviewsDummy';
 
 const Wrapper = styled.div`
   margin-bottom: 6rem;
 `;
 
 function MyArtworkDetail() {
+
   return (
     <Wrapper>
       <A.Image src={IMAGES.artWork2} />
@@ -29,10 +35,17 @@ function MyArtworkDetail() {
           <A.Delivery>택배</A.Delivery>
         </A.SubWrapper>
         <A.Divider />
-        <A.BottomWrapper>
-          <A.CompleteBtn>판매완료</A.CompleteBtn>
-        </A.BottomWrapper>
+        <A.Margin>
+          <Profile />
+        </A.Margin>
+        <A.Margin>
+          <RowArtworkList data={artworkDummy} />
+        </A.Margin>
+        <ReviewList data={reviewDummy}/>
       </A.Wrapper>
+      <A.BottomWrapper>
+          <A.CompleteBtn>판매완료</A.CompleteBtn>
+      </A.BottomWrapper>
     </Wrapper>
   );
 }
