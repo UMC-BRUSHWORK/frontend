@@ -10,10 +10,10 @@ export default function ArtWork({
   size = '12rem',
 }) {
   const imgSrc = IMAGES[artSrc];
-  const [favorite, setFavorite] = useState('off');
+  const [favorite, setFavorite] = useState(false);
 
   const handleClick = () => {
-    setFavorite('on');
+    setFavorite(!favorite);
   };
 
   return (
@@ -28,7 +28,7 @@ export default function ArtWork({
         <S.ArtName>{artName}</S.ArtName>
         <S.Favorite
           onClick={handleClick}
-          src={favorite === 'off' ? IMAGES.favoriteOff : IMAGES.favoriteOn}
+          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
           alt="favorite"
         />
       </S.InfoWrapper>
