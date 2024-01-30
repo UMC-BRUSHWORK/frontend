@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import * as W from './WrittenReview.style';
 import IMAGES from '../../../assets';
+import ReviewDelete from '../../modal/ReviewDelete';
 
 function WrittenReview({ reviewData }) {
   const { img, artist, name, date, review } = reviewData || {};
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const handleDeleteClick = () => {
+    setIsDeleteModalOpen(true);
+  };
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
+  const handleCloseModal = () => {
+    setIsDeleteModalOpen(false);
   };
 
   return (
@@ -22,16 +26,11 @@ function WrittenReview({ reviewData }) {
             <W.RightButton src={IMAGES.rightButtonBlack} />
           </W.ArtWorkName>
         </W.ArtInfoContainer>
-        <W.EditDeleteButton src={IMAGES.moreVert} onClick={toggleDropdown} />
+        <W.EditDeleteButton src={IMAGES.trash} onClick={handleDeleteClick} />
       </W.ArtInfoWrapper>
-      {dropdownVisible && (
-        <W.DropdownMenu>
-          <W.DropdownItem>수정하기</W.DropdownItem>
-          <W.DropdownItem>삭제하기</W.DropdownItem>
-        </W.DropdownMenu>
-      )}
       <W.ReviewText>{review}</W.ReviewText>
       <W.ReviewDate>{date}</W.ReviewDate>
+      {isDeleteModalOpen && <ReviewDelete onClose={handleCloseModal} />}
     </W.ReviewContainer>
   );
 }

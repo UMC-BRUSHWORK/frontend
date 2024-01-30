@@ -10,6 +10,18 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
+export const PurchasedWrapper = styled.div`
+  width: 100%;
+  height: 5.2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
 export const Left = styled.div`
   display: flex;
 `;

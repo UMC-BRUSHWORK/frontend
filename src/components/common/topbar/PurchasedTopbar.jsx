@@ -4,12 +4,12 @@ import IMAGES from '../../../assets';
 
 function PurchasedTopbar() {
   return (
-    <T.Wrapper>
+    <T.PurchasedWrapper>
       <T.Left>
         <T.Icon src={IMAGES.arrowBack} />
         <T.LogoText>구매 내역</T.LogoText>
       </T.Left>
-    </T.Wrapper>
+    </T.PurchasedWrapper>
   );
 }
 

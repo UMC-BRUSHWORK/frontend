@@ -32,6 +32,7 @@ export default function ImageList() {
         <img src={IMAGES.logout} alt="logout" />
         <img src={IMAGES.settings} alt="settings" />
         <img src={IMAGES.moreVert} alt="moreVert" />
+        <img src={IMAGES.trash} alt="trash" />
       </div>
 
       <div>
