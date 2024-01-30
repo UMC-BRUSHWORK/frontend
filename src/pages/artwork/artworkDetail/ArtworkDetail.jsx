@@ -13,11 +13,10 @@ const Wrapper = styled.div`
 `;
 
 function ArtworkDetail() {
-
-  const [favorite, setFavorite] = useState('off');
+  const [favorite, setFavorite] = useState(false);
 
   const handleClick = () => {
-    setFavorite('on');
+    setFavorite(!favorite);
   };
 
   return (
@@ -47,13 +46,14 @@ function ArtworkDetail() {
         <A.Margin>
           <RowArtworkList data={artworkDummy} />
         </A.Margin>
-        <ReviewList data={reviewDummy}/>
+        <ReviewList data={reviewDummy} />
       </A.Wrapper>
       <A.BottomWrapper>
-          <A.FavoriteBtn 
-            onClick={handleClick}
-            src={favorite === 'off' ? IMAGES.favoriteOff : IMAGES.favoriteOn}/>
-          <A.AskBtn>문의하기</A.AskBtn>
+        <A.FavoriteBtn
+          onClick={handleClick}
+          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
+        />
+        <A.AskBtn>문의하기</A.AskBtn>
       </A.BottomWrapper>
     </Wrapper>
   );
