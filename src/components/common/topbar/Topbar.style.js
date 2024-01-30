@@ -4,8 +4,6 @@ import font from '../../../styles/font';
 export const Wrapper = styled.div`
   width: 100%;
   height: 5.2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
