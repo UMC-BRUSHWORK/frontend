@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 6rem;
 `;
 
 export default function Main() {

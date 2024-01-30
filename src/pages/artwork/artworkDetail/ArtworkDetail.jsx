@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
 import Profile from '../../../components/common/profile/Profile';
@@ -6,6 +7,10 @@ import RowArtworkList from '../../../components/common/artworkList/RowArtWorkLis
 import ReviewList from '../../../components/artist/reviewList/ReviewList';
 import artworkDummy from '../../../constants/artWorkDummy';
 import reviewDummy from '../../../constants/reviewsDummy';
+
+const Wrapper = styled.div`
+  margin-bottom: 6rem;
+`;
 
 function ArtworkDetail() {
 
@@ -16,7 +21,7 @@ function ArtworkDetail() {
   };
 
   return (
-    <>
+    <Wrapper>
       <A.Image src={IMAGES.artWork2} />
       <A.Wrapper>
         <A.TitleWrapper>
@@ -50,7 +55,7 @@ function ArtworkDetail() {
             src={favorite === 'off' ? IMAGES.favoriteOff : IMAGES.favoriteOn}/>
           <A.AskBtn>문의하기</A.AskBtn>
       </A.BottomWrapper>
-    </>
+    </Wrapper>
   );
 }
 

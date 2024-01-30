@@ -9,6 +9,7 @@ import artWorkDummy from '../../constants/artWorkDummy';
 const Wrapper = styled.div`
   margin: 0 auto;
   padding: 1.8rem 2rem;
+  margin-bottom: 6rem;
 `;
 
 export default function Favorites() {

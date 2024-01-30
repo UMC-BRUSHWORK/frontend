@@ -4,6 +4,7 @@ import Category from '../../../components/common/category/Category';
 import Description from '../../../components/common/description/Description';
 import WriteCompleteButton from '../../../components/common/button/WriteCompleteButton';
 import IMAGES from '../../../assets';
+import Topbar from '../../../components/common/topbar/Topbar';
 
 function ArtworkUpload() {
   const CATEGORY = [
@@ -27,6 +28,7 @@ function ArtworkUpload() {
 
   return (
     <U.Wrapper>
+      <Topbar/>
       <U.Image>
         <U.Photo src={IMAGES.photo} />
       </U.Image>
