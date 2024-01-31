@@ -7,13 +7,14 @@ export const MenuContainer = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 32.8rem;
+  width: 100%;
   height: 0.1rem;
   background-color: ${color.grayscale_11};
+  margin-right: 1.6rem;
 `;
 
 export const GrayLine = styled.div`
-  width: 32.8rem;
+  width: 100%;
   height: 0.1rem;
   background-color: ${color.grayscale_be};
 `;

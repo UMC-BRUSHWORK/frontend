@@ -7,7 +7,7 @@ export const StyledSettingButton = styled.button`
   align-items: center;
   padding: 0;
   border: none;
-  margin-left: 4.2rem;
+  margin-right: 1.6rem;
 `;
 
 export const SettingButtonImg = styled.img`
