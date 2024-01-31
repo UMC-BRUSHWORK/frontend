@@ -6,3 +6,7 @@ export const ScrollableReviewList = styled.div`
     display: none;
   }
 `;
+
+export const Wrapper = styled.div`
+  overflow-x: auto;
+`;
