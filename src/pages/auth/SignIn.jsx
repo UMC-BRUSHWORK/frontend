@@ -1,10 +1,11 @@
 import React from 'react';
 import { IoMailOpenOutline, IoLockClosedOutline } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as A from './Auth.style';
+import { postOauthLogin } from '../../apis/user';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -25,8 +26,17 @@ export default function SignIn() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const navigate = useNavigate();
+    try {
+      const { userEmail, userPassword } = data;
+      const loginResponse = await postOauthLogin({ userEmail, userPassword });
+      const { token } = loginResponse;
+      console.log(token);
+      navigate('/');
+    } catch (error) {
+      console.error('로그인 오류 발생', error);
+    }
   };
 
   return (
