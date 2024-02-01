@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Chip } from '@mui/material';
 
 export const Title = styled.div`
   color: #000;
@@ -8,29 +7,30 @@ export const Title = styled.div`
   font-weight: 500;
   line-height: normal;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 `;
+
 export const ChipTop = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
 `;
+
 export const ChipBottom = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
-export const CustomChip = styled(Chip)`
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: normal;
-  text-align: center;
-  height: 3rem;
-  padding: 1rem;
-  margin: 10rem;
-
-  &.MuiChip-colorPrimary {
-    background-color: #4812a3;
-    color: white;
-  }
+export const Chip = styled.div`
+  display: flex;
+  height: 2.9rem;
+  padding: 0.5rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.6rem;
+  border-radius: 1.45rem;
+  background-color: ${(props) => (props.clicked ? '#4812A3' : '#F5F5F5')};
+  color: black;
+  color: ${(props) => (props.clicked ? '#FFFFFF' : 'black')};
+  cursor: pointer;
 `;
