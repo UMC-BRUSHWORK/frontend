@@ -26,12 +26,13 @@ export default function SignIn() {
     resolver: yupResolver(validationSchema),
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
-    const navigate = useNavigate();
     try {
-      const { userEmail, userPassword } = data;
+      const { email: userEmail, password: userPassword } = data;
       const loginResponse = await postOauthLogin({ userEmail, userPassword });
-      const { token } = loginResponse;
+      const { token } = loginResponse.result;
       console.log(token);
       navigate('/');
     } catch (error) {

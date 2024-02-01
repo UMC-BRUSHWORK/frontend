@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import axios from 'axios';
 
 const baseURL = 'https://dev.brushwork.shop';
@@ -11,7 +12,7 @@ const request = async ({ url, method, body, params, token }) => {
       },
     };
     if (token && config.headers) {
-      config.headers['Authorization'] = token;
+      config.headers.Authorization = token;
     }
     const data =
       (method === 'get' && (await axios.get(url, config))) ||
