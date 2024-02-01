@@ -49,7 +49,7 @@ export default function SignIn() {
 
   return (
     <A.Wrapper>
-      {toastVisible && <Toast message={toastMsg} />}
+      {toastVisible && <Toast message={toastMsg} toastVisible={toastVisible} />}
       <A.Logo />
       <form onSubmit={handleSubmit(onSubmit)}>
         <A.FormWrapper>

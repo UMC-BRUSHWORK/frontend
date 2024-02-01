@@ -1,6 +1,17 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import color from '../../../styles/color';
 import font from '../../../styles/font';
+
+const slideUp = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -10,13 +21,21 @@ export const Wrapper = styled.div`
   align-items: center;
 
   position: absolute;
-  bottom: 36px;
+  bottom: 80px;
   margin: 0 2rem;
 
   opacity: 0.9;
   border-radius: 4px;
 
   background-color: ${() => color.grayscale_11};
+
+  ${({ visible }) =>
+    visible &&
+    css`
+      animation: ${slideUp} 3s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    `}
 `;
 
 export const Warning = styled.img`
