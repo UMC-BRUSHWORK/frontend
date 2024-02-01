@@ -6,7 +6,7 @@ import myReviewDummy from '../../../constants/myReviewDummy';
 
 function PurchaseReviewList() {
   return (
-    <>
+    <P.Wrapper>
       <PurchaseReviewButton />
       <P.ScrollableReviewList>
         {myReviewDummy.map((data) => (
@@ -18,7 +18,7 @@ function PurchaseReviewList() {
           />
         ))}
       </P.ScrollableReviewList>
-    </>
+    </P.Wrapper>
   );
 }
 

@@ -7,7 +7,6 @@ import LogInStatus from '../../components/mypage/LoginStatus';
 const Wrapper = styled.div`
   height: calc(100vh - 11.2rem);
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-bottom: 6rem;
 `;
