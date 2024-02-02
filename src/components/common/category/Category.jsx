@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as C from './Category.style';
 
-function CategoryTest({
+function Category({
     chipName = '카테고리'
 }) {
     const [isClicked, setClicked] = useState(false);
@@ -17,4 +17,4 @@ function CategoryTest({
     );
   };
   
-  export default CategoryTest;
+  export default Category;
