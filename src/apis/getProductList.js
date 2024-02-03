@@ -12,6 +12,5 @@ export const getProductList = async ({ cursorId = null, paging = null }) => {
   }
 
   const { data } = await GET(url);
-  console.log(data);
   return data;
 };

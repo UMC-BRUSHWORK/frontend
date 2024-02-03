@@ -21,7 +21,6 @@ export default function Main() {
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
-      console.log(res.result.categoryData);
       setProductList(res.result.categoryData);
       console.log(productList);
     } catch (error) {

@@ -1,41 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './ArtWork.style';
 import IMAGES from '../../../assets';
-import { getProduct } from '../../../apis/getProduct';
 
 export default function ArtWork({
   image,
   title,
   authorNickname,
+  productId,
   direction = 'row',
   size = '12rem',
-  productId = 0,
-
-  link = '/artwork-detail',
 }) {
   const [favorite, setFavorite] = useState(false);
+  const url = `/product/${productId}`;
 
   const handleClick = () => {
     setFavorite(!favorite);
   };
 
-  const getProductId = async (Id) => {
-    try {
-      const res = await getProduct(Id);
-      return res;
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
-  };
-
-  useEffect(() => {
-    getProductId(productId);
-  }, []);
-
   return (
-    <Link to={link}>
+    <Link to={url}>
       <S.Wrapper>
         <S.Image
           src={image}
