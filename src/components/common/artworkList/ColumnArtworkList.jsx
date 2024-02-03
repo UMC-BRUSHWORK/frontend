@@ -13,7 +13,7 @@ export default function ColumnArtworkList({ data }) {
     >
       <div>
         {data
-          .filter((item) => item.id % 2 === 1)
+          .filter((item) => item.productId % 2 === 1)
           .map((item) => (
             <div
               style={{
@@ -32,7 +32,7 @@ export default function ColumnArtworkList({ data }) {
       </div>
       <div>
         {data
-          .filter((item) => item.id % 2 === 0)
+          .filter((item) => item.productId % 2 === 0)
           .map((item) => (
             <div
               style={{

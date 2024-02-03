@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
@@ -6,6 +6,7 @@ import * as S from './Main.style';
 import RowArtWorkList from '../../components/common/artworkList/RowArtWorkList';
 import dummy from '../../constants/artWorkDummy';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
+import { getProductList } from '../../apis/getProductList';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -17,20 +18,41 @@ const Wrapper = styled.div`
 `;
 
 export default function Main() {
+  const [productList, setProductList] = useState();
+  const getProducts = async ({ cursorId, paging }) => {
+    try {
+      const res = await getProductList({ cursorId, paging });
+      console.log(res.result.categoryData);
+      setProductList(res.result.categoryData);
+      console.log(productList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const cursorId = null;
+    const paging = null;
+
+    getProducts({ cursorId, paging });
+  }, []);
+
   return (
     <>
       <Header />
       <Wrapper>
         <S.ListWrapper>
           <S.Text>매력적인 조각 작품</S.Text>
-          <RowArtWorkList data={dummy} />
+          <RowArtWorkList data={productList} />
         </S.ListWrapper>
         <S.ListWrapper>
           <S.Text>매력적인 조각 작품</S.Text>
-          <RowArtWorkList data={dummy} />
+          <RowArtWorkList data={productList} />
         </S.ListWrapper>
         <S.Line />
         <S.Text>새로운 작품</S.Text>
+        <ColumnArtworkList data={productList} />
+        <p>dummy</p>
         <ColumnArtworkList data={dummy} />
       </Wrapper>
       <BottomNav />
