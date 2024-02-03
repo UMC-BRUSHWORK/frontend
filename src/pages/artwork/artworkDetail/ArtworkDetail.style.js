@@ -34,7 +34,6 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 2rem;
     border-radius: 2rem;
-    border-style: dotted;
   }
     width: 100%;
     padding: 2rem;
