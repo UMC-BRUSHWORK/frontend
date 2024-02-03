@@ -22,10 +22,11 @@ export default function ColumnArtworkList({ data }) {
               key={`${item.id}`}
             >
               <ArtWork
-                artSrc={item.artSrc}
-                artName={item.artname}
-                artist={item.artist}
+                image={item.image}
+                title={item.title}
+                authorNickname={item.authorNickname}
                 direction="column"
+                productId={item.productId}
               />
             </div>
           ))}
@@ -41,10 +42,11 @@ export default function ColumnArtworkList({ data }) {
               key={`${item.id}`}
             >
               <ArtWork
-                artSrc={item.artSrc}
-                artName={item.artname}
-                artist={item.artist}
+                image={item.image}
+                title={item.title}
+                authorNickname={item.authorNickname}
                 direction="column"
+                productId={item.productId}
               />
             </div>
           ))}

@@ -4,7 +4,7 @@ import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Main.style';
 import RowArtWorkList from '../../components/common/artworkList/RowArtWorkList';
-import dummy from '../../constants/artWorkDummy';
+// import dummy from '../../constants/artWorkDummy';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
 import { getProductList } from '../../apis/getProductList';
 
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Main() {
-  const [productList, setProductList] = useState();
+  const [productList, setProductList] = useState([{}]);
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
@@ -32,7 +32,7 @@ export default function Main() {
 
   useEffect(() => {
     const cursorId = null;
-    const paging = null;
+    const paging = 6;
 
     getProducts({ cursorId, paging });
   }, []);
@@ -52,8 +52,8 @@ export default function Main() {
         <S.Line />
         <S.Text>새로운 작품</S.Text>
         <ColumnArtworkList data={productList} />
-        <p>dummy</p>
-        <ColumnArtworkList data={dummy} />
+        {/* <p>dummy</p>
+        <ColumnArtworkList data={dummy} /> */}
       </Wrapper>
       <BottomNav />
     </>
