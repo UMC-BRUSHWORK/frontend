@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
 import Profile from '../../../components/common/profile/Profile';
 import RowArtworkList from '../../../components/common/artworkList/RowArtWorkList';
 import ReviewList from '../../../components/artist/reviewList/ReviewList';
-import artworkDummy from '../../../constants/artWorkDummy';
 import reviewDummy from '../../../constants/reviewsDummy';
+import { getProductList } from '../../../apis/getProductList';
 
 const Wrapper = styled.div`
   margin-bottom: 6rem;
@@ -18,6 +18,22 @@ function ArtworkDetail() {
   const handleClick = () => {
     setFavorite(!favorite);
   };
+
+  const [productList, setProductList] = useState([{}]);
+  const getProducts = async ({ cursorId, paging }) => {
+    try {
+      const res = await getProductList({ cursorId, paging });
+      setProductList(res.result.categoryData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const cursorId = null;
+    const paging = 6;
+    getProducts({ cursorId, paging });
+  }, []);
 
   return (
     <Wrapper>
@@ -44,7 +60,7 @@ function ArtworkDetail() {
           <Profile />
         </A.Margin>
         <A.Margin>
-          <RowArtworkList data={artworkDummy} />
+          <RowArtworkList data={productList} />
         </A.Margin>
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
