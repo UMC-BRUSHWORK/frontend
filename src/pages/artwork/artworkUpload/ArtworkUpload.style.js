@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import color from '../../../styles/color';
+import font from '../../../styles/font';
 
 export const Wrapper = styled.div`
   margin: 2rem;
@@ -63,3 +65,15 @@ export const BottomLine = styled.div`
   margin: 0.5rem 0 2rem 0;
   background: ${(props) => (props.active ? '#333333' : '#BEBEBE')};
 `;
+
+export const WriteCompleteBtn = styled.div`
+  display: flex;
+  width: 100%;
+  height: 6rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  ${() => font.medium_17}
+  color: ${() => color.white};
+  background-color: ${() => color.primary_dark};
+`
