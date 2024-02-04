@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoMailOpenOutline, IoLockClosedOutline } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as A from './Auth.style';
 import { postOauthLogin } from '../../apis/user';
+import { useToast } from '../../hooks/useToast';
+import Toast from '../../components/common/toast/Toast';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -28,6 +30,9 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
+  // useToast hook
+  const { toastVisible, showToast } = useToast();
+  const [toastMsg, setToastMsg] = useState(null);
   const onSubmit = async (data) => {
     try {
       const { email: userEmail, password: userPassword } = data;
@@ -36,12 +41,15 @@ export default function SignIn() {
       console.log(token);
       navigate('/');
     } catch (error) {
-      console.error('로그인 오류 발생', error);
+      const errorMsg = error.response.data.message;
+      setToastMsg(errorMsg);
+      showToast();
     }
   };
 
   return (
     <A.Wrapper>
+      {toastVisible && <Toast message={toastMsg} toastVisible={toastVisible} />}
       <A.Logo />
       <form onSubmit={handleSubmit(onSubmit)}>
         <A.FormWrapper>

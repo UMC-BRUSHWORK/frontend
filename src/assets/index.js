@@ -22,6 +22,7 @@ import favoriteOn from './favorite_on.svg';
 import favoriteOff from './favorite_off.svg';
 import notif from './notif.svg';
 import search from './search.svg';
+import warning from './warning.svg';
 
 // myPage
 import accountBox from './myPage/account_box.svg';
@@ -49,6 +50,7 @@ import send from './chatting/send.svg';
 import add from './chatting/add.svg';
 
 const IMAGES = {
+  // dummy
   artWork1,
   artWork2,
   artWork3,
@@ -59,30 +61,41 @@ const IMAGES = {
   artWork8,
   artWork9,
 
-  accountBox,
+  // default
+  profile,
+
+  // common
   arrowBack,
-  arrowDropDown,
   brushworkLogo,
-  contract,
-  dissatisfied,
-  edit,
-  emergency,
   favoriteOn,
   favoriteOff,
-  logout,
   notif,
-  photo,
-  profile,
-  profileImage,
-  rightButtonBlack,
-  rightButtonGrey,
-  satisfied,
   search,
-  settings,
+  warning,
+
+  // myPage
+  accountBox,
+  contract,
   shoppingBag,
+  logout,
+  settings,
   moreVert,
   trash,
 
+  // artist
+  arrowDropDown,
+  dissatisfied,
+  satisfied,
+
+  // artwork
+  edit,
+  emergency,
+  photo,
+  profileImage,
+  rightButtonBlack,
+  rightButtonGrey,
+
+  // chatting
   send,
   add,
 };
