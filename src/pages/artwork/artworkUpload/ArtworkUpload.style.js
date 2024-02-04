@@ -7,16 +7,32 @@ export const Wrapper = styled.div`
   margin-bottom: 6rem;
 `;
 
-export const Image = styled.div`
+export const UploadWrapper = styled.div`
+  position: relative;
+
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const Image = styled.input`
   width: 12rem;
   height: 12rem;
   flex-shrink: 0;
   border-radius: 0.4rem;
   border: 0.1rem solid var(--Grayscale-BE, #bebebe);
   background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+`;
+
+export const UploadImage = styled.img`
+  width: 12rem;
+  height: 12rem;
+  flex-shrink: 0;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--Grayscale-BE, #bebebe);
+  background: #fff;
 `;
 
 export const Photo = styled.img`
@@ -25,6 +41,9 @@ export const Photo = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 6rem;
 `;
 
 export const SectionTitle = styled.div`
@@ -54,9 +73,26 @@ export const InputText = styled.input`
     letter-spacing: 0em;
   }
 
-  &:focus {
-    outline: none;
+  outline: none;
+`;
+
+export const Description = styled.textarea`
+  border: 1px solid var(--Grayscale-BE, #bebebe);
+  border-radius: 0.6rem;
+  width: 100%;
+  height: 13rem;
+  color: var(--Grayscale-33, #333);
+  text-align: justify;
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 1rem;
+  &::placeholder {
+    color: #bebebe;
   }
+  outline-color: var(--Primary_normal, #8c4ff2);
+  outline-width: 0.1rem;
 `;
 
 export const BottomLine = styled.div`
@@ -74,6 +110,7 @@ export const WriteCompleteBtn = styled.div`
   align-items: center;
   flex-shrink: 0;
   ${() => font.medium_17}
-  color: ${() => color.white};
-  background-color: ${() => color.primary_dark};
-`
+  color: ${color.white};
+  background-color: ${(props) =>
+    props.status ? color.primary_dark : color.primary_light};
+`;
