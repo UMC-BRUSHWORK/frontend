@@ -8,6 +8,7 @@ export default function ArtWork({
   artist = '작가명',
   direction = 'row',
   size = '12rem',
+  hideFavorite = false,
 }) {
   const imgSrc = IMAGES[artSrc];
   const [favorite, setFavorite] = useState(false);
@@ -26,11 +27,13 @@ export default function ArtWork({
       />
       <S.InfoWrapper>
         <S.ArtName>{artName}</S.ArtName>
-        <S.Favorite
-          onClick={handleClick}
-          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
-          alt="favorite"
-        />
+        {!hideFavorite && (
+          <S.Favorite
+            onClick={handleClick}
+            src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
+            alt="favorite"
+          />
+        )}
       </S.InfoWrapper>
       <S.Artist>{artist}</S.Artist>
     </S.Wrapper>

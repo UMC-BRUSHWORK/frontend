@@ -9,7 +9,9 @@ import {
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 import * as A from './Auth.style';
+import { postRegister } from '../../apis/postRegister';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -44,8 +46,29 @@ export default function SignUp() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    try {
+      const {
+        email: userEmail,
+        password: userPassword,
+        nickname: userNickname,
+        name: userName,
+        phone: userPhone,
+      } = data;
+      const registerResponse = await postRegister({
+        userEmail,
+        userPassword,
+        userNickname,
+        userName,
+        userPhone,
+      });
+      console.log(registerResponse);
+      navigate('/sign-in');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
