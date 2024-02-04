@@ -10,6 +10,7 @@ export default function ArtWork({
   productId,
   direction = 'row',
   size = '12rem',
+  hideFavorite = false,
 }) {
   const [favorite, setFavorite] = useState(false);
   const url = `/product/${productId}`;
