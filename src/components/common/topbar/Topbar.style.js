@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import font from '../../../styles/font';
 import color from '../../../styles/color';
-// import color from '../../../styles/color';
 
 export const Wrapper = styled.div`
   width: 100%;
   height: 5.2rem;
+  padding: 0 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

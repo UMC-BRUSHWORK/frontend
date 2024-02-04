@@ -37,10 +37,7 @@ function ArtworkDetail() {
   const getProductId = async (Id) => {
     try {
       const res = await getProduct(Id);
-      console.log(res.result);
-
       setProductInfo(res.result);
-      console.log(productInfo);
       return res;
     } catch (error) {
       console.log(error);
@@ -62,42 +59,40 @@ function ArtworkDetail() {
   `;
 
   return (
-    <>
+    <Wrapper>
       <Topbar />
-      <Wrapper>
-        <A.Image src={productInfo.image} />
-        <A.Wrapper>
-          <A.TitleWrapper>
-            <A.Title>{productInfo.title}</A.Title>
-            <A.Report src={IMAGES.emergency} />
-          </A.TitleWrapper>
-          <A.Artist>{productInfo.authorNickname}</A.Artist>
-          <A.Description>{productInfo.description}</A.Description>
-          <A.Category>한국화</A.Category>
-          <A.SubWrapper>
-            <A.Price>{productInfo.price}원</A.Price>
-            <A.Delivery>
-              {productInfo.delivery === 0 ? '택배' : '직거래'}
-            </A.Delivery>
-          </A.SubWrapper>
-          <A.Divider />
-          <A.Margin>
-            <Profile />
-          </A.Margin>
-          <A.Margin>
-            <RowArtworkList data={productList} />
-          </A.Margin>
-          <ReviewList data={reviewDummy} />
-        </A.Wrapper>
-        <A.BottomWrapper>
-          <A.FavoriteBtn
-            onClick={handleClick}
-            src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
-          />
-          <A.AskBtn>문의하기</A.AskBtn>
-        </A.BottomWrapper>
-      </Wrapper>
-    </>
+      <A.Image src={productInfo.image} />
+      <A.Wrapper>
+        <A.TitleWrapper>
+          <A.Title>{productInfo.title}</A.Title>
+          <A.Report src={IMAGES.emergency} />
+        </A.TitleWrapper>
+        <A.Artist>{productInfo.authorNickname}</A.Artist>
+        <A.Description>{productInfo.description}</A.Description>
+        <A.Category>한국화</A.Category>
+        <A.SubWrapper>
+          <A.Price>{productInfo.price}원</A.Price>
+          <A.Delivery>
+            {productInfo.delivery === 0 ? '택배' : '직거래'}
+          </A.Delivery>
+        </A.SubWrapper>
+        <A.Divider />
+        <A.Margin>
+          <Profile />
+        </A.Margin>
+        <A.Margin>
+          <RowArtworkList data={productList} />
+        </A.Margin>
+        <ReviewList data={reviewDummy} />
+      </A.Wrapper>
+      <A.BottomWrapper>
+        <A.FavoriteBtn
+          onClick={handleClick}
+          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
+        />
+        <A.AskBtn>문의하기</A.AskBtn>
+      </A.BottomWrapper>
+    </Wrapper>
   );
 }
 

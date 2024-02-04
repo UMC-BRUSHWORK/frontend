@@ -34,24 +34,26 @@ export default function Seach() {
   }, []);
 
   return (
-    <Wrapper>
+    <>
       <SearchTopbar />
-      <S.Line />
-      <S.Text>마음에 드는 작품을 찾아보세요!</S.Text>
-      <Category />
-      <S.Line />
-      <S.ListWrapper>
-        <S.Text>추천 작품</S.Text>
-        <RowArtWorkList data={productList} size="9rem" />
-      </S.ListWrapper>
-      <S.ListWrapper>
-        <S.Text>요즘 인기 작품</S.Text>
-        <RowArtWorkList data={productList} size="9rem" />
-      </S.ListWrapper>
-      <S.ListWrapper>
-        <S.Text>따끈따끈 신인 작품</S.Text>
-        <RowArtWorkList data={productList} size="9rem" />
-      </S.ListWrapper>
-    </Wrapper>
+      <Wrapper>
+        <S.Line />
+        <S.Text>마음에 드는 작품을 찾아보세요!</S.Text>
+        <Category />
+        <S.Line />
+        <S.ListWrapper>
+          <S.Text>추천 작품</S.Text>
+          <RowArtWorkList data={productList} size="9rem" />
+        </S.ListWrapper>
+        <S.ListWrapper>
+          <S.Text>요즘 인기 작품</S.Text>
+          <RowArtWorkList data={productList} size="9rem" />
+        </S.ListWrapper>
+        <S.ListWrapper>
+          <S.Text>따끈따끈 신인 작품</S.Text>
+          <RowArtWorkList data={productList} size="9rem" />
+        </S.ListWrapper>
+      </Wrapper>
+    </>
   );
 }
