@@ -81,6 +81,7 @@ function ArtworkDetail() {
           <Profile />
         </A.Margin>
         <A.Margin>
+          <A.Text>작가의 다른 작품</A.Text>
           <RowArtworkList data={productList} />
         </A.Margin>
         <ReviewList data={reviewDummy} />

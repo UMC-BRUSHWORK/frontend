@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as T from './Topbar.style';
 import IMAGES from '../../../assets';
-import BackButton from '../backButton/BackButton';
 
 function Topbar() {
   const navigate = useNavigate();
@@ -10,7 +9,7 @@ function Topbar() {
   return (
     <T.Wrapper>
       <T.Left>
-        <BackButton />
+        <T.Icon src={IMAGES.arrowBack} onClick={() => navigate('/')} />
       </T.Left>
       <T.Right>
         <T.IconWrapper>

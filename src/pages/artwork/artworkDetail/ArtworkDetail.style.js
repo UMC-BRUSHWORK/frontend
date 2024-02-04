@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import color from '../../../styles/color';
+import font from '../../../styles/font';
 
 export const Image = styled.img`
   width: 100%;
@@ -103,6 +104,11 @@ export const Divider = styled.div`
 
 export const Margin = styled.div`
   margin-bottom: 2.4rem;
+`;
+
+export const Text = styled.div`
+  ${font.medium_14};
+  margin-bottom: 1rem;
 `;
 
 export const BottomWrapper = styled.div`
