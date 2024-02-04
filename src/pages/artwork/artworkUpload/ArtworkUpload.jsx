@@ -1,32 +1,19 @@
 import React, { useState } from 'react';
 import * as U from './ArtworkUpload.style';
-import Category from '../../../components/common/category/Category';
+import CategoryList from '../../../components/common/category/CategoryList';
 import Description from '../../../components/common/description/Description';
-import WriteCompleteButton from '../../../components/common/button/WriteCompleteButton';
 import IMAGES from '../../../assets';
 import Topbar from '../../../components/common/topbar/Topbar';
+import categoryDummy from '../../../constants/categoryDummy';
+import deliveryDummy from '../../../constants/deliveryDummy';
 
 function ArtworkUpload() {
-  const CATEGORY = [
-    { id: 1, label: '조소' },
-    { id: 2, label: '한국화' },
-    { id: 3, label: '동양화' },
-    { id: 4, label: '서양화' },
-    { id: 5, label: '일러스트' },
-    { id: 6, label: '디자인' },
-    { id: 7, label: '공예' },
-    { id: 8, label: '수채화' },
-  ];
-
-  const DELIVERY = [
-    { id: 1, label: '택배' },
-    { id: 2, label: '직거래' },
-  ];
 
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
 
   return (
+    <>
     <U.Wrapper>
       <Topbar/>
       <U.Image>
@@ -39,7 +26,9 @@ function ArtworkUpload() {
         onChange={(e) => setTitle(e.target.value)}
       />
       <U.BottomLine active={title !== ''} />
-      <Category chips={CATEGORY} title="카테고리" />
+      <CategoryList 
+        data={categoryDummy} 
+        title="카테고리" />
       <U.SectionTitle>작품 가격</U.SectionTitle>
       <U.InputText
         placeholder="￦"
@@ -47,14 +36,15 @@ function ArtworkUpload() {
         onChange={(e) => setPrice(e.target.value)}
       />
       <U.BottomLine active={price !== ''} />
-      <Category
-        chips={DELIVERY}
+      <CategoryList
+        data={deliveryDummy}
         title="배송 방식"
         style={{ marginBottom: '2rem' }}
       />
       <Description />
-      <WriteCompleteButton />
     </U.Wrapper>
+    <U.WriteCompleteBtn>작성 완료</U.WriteCompleteBtn>
+    </>
   );
 }
 

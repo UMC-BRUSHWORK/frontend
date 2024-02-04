@@ -27,7 +27,7 @@ export default function Router() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/artwork-upload" element={<ArtworkUploadPage />} />
-        <Route path="/artwork-detail" element={<ArtworkDetailPage />} />
+        <Route path="/product/:productId" element={<ArtworkDetailPage />} />
         <Route path="/my-artwork-detail" element={<MyArtworkDetailPage />} />
         <Route path="/artist" element={<ArtistPage />} />
         <Route path="/my-review" element={<MyReview />} />

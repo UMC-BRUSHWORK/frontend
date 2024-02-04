@@ -25,6 +25,15 @@
     "web-vitals": "^2.1.0",
     "yup": "^1.3.3"
   },
+  "settings": {
+    "ipmort/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ]
+      }
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
