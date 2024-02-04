@@ -7,11 +7,12 @@ export default function RowArtWorkList({ data, size }) {
     <Wrapper>
       {data.map((item) => (
         <ArtWork
-          artSrc={item.artSrc}
-          artName={item.artName}
-          artist={item.artist}
+          image={item.image}
+          title={item.title}
+          authorNickname={item.authorNickname}
           direction="row"
           size={size}
+          productId={item.productId}
         />
       ))}
     </Wrapper>

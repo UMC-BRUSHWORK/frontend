@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from '../../components/common/header/Header';
+// import Header from '../../components/common/header/Header';
 import Profile from '../../components/common/profile/Profile';
 import * as S from './Artist.style';
 import ArtWorksList from './ArtWorksList';
 import ArtistReviewList from './ArtistReviewList';
+import Topbar from '../../components/common/topbar/Topbar';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -25,7 +26,7 @@ export default function ArtistPage() {
 
   return (
     <div>
-      <Header />
+      <Topbar />
       <Wrapper>
         <Profile />
         <S.ButtonWrapper>

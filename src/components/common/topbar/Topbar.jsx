@@ -9,7 +9,7 @@ function Topbar() {
   return (
     <T.Wrapper>
       <T.Left>
-        <T.Icon src={IMAGES.arrowBack} />
+        <T.Icon src={IMAGES.arrowBack} onClick={() => navigate('/')} />
       </T.Left>
       <T.Right>
         <T.IconWrapper>

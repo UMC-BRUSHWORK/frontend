@@ -9,6 +9,7 @@ function FONT({ weight, size }) {
 const font = {
   // 10px = 1rem
   title: FONT({ weight: 300, size: 1.7 }),
+  medium_12: FONT({ weight: 400, size: 1.2 }),
   medium_13: FONT({ weight: 500, size: 1.3 }),
   medium_14: FONT({ weight: 500, size: 1.4 }),
   medium_15: FONT({ weight: 500, size: 1.5 }),

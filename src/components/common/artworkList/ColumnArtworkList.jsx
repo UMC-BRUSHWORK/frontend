@@ -13,7 +13,7 @@ export default function ColumnArtworkList({ data }) {
     >
       <div>
         {data
-          .filter((item) => item.id % 2 === 1)
+          .filter((item) => item.productId % 2 === 1)
           .map((item) => (
             <div
               style={{
@@ -22,17 +22,18 @@ export default function ColumnArtworkList({ data }) {
               key={`${item.id}`}
             >
               <ArtWork
-                artSrc={item.artSrc}
-                artName={item.artname}
-                artist={item.artist}
+                image={item.image}
+                title={item.title}
+                authorNickname={item.authorNickname}
                 direction="column"
+                productId={item.productId}
               />
             </div>
           ))}
       </div>
       <div>
         {data
-          .filter((item) => item.id % 2 === 0)
+          .filter((item) => item.productId % 2 === 0)
           .map((item) => (
             <div
               style={{
@@ -41,10 +42,11 @@ export default function ColumnArtworkList({ data }) {
               key={`${item.id}`}
             >
               <ArtWork
-                artSrc={item.artSrc}
-                artName={item.artname}
-                artist={item.artist}
+                image={item.image}
+                title={item.title}
+                authorNickname={item.authorNickname}
                 direction="column"
+                productId={item.productId}
               />
             </div>
           ))}
