@@ -9,10 +9,7 @@ import ReviewList from '../../../components/artist/reviewList/ReviewList';
 import reviewDummy from '../../../constants/reviewsDummy';
 import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
-
-const Wrapper = styled.div`
-  margin-bottom: 6rem;
-`;
+import Topbar from '../../../components/common/topbar/Topbar';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -58,40 +55,49 @@ function ArtworkDetail() {
     getProductId(productId);
   }, []);
 
+  const Wrapper = styled.div`
+    margin-bottom: 6rem;
+    position: relative;
+    height: 100%;
+  `;
+
   return (
-    <Wrapper>
-      <A.Image src={IMAGES.artWork2} />
-      <A.Wrapper>
-        <A.TitleWrapper>
-          <A.Title>{productInfo.title}</A.Title>
-          <A.Report src={IMAGES.emergency} />
-        </A.TitleWrapper>
-        <A.Artist>{productInfo.authorNickname}</A.Artist>
-        <A.Description>{productInfo.description}</A.Description>
-        <A.Category>한국화</A.Category>
-        <A.SubWrapper>
-          <A.Price>{productInfo.price}원</A.Price>
-          <A.Delivery>
-            {productInfo.delivery === 0 ? '택배' : '직거래'}
-          </A.Delivery>
-        </A.SubWrapper>
-        <A.Divider />
-        <A.Margin>
-          <Profile />
-        </A.Margin>
-        <A.Margin>
-          <RowArtworkList data={productList} />
-        </A.Margin>
-        <ReviewList data={reviewDummy} />
-      </A.Wrapper>
-      <A.BottomWrapper>
-        <A.FavoriteBtn
-          onClick={handleClick}
-          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
-        />
-        <A.AskBtn>문의하기</A.AskBtn>
-      </A.BottomWrapper>
-    </Wrapper>
+    <>
+      <Topbar />
+      <Wrapper>
+        <A.Image src={productInfo.image} />
+        <A.Wrapper>
+          <A.TitleWrapper>
+            <A.Title>{productInfo.title}</A.Title>
+            <A.Report src={IMAGES.emergency} />
+          </A.TitleWrapper>
+          <A.Artist>{productInfo.authorNickname}</A.Artist>
+          <A.Description>{productInfo.description}</A.Description>
+          <A.Category>한국화</A.Category>
+          <A.SubWrapper>
+            <A.Price>{productInfo.price}원</A.Price>
+            <A.Delivery>
+              {productInfo.delivery === 0 ? '택배' : '직거래'}
+            </A.Delivery>
+          </A.SubWrapper>
+          <A.Divider />
+          <A.Margin>
+            <Profile />
+          </A.Margin>
+          <A.Margin>
+            <RowArtworkList data={productList} />
+          </A.Margin>
+          <ReviewList data={reviewDummy} />
+        </A.Wrapper>
+        <A.BottomWrapper>
+          <A.FavoriteBtn
+            onClick={handleClick}
+            src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
+          />
+          <A.AskBtn>문의하기</A.AskBtn>
+        </A.BottomWrapper>
+      </Wrapper>
+    </>
   );
 }
 
