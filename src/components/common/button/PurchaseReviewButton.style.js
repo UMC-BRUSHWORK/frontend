@@ -4,6 +4,7 @@ import color from '../../../styles/color';
 
 export const PurchaseContainer = styled.div`
   display: flex;
+  margin-top: 2.4rem;
 `;
 export const GoArtistButton = styled.button`
   color: ${color.black};

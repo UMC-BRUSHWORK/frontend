@@ -12,6 +12,7 @@ export default function MyArtWorkList({ data }) {
           artist=""
           direction="row"
           size="9rem"
+          hideFavorite="true"
         />
       ))}
     </Wrapper>
