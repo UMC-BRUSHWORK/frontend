@@ -31,8 +31,8 @@ export const UploadImage = styled.img`
   height: 12rem;
   flex-shrink: 0;
   border-radius: 0.4rem;
-  border: 0.1rem solid var(--Grayscale-BE, #bebebe);
   background: #fff;
+  object-fit: contain;
 `;
 
 export const Photo = styled.img`

@@ -5,32 +5,55 @@ import IMAGES from '../../../assets';
 import Topbar from '../../../components/common/topbar/Topbar';
 import categoryDummy from '../../../constants/categoryDummy';
 import deliveryDummy from '../../../constants/deliveryDummy';
+import { postProduct } from '../../../apis/postProduct';
 
 function ArtworkUpload() {
+  const [images, setImages] = useState(null);
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+  const [details, setDetails] = useState('');
   const [uploadImage, setUploadImage] = useState(null);
   const [status, setStatus] = useState(false);
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
+    console.log(file);
+    setImages(file);
     const imageUrl = URL.createObjectURL(file);
     setUploadImage(imageUrl);
   };
 
-  const handleSubmit = () => {
-    // setStatus(!status);
-    console.log(status);
+  const handleSubmit = async () => {
+    if (status) {
+      // dummy
+      const authorId = 1;
+      const authorNickname = 'brushwork';
+      const delivery = 0;
+      const category = '1,2,3';
+
+      const data = {
+        images,
+        title,
+        price,
+        details,
+        authorId,
+        authorNickname,
+        delivery,
+        category,
+      };
+      console.log(data);
+      const res = await postProduct(data);
+      console.log(res);
+    }
   };
 
   useEffect(() => {
-    if (uploadImage && title && price && description) {
+    if (uploadImage && title && price && details) {
       setStatus(true);
     } else {
       setStatus(false);
     }
-  }, [title, price, description, uploadImage]);
+  }, [title, price, details, uploadImage]);
 
   return (
     <>
@@ -64,8 +87,8 @@ function ArtworkUpload() {
         <U.SectionTitle>상세 설명</U.SectionTitle>
         <U.Description
           placeholder="최소 10자 ~ 최대 500자"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
         />
       </U.Wrapper>
       <U.WriteCompleteBtn status={status} onClick={handleSubmit}>
