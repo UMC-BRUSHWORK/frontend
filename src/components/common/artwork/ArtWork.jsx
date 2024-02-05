@@ -19,24 +19,24 @@ export default function ArtWork({
   };
 
   return (
-    <Link to={url}>
-      <S.Wrapper>
+    <S.Wrapper>
+      <Link to={url}>
         <S.Image
           src={image}
           alt="artWork"
           width={direction === 'row' ? 'auto' : '100%'}
           height={direction === 'row' ? size : 'auto'}
         />
-        <S.InfoWrapper>
-          <S.ArtName>{title}</S.ArtName>
-          <S.Favorite
-            onClick={handleClick}
-            src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
-            alt="favorite"
-          />
-        </S.InfoWrapper>
-        <S.Artist>{authorNickname}</S.Artist>
-      </S.Wrapper>
-    </Link>
+      </Link>
+      <S.InfoWrapper>
+        <S.ArtName>{title}</S.ArtName>
+        <S.Favorite
+          onClick={handleClick}
+          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
+          alt="favorite"
+        />
+      </S.InfoWrapper>
+      <S.Artist>{authorNickname}</S.Artist>
+    </S.Wrapper>
   );
 }
