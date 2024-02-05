@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './WriteCompleteButton.style';
 
 function WriteCompleteButton({ type }) {
+  console.log(type);
   return (
     <>
       {type === 'WriteOnButton' && <S.WriteOnButton>작성 완료</S.WriteOnButton>}

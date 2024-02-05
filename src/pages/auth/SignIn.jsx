@@ -78,7 +78,7 @@ export default function SignIn() {
         </A.FormWrapper>
         <A.Button type="submit">로그인</A.Button>
       </form>
-      <Link to="/signUp">
+      <Link to="/sign-up">
         <A.Txt>Brushwork가 처음이신가요?</A.Txt>
       </Link>
     </A.Wrapper>
