@@ -64,6 +64,12 @@ export const Description = styled.div`
   margin-bottom: 1rem;
 `;
 
+export const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.6rem;
+`;
+
 export const Category = styled.div`
   color: var(--Grayscale-88, #888);
   font-size: 1rem;
@@ -71,6 +77,7 @@ export const Category = styled.div`
   font-weight: 400;
   line-height: normal;
 `;
+
 export const SubWrapper = styled.div`
   display: flex;
   flex-direction: row;

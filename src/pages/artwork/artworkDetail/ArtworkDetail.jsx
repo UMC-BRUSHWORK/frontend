@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
@@ -13,6 +14,7 @@ import Topbar from '../../../components/common/topbar/Topbar';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
+  const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
 
   const handleClick = () => {
@@ -38,6 +40,11 @@ function ArtworkDetail() {
     try {
       const res = await getProduct(Id);
       setProductInfo(res.result);
+
+      const data = productInfo.category;
+      const values = data.map((obj) => Object.values(obj)[0]);
+      setCategory(values);
+
       return res;
     } catch (error) {
       console.log(error);
@@ -69,7 +76,11 @@ function ArtworkDetail() {
         </A.TitleWrapper>
         <A.Artist>{productInfo.authorNickname}</A.Artist>
         <A.Description>{productInfo.description}</A.Description>
-        <A.Category>한국화</A.Category>
+        <A.CategoryWrapper>
+          {category.map((item, key) => (
+            <A.Category key={key}>{item}</A.Category>
+          ))}
+        </A.CategoryWrapper>
         <A.SubWrapper>
           <A.Price>{productInfo.price}원</A.Price>
           <A.Delivery>
