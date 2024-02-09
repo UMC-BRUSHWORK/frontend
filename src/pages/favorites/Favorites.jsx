@@ -5,6 +5,7 @@ import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Favorites.style';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
 import { getProductList } from '../../apis/getProductList';
+import { getFavorite } from '../../apis/getFavorite';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -14,10 +15,21 @@ const Wrapper = styled.div`
 
 export default function Favorites() {
   const [productList, setProductList] = useState([{}]);
+
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
       setProductList(res.result.categoryData);
+      console.log(res.result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getFavoriteList = async ({ userId }) => {
+    try {
+      const res = await getFavorite({ userId });
+      console.log(res.result);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +38,9 @@ export default function Favorites() {
   useEffect(() => {
     const cursorId = null;
     const paging = 6;
+    const userId = 24;
     getProducts({ cursorId, paging });
+    getFavoriteList({ userId });
   }, []);
 
   return (

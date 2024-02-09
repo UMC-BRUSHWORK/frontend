@@ -41,8 +41,7 @@ function ArtworkDetail() {
       const res = await getProduct(Id);
       setProductInfo(res.result);
 
-      const data = productInfo.category;
-      const values = data.map((obj) => Object.values(obj)[0]);
+      const values = res.result.category.map((obj) => Object.values(obj)[0]);
       setCategory(values);
 
       return res;
