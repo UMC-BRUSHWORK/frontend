@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './ArtWork.style';
 import IMAGES from '../../../assets';
+import { postFavorite } from '../../../apis/postFavorite';
 
 export default function ArtWork({
   image,
@@ -14,8 +15,19 @@ export default function ArtWork({
   const [favorite, setFavorite] = useState(false);
   const url = `/product/${productId}`;
 
+  const postFav = async ({ userId, productId: PID }) => {
+    try {
+      const res = await postFavorite({ userId, PID });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleClick = () => {
     setFavorite(!favorite);
+    const userId = 24;
+    postFav({ userId, productId });
   };
 
   return (
