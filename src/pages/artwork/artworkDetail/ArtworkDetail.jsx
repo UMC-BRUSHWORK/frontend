@@ -50,13 +50,7 @@ function ArtworkDetail() {
     const paging = 6;
     getProducts({ cursorId, paging });
     getProductId(productId);
-  }, []);
-
-  const Wrapper = styled.div`
-    margin-bottom: 6rem;
-    position: relative;
-    height: 100%;
-  `;
+  }, [productId]);
 
   return (
     <Wrapper>
@@ -98,3 +92,9 @@ function ArtworkDetail() {
 }
 
 export default ArtworkDetail;
+
+const Wrapper = styled.div`
+  margin-bottom: 6rem;
+  position: relative;
+  height: 100%;
+`;
