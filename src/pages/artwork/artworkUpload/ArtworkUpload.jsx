@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { loginState } from '../../../recoil/atom';
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
 import IMAGES from '../../../assets';
@@ -6,6 +8,7 @@ import Topbar from '../../../components/common/topbar/Topbar';
 import categoryDummy from '../../../constants/categoryDummy';
 import deliveryDummy from '../../../constants/deliveryDummy';
 import { postProduct } from '../../../apis/postProduct';
+import LoginModal from '../../../components/modal/LoginModal';
 
 function ArtworkUpload() {
   const [images, setImages] = useState(null);
@@ -14,6 +17,7 @@ function ArtworkUpload() {
   const [details, setDetails] = useState('');
   const [uploadImage, setUploadImage] = useState(null);
   const [status, setStatus] = useState(false);
+  const [isLogin] = useRecoilState(loginState);
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
@@ -55,7 +59,7 @@ function ArtworkUpload() {
     }
   }, [title, price, details, uploadImage]);
 
-  return (
+  return isLogin ? (
     <>
       <Topbar />
       <U.Wrapper>
@@ -95,6 +99,8 @@ function ArtworkUpload() {
         작성 완료
       </U.WriteCompleteBtn>
     </>
+  ) : (
+    <LoginModal />
   );
 }
 
