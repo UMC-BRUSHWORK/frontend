@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { loginState } from '../../../recoil/atom';
+import { useNavigate } from 'react-router-dom';
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
 import IMAGES from '../../../assets';
@@ -8,16 +7,16 @@ import Topbar from '../../../components/common/topbar/Topbar';
 import categoryDummy from '../../../constants/categoryDummy';
 import deliveryDummy from '../../../constants/deliveryDummy';
 import { postProduct } from '../../../apis/postProduct';
-import LoginModal from '../../../components/modal/LoginModal';
 
 function ArtworkUpload() {
+  const navigate = useNavigate();
   const [images, setImages] = useState(null);
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [details, setDetails] = useState('');
   const [uploadImage, setUploadImage] = useState(null);
   const [status, setStatus] = useState(false);
-  const [isLogin] = useRecoilState(loginState);
+  const [hashtag, setHashtag] = useState('');
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
@@ -27,27 +26,39 @@ function ArtworkUpload() {
     setUploadImage(imageUrl);
   };
 
+  const handleHashtagClick = (selectedHashtag) => {
+    console.log(selectedHashtag);
+    setHashtag(selectedHashtag);
+  };
+
   const handleSubmit = async () => {
     if (status) {
+      const token = localStorage.getItem('token');
+
       // dummy
       const authorId = 1;
       const authorNickname = 'brushwork';
       const delivery = 0;
       const category = '1,2,3';
 
-      const data = {
-        images,
-        title,
-        price,
-        details,
-        authorId,
-        authorNickname,
-        delivery,
-        category,
-      };
-      console.log(data);
-      const res = await postProduct(data);
-      console.log(res);
+      const formData = new FormData();
+      formData.append('images', images);
+      formData.append('title', title);
+      formData.append('authorId', authorId);
+      formData.append('authorNickname', authorNickname);
+      formData.append('delivery', delivery);
+      formData.append('price', price);
+      formData.append('details', details);
+      formData.append('hashtag', hashtag);
+      formData.append('category', category);
+
+      try {
+        const res = await postProduct({ formData, token });
+        console.log(res);
+        navigate('/');
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -59,7 +70,7 @@ function ArtworkUpload() {
     }
   }, [title, price, details, uploadImage]);
 
-  return isLogin ? (
+  return (
     <>
       <Topbar />
       <U.Wrapper>
@@ -75,7 +86,11 @@ function ArtworkUpload() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <U.BottomLine active={title !== ''} />
-        <CategoryList data={categoryDummy} title="카테고리" />
+        <CategoryList
+          data={categoryDummy}
+          title="카테고리"
+          onHashtagClick={handleHashtagClick}
+        />
         <U.SectionTitle>작품 가격</U.SectionTitle>
         <U.InputText
           placeholder="￦"
@@ -99,8 +114,6 @@ function ArtworkUpload() {
         작성 완료
       </U.WriteCompleteBtn>
     </>
-  ) : (
-    <LoginModal />
   );
 }
 
