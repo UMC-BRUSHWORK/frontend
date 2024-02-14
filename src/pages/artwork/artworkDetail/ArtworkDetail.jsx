@@ -39,6 +39,7 @@ function ArtworkDetail() {
   const getProductId = async (Id) => {
     try {
       const res = await getProduct(Id);
+      console.log(res.result);
       setProductInfo(res.result);
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);

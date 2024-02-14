@@ -4,7 +4,7 @@ export const getFavorite = async ({
   userId,
   token,
   cursorId = null,
-  paging = null,
+  paging = 10,
 }) => {
   let url = `/user/${userId}/like`;
 

@@ -19,9 +19,8 @@ export default function Favorites() {
   const getFavoriteList = async ({ userId, token }) => {
     try {
       const res = await getFavorite({ userId, token });
-      console.log(res.result.userLikeList);
       setFavoriteList(res.result.userLikeList);
-      console.log(favoriteList);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
