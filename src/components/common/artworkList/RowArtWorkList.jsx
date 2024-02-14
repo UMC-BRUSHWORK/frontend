@@ -7,9 +7,11 @@ export default function RowArtWorkList({ data, size }) {
     <Wrapper>
       {data.map((item) => (
         <ArtWork
+          key={`${item.productId}`}
           image={item.image}
           title={item.title}
           authorNickname={item.authorNickname}
+          favorStatus={item.favorStatus}
           direction="row"
           size={size}
           productId={item.productId}

@@ -19,12 +19,13 @@ export default function ColumnArtworkList({ data }) {
               style={{
                 marginBottom: '10px',
               }}
-              key={`${item.id}`}
+              key={`${item.productId}`}
             >
               <ArtWork
                 image={item.image}
                 title={item.title}
                 authorNickname={item.authorNickname}
+                favorStatus={item.favorStatus}
                 direction="column"
                 productId={item.productId}
               />
@@ -39,7 +40,7 @@ export default function ColumnArtworkList({ data }) {
               style={{
                 marginBottom: '10px',
               }}
-              key={`${item.id}`}
+              key={`${item.productId}`}
             >
               <ArtWork
                 image={item.image}

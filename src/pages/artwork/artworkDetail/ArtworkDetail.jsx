@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
@@ -10,14 +11,12 @@ import reviewDummy from '../../../constants/reviewsDummy';
 import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
 import Topbar from '../../../components/common/topbar/Topbar';
+import Favorite from '../../../components/favorite/Favorite';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
+  const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
-
-  const handleClick = () => {
-    setFavorite(!favorite);
-  };
 
   // 작품조회
   const [productList, setProductList] = useState([]);
@@ -37,7 +36,13 @@ function ArtworkDetail() {
   const getProductId = async (Id) => {
     try {
       const res = await getProduct(Id);
+      console.log(res.result);
       setProductInfo(res.result);
+      setFavorite(res.result.favor);
+
+      const values = res.result.category.map((obj) => Object.values(obj)[0]);
+      setCategory(values);
+
       return res;
     } catch (error) {
       console.log(error);
@@ -63,7 +68,11 @@ function ArtworkDetail() {
         </A.TitleWrapper>
         <A.Artist>{productInfo.authorNickname}</A.Artist>
         <A.Description>{productInfo.description}</A.Description>
-        <A.Category>한국화</A.Category>
+        <A.CategoryWrapper>
+          {category.map((item, key) => (
+            <A.Category key={key}>{item}</A.Category>
+          ))}
+        </A.CategoryWrapper>
         <A.SubWrapper>
           <A.Price>{productInfo.price}원</A.Price>
           <A.Delivery>
@@ -81,10 +90,9 @@ function ArtworkDetail() {
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
       <A.BottomWrapper>
-        <A.FavoriteBtn
-          onClick={handleClick}
-          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
-        />
+        <A.FavoriteBtn>
+          <Favorite favorStatus={favorite} productId={productId} />
+        </A.FavoriteBtn>
         <A.AskBtn>문의하기</A.AskBtn>
       </A.BottomWrapper>
     </Wrapper>
