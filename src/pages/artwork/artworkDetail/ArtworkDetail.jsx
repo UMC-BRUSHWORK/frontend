@@ -11,15 +11,12 @@ import reviewDummy from '../../../constants/reviewsDummy';
 import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
 import Topbar from '../../../components/common/topbar/Topbar';
+import Favorite from '../../../components/favorite/Favorite';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
   const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
-
-  const handleClick = () => {
-    setFavorite(!favorite);
-  };
 
   // 작품조회
   const [productList, setProductList] = useState([]);
@@ -41,6 +38,7 @@ function ArtworkDetail() {
       const res = await getProduct(Id);
       console.log(res.result);
       setProductInfo(res.result);
+      setFavorite(res.result.favor);
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);
       setCategory(values);
@@ -98,10 +96,9 @@ function ArtworkDetail() {
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
       <A.BottomWrapper>
-        <A.FavoriteBtn
-          onClick={handleClick}
-          src={favorite ? IMAGES.favoriteOn : IMAGES.favoriteOff}
-        />
+        <A.FavoriteBtn>
+          <Favorite favorStatus={favorite} productId={productId} />
+        </A.FavoriteBtn>
         <A.AskBtn>문의하기</A.AskBtn>
       </A.BottomWrapper>
     </Wrapper>

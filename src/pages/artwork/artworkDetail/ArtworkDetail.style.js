@@ -132,7 +132,7 @@ export const BottomWrapper = styled.div`
   box-shadow: 0px -1px 1.5px 0px rgba(0, 0, 0, 0.15);
 `;
 
-export const FavoriteBtn = styled.img`
+export const FavoriteBtn = styled.div`
   width: 2.4rem;
   height: 2.4rem;
   flex-shrink: 0;
