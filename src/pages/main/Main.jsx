@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
 export default function Main() {
   const [productList, setProductList] = useState([{}]);
+
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
