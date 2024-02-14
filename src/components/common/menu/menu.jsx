@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { loginState } from '../../../recoil/atom';
 import * as M from './menu.style';
 import IMAGES from '../../../assets';
 
@@ -13,6 +15,7 @@ function MenuItem({ icon, text, onClick }) {
 }
 
 function Menu() {
+  const [, setIsLogin] = useRecoilState(loginState);
   const navigate = useNavigate();
 
   const handleMoveToPurchased = () => {
@@ -28,6 +31,8 @@ function Menu() {
   };
 
   const handleLogout = () => {
+    setIsLogin(false);
+    localStorage.clear();
     navigate('/');
   };
 

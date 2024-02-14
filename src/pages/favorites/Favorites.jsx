@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { loginState } from '../../recoil/atom';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Favorites.style';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
 import { getFavorite } from '../../apis/getFavorite';
+import { getProductList } from '../../apis/getProductList';
 import userDummy from '../../constants/userDummy';
+import LoginModal from '../../components/modal/LoginModal';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -14,33 +18,34 @@ const Wrapper = styled.div`
 `;
 
 export default function Favorites() {
-  const [favoriteList, setFavoriteList] = useState([]);
+  const [isLogin] = useRecoilState(loginState);
+  const [productList, setProductList] = useState([{}]);
 
-  const getFavoriteList = async ({ userId, token }) => {
+  const getProducts = async ({ cursorId, paging }) => {
     try {
-      const res = await getFavorite({ userId, token });
-      setFavoriteList(res.result.userLikeList);
-      console.log(res);
+      const res = await getProductList({ cursorId, paging });
+      setProductList(res.result.categoryData);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    // userDummy
-    const { userId, token } = userDummy;
-
-    getFavoriteList({ userId, token });
+    const cursorId = null;
+    const paging = 6;
+    getProducts({ cursorId, paging });
   }, []);
 
-  return (
-    <div>
+  return isLogin ? (
+    <>
       <Header />
       <Wrapper>
         <S.Text>찜한 작품</S.Text>
         <ColumnArtworkList data={favoriteList} />
       </Wrapper>
       <BottomNav />
-    </div>
+    </>
+  ) : (
+    <LoginModal />
   );
 }

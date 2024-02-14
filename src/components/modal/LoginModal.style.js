@@ -2,6 +2,22 @@ import styled from 'styled-components';
 import font from '../../styles/font';
 import color from '../../styles/color';
 
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000080;
+  backdrop-filter: blur(3px);
+`;
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,6 +27,7 @@ export const Wrapper = styled.div`
   height: 15.2rem;
   border-radius: 0.6rem;
   box-shadow: 0rem 0.1rem 1.5rem 0rem rgba(0, 0, 0, 0.15);
+  background-color: #fff;
 `;
 export const MainTxt = styled.div`
   color: ${color.primary_dark};
@@ -44,4 +61,5 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
