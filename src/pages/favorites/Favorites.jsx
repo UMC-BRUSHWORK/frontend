@@ -6,9 +6,7 @@ import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Favorites.style';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
-import { getFavorite } from '../../apis/getFavorite';
 import { getProductList } from '../../apis/getProductList';
-import userDummy from '../../constants/userDummy';
 import LoginModal from '../../components/modal/LoginModal';
 
 const Wrapper = styled.div`
@@ -41,7 +39,7 @@ export default function Favorites() {
       <Header />
       <Wrapper>
         <S.Text>찜한 작품</S.Text>
-        <ColumnArtworkList data={favoriteList} />
+        <ColumnArtworkList data={productList} />
       </Wrapper>
       <BottomNav />
     </>
