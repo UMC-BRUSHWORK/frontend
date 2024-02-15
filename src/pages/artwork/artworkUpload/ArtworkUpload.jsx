@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userState } from '../../../recoil/atom';
+
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
 import IMAGES from '../../../assets';
@@ -18,6 +21,8 @@ function ArtworkUpload() {
   const [status, setStatus] = useState(false);
   const [delivery, setDelivery] = useState([]);
   const [category, setCategory] = useState([]);
+  const [userInfo] = useRecoilState(userState);
+  const { nickname, userId } = userInfo;
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
@@ -47,21 +52,19 @@ function ArtworkUpload() {
     if (status) {
       const token = localStorage.getItem('token');
 
-      // dummy
-      const authorId = 1;
-      const authorNickname = 'brushwork';
       const hashtag = '';
 
       const formData = new FormData();
       formData.append('images', images);
       formData.append('title', title);
-      formData.append('authorId', authorId);
-      formData.append('authorNickname', authorNickname);
+      formData.append('authorId', userId);
+      formData.append('authorNickname', nickname);
       formData.append('delivery', delivery - 1);
       formData.append('price', price);
       formData.append('details', details);
       formData.append('category', category);
       formData.append('hashtag', hashtag);
+
       try {
         const res = await postProduct({ formData, token });
         console.log(res);
