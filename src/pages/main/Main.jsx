@@ -18,10 +18,12 @@ const Wrapper = styled.div`
 
 export default function Main() {
   const [productList, setProductList] = useState([{}]);
+
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
       setProductList(res.result.categoryData);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -29,7 +31,7 @@ export default function Main() {
 
   useEffect(() => {
     const cursorId = null;
-    const paging = 6;
+    const paging = 18;
 
     getProducts({ cursorId, paging });
   }, []);

@@ -4,6 +4,7 @@ import color from '../../styles/color';
 import IMAGES from '../../assets';
 
 export const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

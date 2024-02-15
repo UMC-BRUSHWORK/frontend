@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import ArtWork from '../artwork/ArtWork';
 
 export default function MyArtWorkList({ data }) {
+  console.log(data);
   return (
     <Wrapper>
       {data.map((item) => (
         <ArtWork
-          artSrc={item.artSrc}
-          artName=""
-          artist=""
+          image={item.image}
+          title={item.title}
+          authorNickname={item.authorNickname}
           direction="row"
           size="9rem"
           hideFavorite="true"
