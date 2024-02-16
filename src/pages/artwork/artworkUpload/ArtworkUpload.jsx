@@ -7,6 +7,8 @@ import Topbar from '../../../components/common/topbar/Topbar';
 import categoryDummy from '../../../constants/categoryDummy';
 import deliveryDummy from '../../../constants/deliveryDummy';
 import { postProduct } from '../../../apis/postProduct';
+import LoginModal from '../../../components/modal/LoginModal';
+import { isLogin } from '../../../utils/isLogin';
 
 function ArtworkUpload() {
   const navigate = useNavigate();
@@ -70,7 +72,7 @@ function ArtworkUpload() {
     }
   }, [title, price, details, uploadImage]);
 
-  return (
+  return isLogin() ? (
     <>
       <Topbar />
       <U.Wrapper>
@@ -114,6 +116,8 @@ function ArtworkUpload() {
         작성 완료
       </U.WriteCompleteBtn>
     </>
+  ) : (
+    <LoginModal />
   );
 }
 

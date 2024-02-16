@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRecoilState } from 'recoil';
-import { userState, loginState } from '../../recoil/atom';
+import { userState } from '../../recoil/atom';
 import * as A from './Auth.style';
 import { postOauthLogin } from '../../apis/user';
 import { useToast } from '../../hooks/useToast';
@@ -35,7 +35,6 @@ export default function SignIn() {
   // useToast hook
   const { toastVisible, showToast } = useToast();
   const [toastMsg, setToastMsg] = useState(null);
-  const [, setIsLogin] = useRecoilState(loginState);
   const [, setUserData] = useRecoilState(userState);
 
   const onSubmit = async (data) => {
@@ -44,7 +43,6 @@ export default function SignIn() {
       const loginResponse = await postOauthLogin({ userEmail, userPassword });
       const { token } = loginResponse.result;
 
-      setIsLogin(true);
       localStorage.setItem('token', token);
       setUserData({
         nickname: loginResponse.result.nickname,
