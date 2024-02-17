@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import { useInView } from 'react-intersection-observer';
 import queryString from 'query-string';
 import { postChatLog } from '../../apis/chatLog';
 import InfoBar from '../../components/chatting/infoBar/InfoBar';
@@ -18,7 +20,11 @@ export default function Chatting() {
   const [messages, setMessages] = useState([]);
   const [chatLogData, setChatLogData] = useState([]);
   const [receiverId, setReceiverId] = useState(null);
+  const [page, setPage] = useState(25);
 
+  const [ref, inView] = useInView();
+
+  // 채팅방 입장
   useEffect(() => {
     const { roomID } = queryString.parse(window.location.search);
 
@@ -42,26 +48,14 @@ export default function Chatting() {
     });
   }, [ENDPOINT, window.location.search]);
 
+  // 메세지 받기
   useEffect(() => {
     socket.on('received-message', (msg) => {
       setMessages((prevMessages) => [msg.result, ...prevMessages]);
     });
   }, []);
 
-  useEffect(() => {
-    const { roomID } = queryString.parse(window.location.search);
-
-    postChatLog({
-      roomId: Number(roomID),
-    })
-      .then((chatListRes) => {
-        setChatLogData(chatListRes.result.chatLogListData);
-      })
-      .catch((error) => {
-        console.error('chat-log 불러오기 오류', error);
-      });
-  }, []);
-
+  // 채팅 전송
   const sendMessage = (event) => {
     const { roomID } = queryString.parse(window.location.search);
     event.preventDefault();
@@ -81,11 +75,35 @@ export default function Chatting() {
     }
   };
 
+  // 채팅 기록 불러오기
+  const loadChatLog = async () => {
+    const { roomID } = queryString.parse(window.location.search);
+
+    postChatLog({
+      roomId: Number(roomID),
+      paging: page,
+    })
+      .then((chatListRes) => {
+        setChatLogData(chatListRes.result.chatLogListData);
+        setPage((p) => p + 5);
+        console.log(chatLogData);
+      })
+      .catch((error) => {
+        console.error('chat-log 불러오기 오류', error);
+      });
+  };
+
+  useEffect(() => {
+    loadChatLog();
+  }, [inView]);
+
   return (
     <C.OuterContainer>
       <C.Container>
         <InfoBar info={chattingInfo.result || {}} />
-        <Messages messages={messages} log={chatLogData} />
+        <Messages messages={messages} log={chatLogData}>
+          <div ref={ref} style={{ width: '1px' }} />
+        </Messages>
         <ChattingInput
           message={message}
           setMessage={setMessage}
