@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useRecoilState } from 'recoil';
-import { loginState } from '../../recoil/atom';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Favorites.style';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
 import { getProductList } from '../../apis/getProductList';
 import LoginModal from '../../components/modal/LoginModal';
+import { isLogin } from '../../utils/isLogin';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -16,7 +15,6 @@ const Wrapper = styled.div`
 `;
 
 export default function Favorites() {
-  const [isLogin] = useRecoilState(loginState);
   const [productList, setProductList] = useState([{}]);
 
   const getProducts = async ({ cursorId, paging }) => {
@@ -34,7 +32,7 @@ export default function Favorites() {
     getProducts({ cursorId, paging });
   }, []);
 
-  return isLogin ? (
+  return isLogin() ? (
     <>
       <Header />
       <Wrapper>
