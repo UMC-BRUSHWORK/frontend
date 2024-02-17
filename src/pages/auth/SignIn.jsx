@@ -47,6 +47,7 @@ export default function SignIn() {
       setUserData({
         nickname: loginResponse.result.nickname,
         userId: loginResponse.result.userId,
+        introduce: null,
       });
       navigate('/');
     } catch (error) {
