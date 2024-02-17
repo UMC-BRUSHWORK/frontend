@@ -74,7 +74,7 @@ function ArtworkDetail() {
           ))}
         </A.CategoryWrapper>
         <A.SubWrapper>
-          <A.Price>{productInfo.price}원</A.Price>
+          <A.Price>{(productInfo.price || {}).toLocaleString()}원</A.Price>
           <A.Delivery>
             {productInfo.delivery === 0 ? '택배' : '직거래'}
           </A.Delivery>
