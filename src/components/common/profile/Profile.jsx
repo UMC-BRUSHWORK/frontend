@@ -8,18 +8,10 @@ export default function Profile({
   introduce = '공방 창업을 준비하고 있는 조소과 학생입니다.',
 }) {
   // 프로필 이미지가 없는 경우
-  let imageUrl = image;
-  imageUrl = image;
-  if (image === null) {
-    imageUrl = IMAGES.profile;
-  }
+  const imageUrl = image === null ? IMAGES.profile : image;
 
   // 소개글이 없는 경우
-  let introduction;
-  introduction = introduce;
-  if (introduce === null) {
-    introduction = '소개글을 작성해주세요';
-  }
+  const introduction = introduce === '' ? '소개글을 작성해주세요' : introduce;
 
   return (
     <S.Wrapper>

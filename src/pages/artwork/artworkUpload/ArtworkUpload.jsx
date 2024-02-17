@@ -52,8 +52,8 @@ function ArtworkUpload() {
 
       const hashtag = '';
 
-      const userId = 24;
-      const nickname = 'test';
+      const userId = localStorage.getItem('userId');
+      const nickname = localStorage.getItem('nickname');
 
       const formData = new FormData();
       formData.append('images', images);

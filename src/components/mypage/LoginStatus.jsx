@@ -33,7 +33,12 @@ export default function LogInStatus() {
     const nickname = localStorage.getItem('nickname');
     const profile = localStorage.getItem('profile');
     const introduce = localStorage.getItem('introduce');
-    setUserData((prevData) => ({ ...prevData, nickname, profile, introduce }));
+    setUserData((prevData) => ({
+      ...prevData,
+      nickname,
+      profile,
+      introduce,
+    }));
   }, []);
 
   return (
@@ -42,9 +47,9 @@ export default function LogInStatus() {
         <Profile
           image={userData.image ? userData.image : null}
           nickname={userData.nickname}
-          introduce={userData.introduce ? userData.introduce : null}
+          introduce={userData.introduce}
         />
-        <SettingButton />
+        <SettingButton userData={userData} />
       </L.ProfileWrapper>
       <MyArtWork />
       <MyArtWorkList data={productList} />
