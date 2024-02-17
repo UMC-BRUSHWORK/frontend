@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { userState } from '../../../recoil/atom';
 
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
@@ -23,8 +21,6 @@ function ArtworkUpload() {
   const [status, setStatus] = useState(false);
   const [delivery, setDelivery] = useState([]);
   const [category, setCategory] = useState([]);
-  const [userInfo] = useRecoilState(userState);
-  const { nickname, userId } = userInfo;
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
@@ -55,6 +51,9 @@ function ArtworkUpload() {
       const token = localStorage.getItem('token');
 
       const hashtag = '';
+
+      const userId = 24;
+      const nickname = 'test';
 
       const formData = new FormData();
       formData.append('images', images);
