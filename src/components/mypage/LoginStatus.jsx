@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import * as L from './LoginStatus.style';
 import Profile from '../common/profile/Profile';
 import SettingButton from '../common/button/SettingButton';
@@ -8,11 +7,14 @@ import PurchaseReviewList from '../common/myPage/PurchaseReviewList';
 import Menu from '../common/menu/menu';
 import MyArtWorkList from '../common/myPage/MyArtWorkList';
 import { getProductList } from '../../apis/getProductList';
-import { userState } from '../../recoil/atom';
 
 export default function LogInStatus() {
   const [productList, setProductList] = useState([{}]);
-  const [userData] = useRecoilState(userState);
+  const userData = {
+    image: null,
+    nickname: 'test',
+    introduce: null,
+  };
 
   const getProducts = async ({ cursorId, paging }) => {
     try {

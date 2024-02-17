@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { isLogin } from '../../utils/isLogin';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import LogInStatus from '../../components/mypage/LoginStatus';
 import LogoutStatus from '../../components/mypage/LogoutStatus';
-import { isLogin } from '../../utils/isLogin';
 
 const Wrapper = styled.div`
   height: calc(100vh - 11.2rem);

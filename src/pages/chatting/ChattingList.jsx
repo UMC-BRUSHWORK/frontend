@@ -1,19 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import Profile from '../../components/common/profile/Profile';
+import Header from '../../components/common/header/Header';
+import BottomNav from '../../components/common/bottomNav/BottomNav';
 import LoginModal from '../../components/modal/LoginModal';
+import ChatListComponent from '../../components/chatting/ChatList';
 import { isLogin } from '../../utils/isLogin';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin: 0 auto;
+  margin-bottom: 6rem;
+`;
 
 export default function ChattingList() {
-  const navigate = useNavigate();
-
   return isLogin() ? (
-    <Wrapper onClick={() => navigate('/chatting-list/chatting')}>
-      <Profile />
-    </Wrapper>
+    <>
+      <Header />
+      <Wrapper>
+        <ChatListComponent />
+        <BottomNav />
+      </Wrapper>
+    </>
   ) : (
     <LoginModal />
   );

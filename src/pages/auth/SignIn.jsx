@@ -4,8 +4,6 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRecoilState } from 'recoil';
-import { userState } from '../../recoil/atom';
 import * as A from './Auth.style';
 import { postOauthLogin } from '../../apis/user';
 import { useToast } from '../../hooks/useToast';
@@ -35,20 +33,15 @@ export default function SignIn() {
   // useToast hook
   const { toastVisible, showToast } = useToast();
   const [toastMsg, setToastMsg] = useState(null);
-  const [, setUserData] = useRecoilState(userState);
 
   const onSubmit = async (data) => {
     try {
       const { email: userEmail, password: userPassword } = data;
       const loginResponse = await postOauthLogin({ userEmail, userPassword });
       const { token } = loginResponse.result;
-
+      const { userId } = loginResponse.result;
       localStorage.setItem('token', token);
-      setUserData({
-        nickname: loginResponse.result.nickname,
-        userId: loginResponse.result.userId,
-        introduce: null,
-      });
+      localStorage.setItem('userId', userId);
       navigate('/');
     } catch (error) {
       const errorMsg = error.response.data.message;
