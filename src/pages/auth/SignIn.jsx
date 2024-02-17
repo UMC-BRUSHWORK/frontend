@@ -40,8 +40,10 @@ export default function SignIn() {
       const loginResponse = await postOauthLogin({ userEmail, userPassword });
       const { token } = loginResponse.result;
       const { userId } = loginResponse.result;
+      const { nickName } = loginResponse.result;
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
+      localStorage.setItem('nickName', nickName);
       navigate('/');
     } catch (error) {
       const errorMsg = error.response.data.message;
