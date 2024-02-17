@@ -15,6 +15,7 @@ export default function Profile({
 
   // 소개글이 없는 경우
   let introduction;
+  introduction = introduce;
   if (introduce === null) {
     introduction = '소개글을 작성해주세요';
   }

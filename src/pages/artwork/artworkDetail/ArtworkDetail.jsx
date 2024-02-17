@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -12,32 +13,44 @@ import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
 import Topbar from '../../../components/common/topbar/Topbar';
 import Favorite from '../../../components/favorite/Favorite';
+import { getUserInfo } from '../../../apis/getUserInfo';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
   const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
+  const [userInfo, setUserInfo] = useState();
 
   // 작품조회
   const [productList, setProductList] = useState([]);
-  const getProducts = async ({ cursorId, paging }) => {
+
+  // 1. url에서 작품 id 얻어오기
+  let { productId } = useParams();
+  productId = parseInt(productId, 10);
+
+  // 작가 정보 조회
+  const getUser = async (userId) => {
     try {
-      const res = await getProductList({ cursorId, paging });
-      setProductList(res.result.categoryData);
+      const res = await getUserInfo(userId);
+      return res;
     } catch (error) {
       console.log(error);
     }
   };
 
-  // 작품 상세 조회
-  let { productId } = useParams();
-  productId = parseInt(productId, 10);
-
+  // 2. 작품 상세 조회
   const getProductId = async (Id) => {
     try {
       const res = await getProduct(Id);
-      console.log(res.result);
+
+      // 작품 정보
       setProductInfo(res.result);
+
+      // 3. 유저 정보 불러오기
+      const userRes = await getUser(res.result.authorId);
+      setUserInfo(userRes.result);
+
+      // 찜하기
       setFavorite(res.result.favor);
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);
@@ -50,11 +63,21 @@ function ArtworkDetail() {
     }
   };
 
+  // 작가의 다른 작품 조회
+  const getProducts = async ({ cursorId, paging }) => {
+    try {
+      const res = await getProductList({ cursorId, paging });
+      setProductList(res.result.categoryData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const cursorId = null;
     const paging = 6;
-    getProducts({ cursorId, paging });
     getProductId(productId);
+    getProducts({ cursorId, paging });
   }, [productId]);
 
   return (
@@ -81,7 +104,13 @@ function ArtworkDetail() {
         </A.SubWrapper>
         <A.Divider />
         <A.Margin>
-          <Profile />
+          {userInfo && (
+            <Profile
+              image={userInfo.userProfile}
+              nickname={userInfo.userNickname}
+              introduce={userInfo.userIntroduce}
+            />
+          )}
         </A.Margin>
         <A.Margin>
           <A.Text>작가의 다른 작품</A.Text>
