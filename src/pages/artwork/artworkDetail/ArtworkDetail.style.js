@@ -157,6 +157,7 @@ export const AskBtn = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 `;
 
 export const CompleteBtn = styled.div`

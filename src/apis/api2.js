@@ -1,15 +1,14 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios';
 
-// const baseURL = process.env.REACT_APP_BASE_URL;
-const baseURL = 'https://dev.brushwork.shop';
+const baseURL = 'https://dev.brushwork.shop/';
 const request = async ({ url, method, body, params, token }) => {
   try {
     const config = {
       baseURL,
       params,
       headers: {
-        withCredentials: true,
+        withCredentials: false,
       },
     };
     if (token && config.headers) {

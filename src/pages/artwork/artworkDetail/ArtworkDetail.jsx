@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
 import Profile from '../../../components/common/profile/Profile';
@@ -12,11 +12,15 @@ import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
 import Topbar from '../../../components/common/topbar/Topbar';
 import Favorite from '../../../components/favorite/Favorite';
+import { postCreateRoom } from '../../../apis/createChattingRoom';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
   const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
+  const [sellerId, setSellerId] = useState(null);
+  const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
 
   // 작품조회
   const [productList, setProductList] = useState([]);
@@ -39,6 +43,7 @@ function ArtworkDetail() {
       console.log(res.result);
       setProductInfo(res.result);
       setFavorite(res.result.favor);
+      setSellerId(res.result.authorId);
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);
       setCategory(values);
@@ -56,6 +61,20 @@ function ArtworkDetail() {
     getProducts({ cursorId, paging });
     getProductId(productId);
   }, [productId]);
+
+  const clickButton = async () => {
+    try {
+      const createRoomRes = await postCreateRoom({
+        buyerId: userId,
+        sellerId,
+        productId,
+      });
+      console.log(createRoomRes);
+      navigate(`/chatting-list/chatting?roomID=${createRoomRes.result.roomId}`);
+    } catch (error) {
+      console.error('방생성 오류 발생', error);
+    }
+  };
 
   return (
     <Wrapper>
@@ -93,7 +112,7 @@ function ArtworkDetail() {
         <A.FavoriteBtn>
           <Favorite favorStatus={favorite} productId={productId} />
         </A.FavoriteBtn>
-        <A.AskBtn>문의하기</A.AskBtn>
+        <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
       </A.BottomWrapper>
     </Wrapper>
   );
