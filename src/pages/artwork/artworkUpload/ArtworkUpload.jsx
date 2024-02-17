@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userState } from '../../../recoil/atom';
+
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
 import IMAGES from '../../../assets';
@@ -18,41 +21,51 @@ function ArtworkUpload() {
   const [details, setDetails] = useState('');
   const [uploadImage, setUploadImage] = useState(null);
   const [status, setStatus] = useState(false);
-  const [hashtag, setHashtag] = useState('');
+  const [delivery, setDelivery] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [userInfo] = useRecoilState(userState);
+  const { nickname, userId } = userInfo;
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     setImages(file);
     const imageUrl = URL.createObjectURL(file);
     setUploadImage(imageUrl);
   };
 
-  const handleHashtagClick = (selectedHashtag) => {
-    console.log(selectedHashtag);
-    setHashtag(selectedHashtag);
+  const handleCategoryClick = (selectedCategory) => {
+    if (category.includes(selectedCategory)) {
+      setCategory((prev) => prev.filter((value) => value !== selectedCategory));
+      return;
+    }
+    setCategory((prev) => [...prev, selectedCategory]);
+  };
+
+  const handleDeliveryClick = (selectedDelivery) => {
+    console.log(selectedDelivery - 1);
+    if (delivery.includes(selectedDelivery)) {
+      setDelivery((prev) => prev.filter((value) => value !== selectedDelivery));
+      return;
+    }
+    setDelivery((prev) => [...prev, selectedDelivery]);
   };
 
   const handleSubmit = async () => {
     if (status) {
       const token = localStorage.getItem('token');
 
-      // dummy
-      const authorId = 1;
-      const authorNickname = 'brushwork';
-      const delivery = 0;
-      const category = '1,2,3';
+      const hashtag = '';
 
       const formData = new FormData();
       formData.append('images', images);
       formData.append('title', title);
-      formData.append('authorId', authorId);
-      formData.append('authorNickname', authorNickname);
-      formData.append('delivery', delivery);
+      formData.append('authorId', userId);
+      formData.append('authorNickname', nickname);
+      formData.append('delivery', delivery - 1);
       formData.append('price', price);
       formData.append('details', details);
-      formData.append('hashtag', hashtag);
       formData.append('category', category);
+      formData.append('hashtag', hashtag);
 
       try {
         const res = await postProduct({ formData, token });
@@ -70,7 +83,7 @@ function ArtworkUpload() {
     } else {
       setStatus(false);
     }
-  }, [title, price, details, uploadImage]);
+  }, [title, price, details, uploadImage, category]);
 
   return isLogin() ? (
     <>
@@ -91,7 +104,8 @@ function ArtworkUpload() {
         <CategoryList
           data={categoryDummy}
           title="카테고리"
-          onHashtagClick={handleHashtagClick}
+          selectedItems={category}
+          onClick={handleCategoryClick}
         />
         <U.SectionTitle>작품 가격</U.SectionTitle>
         <U.InputText
@@ -103,7 +117,9 @@ function ArtworkUpload() {
         <CategoryList
           data={deliveryDummy}
           title="배송 방식"
+          selectedItems={delivery}
           style={{ marginBottom: '2rem' }}
+          onClick={handleDeliveryClick}
         />
         <U.SectionTitle>상세 설명</U.SectionTitle>
         <U.Description

@@ -23,7 +23,6 @@ export default function Main() {
     try {
       const res = await getProductList({ cursorId, paging });
       setProductList(res.result.categoryData);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

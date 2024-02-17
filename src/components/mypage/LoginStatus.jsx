@@ -10,6 +10,12 @@ import { getProductList } from '../../apis/getProductList';
 
 export default function LogInStatus() {
   const [productList, setProductList] = useState([{}]);
+  const userData = {
+    image: null,
+    nickname: 'test',
+    introduce: null,
+  };
+
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
@@ -28,7 +34,11 @@ export default function LogInStatus() {
   return (
     <L.StyledContainer>
       <L.ProfileWrapper>
-        <Profile />
+        <Profile
+          image={userData.image ? userData.image : null}
+          nickname={userData.nickname}
+          introduce={userData.introduce ? userData.introduce : null}
+        />
         <SettingButton />
       </L.ProfileWrapper>
       <MyArtWork />
