@@ -10,11 +10,11 @@ import { getProductList } from '../../apis/getProductList';
 
 export default function LogInStatus() {
   const [productList, setProductList] = useState([{}]);
-  const userData = {
-    image: null,
-    nickname: 'test',
+  const [userData, setUserData] = useState({
+    profile: null,
+    nickname: '',
     introduce: null,
-  };
+  });
 
   const getProducts = async ({ cursorId, paging }) => {
     try {
@@ -29,6 +29,11 @@ export default function LogInStatus() {
     const cursorId = null;
     const paging = 6;
     getProducts({ cursorId, paging });
+
+    const nickname = localStorage.getItem('nickname');
+    const profile = localStorage.getItem('profile');
+    const introduce = localStorage.getItem('introduce');
+    setUserData((prevData) => ({ ...prevData, nickname, profile, introduce }));
   }, []);
 
   return (

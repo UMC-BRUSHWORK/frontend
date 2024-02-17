@@ -3,12 +3,13 @@ import * as S from './Profile.style';
 import IMAGES from '../../../assets/index';
 
 export default function Profile({
-  image = IMAGES.profile,
+  image,
   nickname = '조소과 학생',
   introduce = '공방 창업을 준비하고 있는 조소과 학생입니다.',
 }) {
   // 프로필 이미지가 없는 경우
   let imageUrl = image;
+  imageUrl = image;
   if (image === null) {
     imageUrl = IMAGES.profile;
   }
