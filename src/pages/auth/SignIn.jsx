@@ -38,10 +38,14 @@ export default function SignIn() {
     try {
       const { email: userEmail, password: userPassword } = data;
       const loginResponse = await postOauthLogin({ userEmail, userPassword });
-      const { token } = loginResponse.result;
-      const { userId } = loginResponse.result;
+      const { token, userId, nickname, profile, introduce, rate } =
+        loginResponse.result;
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
+      localStorage.setItem('nickname', nickname);
+      localStorage.setItem('profile', profile);
+      localStorage.setItem('introduce', introduce);
+      localStorage.setItem('rate', rate);
       navigate('/');
     } catch (error) {
       const errorMsg = error.response.data.message;

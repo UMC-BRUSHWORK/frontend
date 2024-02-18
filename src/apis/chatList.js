@@ -1,12 +1,10 @@
 import { POST } from './api2';
 
-export const postChatList = async ({ userId }) => {
+export const postChatList = async ({ userId, paging = 15 }) => {
   const body = {
     userId,
   };
-  console.log(body);
 
-  const { data } = await POST(`/chat/list`, body);
-  console.log(data);
+  const { data } = await POST(`/chat/list?paging=${paging}`, body);
   return data;
 };

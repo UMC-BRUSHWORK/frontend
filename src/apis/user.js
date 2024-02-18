@@ -5,9 +5,7 @@ export const postOauthLogin = async ({ userEmail, userPassword }) => {
     userEmail,
     userPassword,
   };
-  console.log(body);
 
   const { data } = await POST(`/auth/login`, body);
-  console.log(data);
   return data;
 };

@@ -60,9 +60,10 @@ function ArtworkUpload() {
     } else if (status && !titleError && !priceError && !detailError) {
       const token = localStorage.getItem('token');
       const hashtag = '';
-      const userId = 24;
-      const nickname = 'test';
 
+
+      const userId = localStorage.getItem('userId');
+      const nickname = localStorage.getItem('nickname');
       const formData = new FormData();
       formData.append('images', images);
       formData.append('title', title);

@@ -1,17 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as A from './MyArtWork.style';
+import * as A from './PageLinkButton.style';
 import IMAGES from '../../../assets';
 
-function MyArtWork() {
+function PageLinkButton({ page, userId }) {
   const navigate = useNavigate();
   const handleMoveToArtist = () => {
-    navigate('/artist');
+    navigate(`/artist/${userId}`);
   };
 
   return (
     <A.ArtWorkContainer>
-      <A.GoArtistButton onClick={handleMoveToArtist}>내 작품</A.GoArtistButton>
+      <A.GoArtistButton onClick={handleMoveToArtist}>{page}</A.GoArtistButton>
       <A.RightButton
         src={IMAGES.rightButtonBlack}
         onClick={handleMoveToArtist}
@@ -20,4 +20,4 @@ function MyArtWork() {
   );
 }
 
-export default MyArtWork;
+export default PageLinkButton;

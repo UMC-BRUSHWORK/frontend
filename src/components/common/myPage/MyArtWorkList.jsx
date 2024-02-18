@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ArtWork from '../artwork/ArtWork';
 
 export default function MyArtWorkList({ data }) {
-  console.log(data);
   return (
     <Wrapper>
       {data.map((item) => (
