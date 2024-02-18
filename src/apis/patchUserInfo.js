@@ -6,8 +6,6 @@ export const patchUserInfo = async ({ newProfileData }) => {
     userNickname,
     userIntroduce,
   };
-  //   console.log(token);
-  //   console.log(userId, body);
   const { data } = await PATCH(`/user/${userId}`, body, token);
   return data;
 };

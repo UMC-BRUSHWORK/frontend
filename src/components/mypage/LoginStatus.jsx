@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import * as L from './LoginStatus.style';
 import Profile from '../common/profile/Profile';
 import SettingButton from '../common/button/SettingButton';
-import MyArtWork from '../common/button/MyArtWork';
 import PurchaseReviewList from '../common/myPage/PurchaseReviewList';
 import Menu from '../common/menu/menu';
 import MyArtWorkList from '../common/myPage/MyArtWorkList';
 import { getProductList } from '../../apis/getProductList';
+import PageLinkButton from '../common/button/PageLinkButton';
 
 export default function LogInStatus() {
   const [productList, setProductList] = useState([{}]);
@@ -24,6 +24,8 @@ export default function LogInStatus() {
       console.log(error);
     }
   };
+
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     const cursorId = null;
@@ -51,8 +53,11 @@ export default function LogInStatus() {
         />
         <SettingButton userData={userData} />
       </L.ProfileWrapper>
-      <MyArtWork />
+      <L.Margin />
+      <PageLinkButton page="내 작품" userId={userId} />
       <MyArtWorkList data={productList} />
+      <L.Margin />
+      <PageLinkButton page="거래 후기" userId={userId} />
       <PurchaseReviewList />
       <Menu />
     </L.StyledContainer>

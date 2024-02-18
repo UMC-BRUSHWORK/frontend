@@ -29,7 +29,7 @@ export default function Router() {
         <Route path="/artwork-upload" element={<ArtworkUploadPage />} />
         <Route path="/product/:productId" element={<ArtworkDetailPage />} />
         <Route path="/my-artwork-detail" element={<MyArtworkDetailPage />} />
-        <Route path="/artist" element={<ArtistPage />} />
+        <Route path="/artist/:authorId" element={<ArtistPage />} />
         <Route path="/my-review" element={<MyReview />} />
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />

@@ -12,3 +12,7 @@ export const ProfileWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const Margin = styled.div`
+  height: 3.2rem;
+`;

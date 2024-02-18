@@ -2,11 +2,7 @@ import React from 'react';
 import * as S from './Profile.style';
 import IMAGES from '../../../assets/index';
 
-export default function Profile({
-  image,
-  nickname = '조소과 학생',
-  introduce = '공방 창업을 준비하고 있는 조소과 학생입니다.',
-}) {
+export default function Profile({ image, nickname, introduce }) {
   // 프로필 이미지가 없는 경우
   const imageUrl = image === null ? IMAGES.profile : image;
 
