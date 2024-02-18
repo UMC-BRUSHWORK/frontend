@@ -5,7 +5,6 @@ export const postChatLog = async ({ roomId }) => {
     roomId,
   };
 
-  // const { data } = await POST(`/chat/chat-log`, body);
-  const { data } = await POST(`/chat/chat-log?paging=40`, body);
+  const { data } = await POST(`/chat/chat-log`, body);
   return data;
 };
