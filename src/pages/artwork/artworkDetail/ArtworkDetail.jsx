@@ -85,7 +85,6 @@ function ArtworkDetail() {
     getProductId(productId);
     getProducts({ cursorId, paging });
   }, [productId]);
-
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
@@ -145,12 +144,17 @@ function ArtworkDetail() {
         )}
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
-      <A.BottomWrapper>
-        <A.FavoriteBtn>
-          <Favorite favorStatus={favorite} productId={productId} />
-        </A.FavoriteBtn>
-        <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
-      </A.BottomWrapper>
+        {Number(userId) === productInfo.authorId ? 
+          <A.BottomWrapper>
+            <A.CompleteBtn>판매완료</A.CompleteBtn>
+          </A.BottomWrapper> : 
+          <A.BottomWrapper>
+            <A.FavoriteBtn>
+            <Favorite favorStatus={favorite} productId={productId} />
+            </A.FavoriteBtn>
+            <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
+          </A.BottomWrapper>
+        }
     </Wrapper>
   );
 }
