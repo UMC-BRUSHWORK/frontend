@@ -60,7 +60,6 @@ function ArtworkDetail() {
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);
       setCategory(values);
-
       return res;
     } catch (error) {
       console.log(error);

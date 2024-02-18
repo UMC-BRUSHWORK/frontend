@@ -4,9 +4,8 @@ export const postChatLog = async ({ roomId }) => {
   const body = {
     roomId,
   };
-  console.log(body);
 
-  const { data } = await POST(`/chat/chat-log`, body);
-  console.log(data);
+  // const { data } = await POST(`/chat/chat-log`, body);
+  const { data } = await POST(`/chat/chat-log?paging=40`, body);
   return data;
 };

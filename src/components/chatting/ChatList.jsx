@@ -16,7 +16,6 @@ export default function ChatList() {
       userId,
     })
       .then((chatListRes) => {
-        console.log(chatListRes.result.chatListData);
         setChatListData(chatListRes.result.chatListData);
       })
       .catch((error) => {
