@@ -9,7 +9,7 @@ import Messages from '../../components/chatting/messages/Messages';
 import ChattingInput from '../../components/chatting/input/ChattingInput';
 import * as C from './Chatting.style';
 
-const ENDPOINT = 'https://dev.brushwork.shop/';
+const ENDPOINT = process.env.REACT_APP_BASE_URL;
 
 let socket;
 
@@ -33,6 +33,7 @@ export default function Chatting() {
     });
 
     socket.emit('connect-room', { roomId: roomID }, (error) => {
+      console.log('hi');
       if (error) {
         alert(error);
       }
@@ -100,9 +101,18 @@ export default function Chatting() {
     <C.OuterContainer>
       <C.Container>
         <InfoBar info={chattingInfo.result || {}} />
-        <Messages messages={messages} log={chatLogData}>
-          <div ref={ref} style={{ width: '1px' }} />
-        </Messages>
+        {chattingInfo.result &&
+          chattingInfo.result.buyerProfile &&
+          chattingInfo.result.sellerProfile && (
+            <Messages
+              messages={messages}
+              log={chatLogData}
+              buyerProfile={chattingInfo.result.buyerProfile}
+              sellerProfile={chattingInfo.result.sellerProfile}
+            >
+                <div ref={ref} style={{ width: '1px' }} />
+            </Messages>
+          )}
         <ChattingInput
           message={message}
           setMessage={setMessage}

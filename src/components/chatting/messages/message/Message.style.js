@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MessageWrapper = styled.div`
   display: flex;
@@ -21,4 +21,24 @@ export const MessageBox = styled.div`
   font-size: 1.4rem;
   font-weight: 500;
   margin: 0.4rem 0.2rem 0 0.4rem;
+`;
+
+export const ProfileImage = styled.img`
+  width: 4rem;
+  height: 4rem;
+  margin: 0 8px 0 0;
+  opacity: 0;
+
+  ${(props) =>
+    props.visible &&
+    css`
+      opacity: 1;
+    `}
+`;
+
+export const Date = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  text-align: center;
 `;
