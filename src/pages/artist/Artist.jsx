@@ -71,7 +71,7 @@ export default function ArtistPage() {
             후기
           </S.Button>
         </S.ButtonWrapper>
-        {selectedTab === 'artworks' && <ArtWorksList />}
+        {selectedTab === 'artworks' && <ArtWorksList authorId={authorId} />}
         {selectedTab === 'reviews' && <ArtistReviewList />}
       </Wrapper>
     </div>
