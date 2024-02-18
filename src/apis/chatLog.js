@@ -1,12 +1,10 @@
 import { POST } from './api2';
 
-export const postChatLog = async ({ roomId }) => {
+export const postChatLog = async ({ roomId, paging = 25 }) => {
   const body = {
     roomId,
   };
-  console.log(body);
 
-  const { data } = await POST(`/chat/chat-log`, body);
-  console.log(data);
+  const { data } = await POST(`/chat/chat-log?paging=${paging}`, body);
   return data;
 };

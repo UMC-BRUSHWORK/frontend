@@ -88,7 +88,7 @@ function ArtworkDetail() {
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
-        buyerId: userId,
+        buyerId: Number(userId),
         sellerId,
         productId,
       });

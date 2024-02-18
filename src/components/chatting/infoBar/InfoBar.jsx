@@ -8,7 +8,8 @@ export default function InfoBar({ info }) {
   console.log(info);
   const userId = localStorage.getItem('userId');
   const name =
-    info.buyerId === userId ? info.buyerNickName : info.sellerNickname;
+    info.buyerId === Number(userId) ? info.sellerNickname : info.buyerNickname;
+  console.log(name);
   const clickBack = () => {
     navigate(`/chatting-list`);
   };
