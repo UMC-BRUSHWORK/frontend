@@ -2,6 +2,18 @@ import styled from 'styled-components';
 import font from '../../../styles/font';
 import color from '../../../styles/color';
 
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+`;
+
 export const Wrapper = styled.div`
     width: 328px;
     height: 265px;
@@ -11,6 +23,8 @@ export const Wrapper = styled.div`
     box-shadow: 0px 1px 1.5px 0px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 25%;
 `
 
 export const Title = styled.div`

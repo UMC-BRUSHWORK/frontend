@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import * as B from './Buyer.Style';
-import IMAGES from '../../../assets';
 
-function Buyer() {
+function Buyer({ data }) {
 
     const [selectedBuyer, setSelectedBuyer] = useState(null);
 
@@ -18,10 +17,10 @@ function Buyer() {
                 checked={selectedBuyer === 'buyer1'}
                 onChange={() => handleRadioChange('buyer1')}
                 />
-            <B.Profile src={IMAGES.profile} />
+            <B.Profile src={data.buyerProfile} />
             <B.NameWrapper>
-                <B.Name>칼리</B.Name>
-                <B.LastChat>마지막 대화 35분 전</B.LastChat>
+                <B.Name>{data.buyerNickname}</B.Name>
+                <B.LastChat>마지막 대화 {data.latestMsgDate}</B.LastChat>
             </B.NameWrapper>
         </B.Wrapper>
     );
