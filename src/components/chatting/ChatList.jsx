@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
 import { postChatList } from '../../apis/chatList';
 import { dateFormat } from '../../utils/dateFormatter';
 import * as C from './ChatList.style';
@@ -10,18 +11,26 @@ export default function ChatList() {
   const navigate = useNavigate();
 
   const [chatListData, setChatListData] = useState([]);
+  const [page, setPage] = useState(25);
+  const [ref, inView] = useInView();
 
-  useEffect(() => {
+  const loadChatList = async () => {
     postChatList({
       userId,
+      paging: page,
     })
       .then((chatListRes) => {
         setChatListData(chatListRes.result.chatListData);
+        setPage((p) => p + 5);
       })
       .catch((error) => {
         console.error('ChatList 불러오기 오류', error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    loadChatList();
+  }, [inView]);
 
   const joinChat = (roomId) => {
     navigate(`/chatting-list/chatting?roomID=${roomId}`);
@@ -51,6 +60,7 @@ export default function ChatList() {
           </C.MessageWrapper>
         </C.Wrapper>
       ))}
+      <div ref={ref} style={{ width: '1px' }} />
     </>
   );
 }

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import Header from '../../components/common/header/Header';
+import { useParams } from 'react-router-dom';
 import Profile from '../../components/common/profile/Profile';
 import * as S from './Artist.style';
 import ArtWorksList from './ArtWorksList';
 import ArtistReviewList from './ArtistReviewList';
 import Topbar from '../../components/common/topbar/Topbar';
+import { getUserInfo } from '../../apis/getUserInfo';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -24,11 +25,38 @@ export default function ArtistPage() {
     setSelectedTab('reviews');
   };
 
+  let { authorId } = useParams();
+  authorId = parseInt(authorId, 10);
+
+  const [image, setImage] = useState();
+  const [nickname, setNickname] = useState();
+  const [introduce, setIntroduce] = useState();
+
+  // 유저 정보 불러오기
+  const getUser = async (userId) => {
+    try {
+      const { result } = await getUserInfo(userId);
+      console.log(result);
+
+      setImage(result.userProfile);
+      setNickname(result.userNickname);
+      setIntroduce(result.userIntroduce);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 유저의 작품 불러오기
+
+  useEffect(() => {
+    getUser(authorId);
+  }, []);
+
   return (
     <div>
       <Topbar />
       <Wrapper>
-        <Profile />
+        <Profile image={image} nickname={nickname} introduce={introduce} />
         <S.ButtonWrapper>
           <S.Button
             selected={selectedTab === 'artworks'}

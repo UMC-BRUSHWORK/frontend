@@ -9,6 +9,7 @@ const ScrollToBottom = styled(BasicScrollToBottom)`
   overflow: auto;
   flex: auto;
 `;
+
 const Wrapper = styled.div`
   padding: 1rem;
 `;
@@ -18,11 +19,13 @@ export default function Messages({
   log,
   buyerProfile,
   sellerProfile,
+  children
 }) {
   const allData = [...messages.filter((_, index) => index % 2 === 0), ...log];
 
   return (
     <ScrollToBottom>
+      {children}
       <Wrapper>
         {allData.reverse().map((data, index) => {
           let timeValue = dateFormat(data.date);
@@ -31,12 +34,10 @@ export default function Messages({
           let displayProfile = false;
 
           const isDate = new Date(data.date);
-          // isDate.setHours(isDate.getHours() - 9);
-
+          
           if (index !== allData.length - 1) {
             const nextSender = allData[index + 1].senderId;
             const nextDate = new Date(allData[index + 1].date);
-            // nextDate.setHours(nextDate.getHours() - 9);
 
             console.log(index, isDate, nextDate);
             console.log(isDate.getFullYear(), nextDate.getFullYear());

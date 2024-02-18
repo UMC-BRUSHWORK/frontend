@@ -2,7 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import * as A from './ArtworkDetail.style';
 import IMAGES from '../../../assets';
 import Profile from '../../../components/common/profile/Profile';
@@ -15,6 +15,7 @@ import Topbar from '../../../components/common/topbar/Topbar';
 import Favorite from '../../../components/favorite/Favorite';
 import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
+import PageLinkButton from '../../../components/common/button/PageLinkButton';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -53,6 +54,7 @@ function ArtworkDetail() {
       // 3. 유저 정보 불러오기
       const userRes = await getUser(res.result.authorId);
       setUserInfo(userRes.result);
+      console.log(userInfo);
 
       // 찜하기
       setFavorite(res.result.favor);
@@ -87,7 +89,7 @@ function ArtworkDetail() {
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
-        buyerId: userId,
+        buyerId: Number(userId),
         sellerId,
         productId,
       });
@@ -123,17 +125,24 @@ function ArtworkDetail() {
         <A.Divider />
         <A.Margin>
           {userInfo && (
-            <Profile
-              image={userInfo.userProfile}
-              nickname={userInfo.userNickname}
-              introduce={userInfo.userIntroduce}
-            />
+            <Link to={`/artist/${userInfo.userId}`}>
+              <A.ProfileWrapper>
+                <Profile
+                  image={userInfo.userProfile}
+                  nickname={userInfo.userNickname}
+                  introduce={userInfo.userIntroduce}
+                />
+                <A.RightButton src={IMAGES.rightButtonGrey} alt="rightButton" />
+              </A.ProfileWrapper>
+            </Link>
           )}
         </A.Margin>
-        <A.Margin>
-          <A.Text>작가의 다른 작품</A.Text>
-          <RowArtworkList data={productList} />
-        </A.Margin>
+        {userInfo && (
+          <A.Margin>
+            <PageLinkButton page="작가의 다른 작품" userId={userInfo.userId} />
+            <RowArtworkList data={productList} />
+          </A.Margin>
+        )}
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
       <A.BottomWrapper>

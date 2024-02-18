@@ -113,6 +113,18 @@ export const Margin = styled.div`
   margin-bottom: 2.4rem;
 `;
 
+export const ProfileWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const RightButton = styled.img`
+  width: 4rem;
+  height: 4rem;
+`;
+
 export const Text = styled.div`
   ${font.medium_14};
   margin-bottom: 1rem;
