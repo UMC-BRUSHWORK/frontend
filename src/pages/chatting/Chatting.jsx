@@ -86,7 +86,6 @@ export default function Chatting() {
       .then((chatListRes) => {
         setChatLogData(chatListRes.result.chatLogListData);
         setPage((p) => p + 5);
-        console.log(chatLogData);
       })
       .catch((error) => {
         console.error('chat-log 불러오기 오류', error);
