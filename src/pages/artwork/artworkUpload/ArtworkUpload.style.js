@@ -47,7 +47,7 @@ export const Photo = styled.img`
 `;
 
 export const SectionTitle = styled.div`
-  color: #000;
+  color: ${(props) => (props.isError ? color.error : color.black)};
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 500;
@@ -63,6 +63,12 @@ export const InputText = styled.input`
   line-height: normal;
   text-align: left;
   border: none;
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
   &::placeholder {
     color: var(--Grayscale-BE, #bebebe);
@@ -72,7 +78,6 @@ export const InputText = styled.input`
     line-height: normal;
     letter-spacing: 0em;
   }
-
   outline: none;
 `;
 
@@ -99,7 +104,12 @@ export const BottomLine = styled.div`
   width: 100%;
   height: 0.1rem;
   margin: 0.5rem 0 2rem 0;
-  background: ${(props) => (props.active ? '#333333' : '#BEBEBE')};
+  background: ${(props) =>
+    props.isError
+      ? color.error
+      : props.active
+        ? color.grayscale_33
+        : color.grayscale_be};
 `;
 
 export const WriteCompleteBtn = styled.div`

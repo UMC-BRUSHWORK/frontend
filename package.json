@@ -24,6 +24,8 @@
     "react-scroll-to-bottom": "^4.2.0",
     "react-stack-grid": "^0.7.1",
     "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
+    "socket.io": "^4.7.4",
     "socket.io-client": "^4.7.4",
     "styled-components": "^6.1.6",
     "web-vitals": "^2.1.0",
