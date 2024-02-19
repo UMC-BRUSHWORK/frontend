@@ -10,14 +10,15 @@ export default function ReviewList({ data }) {
         <S.Count>{count}</S.Count>
         개의 거래 후기
       </S.Text>
-      {data.map((item) => (
-        <Review
-          key={item.id}
-          nickname={item.nickname}
-          date={item.date}
-          review={item.review}
-        />
-      ))}
+      {data &&
+        data.map((item) => (
+          <Review
+            key={item.reviewId}
+            nickname={item.consumerNickname}
+            date={item.date}
+            review={item.context}
+          />
+        ))}
     </S.Wrapper>
   );
 }

@@ -7,6 +7,7 @@ export default function MyArtWorkList({ data }) {
     <Wrapper>
       {data.map((item) => (
         <ArtWork
+          key={item.productId}
           image={item.image}
           title={item.title}
           authorNickname={item.authorNickname}
