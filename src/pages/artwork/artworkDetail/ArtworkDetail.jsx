@@ -17,6 +17,7 @@ import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
 import { getArtistReviewList } from '../../../apis/getArtistReviewList';
 import ReportModal from '../../../components/modal/report/ReportModal';
+import CompleteBtn from '../../../components/artwork/CompleteBtn';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -24,7 +25,7 @@ function ArtworkDetail() {
   const [favorite, setFavorite] = useState(false);
   const [sellerId, setSellerId] = useState(null);
   const [userInfo, setUserInfo] = useState();
-  const userId = localStorage.getItem('userId');
+  const userId = parseInt(localStorage.getItem('userId'), 10);
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
@@ -101,7 +102,7 @@ function ArtworkDetail() {
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
-        buyerId: Number(userId),
+        buyerId: userId,
         sellerId,
         productId,
       });
@@ -165,12 +166,13 @@ function ArtworkDetail() {
         {reviewList && <ReviewList data={reviewList} />}
       </A.Wrapper>
 
-        {Number(userId) === productInfo.authorId ? 
-          <A.BottomWrapper>
-            <CompleteBtn />
-          </A.BottomWrapper> : 
-          <A.BottomWrapper>
-            <A.FavoriteBtn>
+      {userId === productInfo.authorId ? (
+        <A.BottomWrapper>
+          <CompleteBtn />
+        </A.BottomWrapper>
+      ) : (
+        <A.BottomWrapper>
+          <A.FavoriteBtn>
             <Favorite favorStatus={favorite} productId={productId} />
           </A.FavoriteBtn>
           <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
