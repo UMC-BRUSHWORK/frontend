@@ -53,14 +53,13 @@ function ArtworkUpload() {
   const handleSubmit = async () => {
     if (title.length < 3 || title.length > 30) {
       setTitleError(true);
-    } else if (price <= 0 || price > 100000 || isNaN(price)) {
+    } else if (price <= 0 || price > 100000 || Number.isNaN(price)) {
       setPriceError(true);
     } else if (details.length < 10 || details.length > 500) {
       setDetailError(true);
     } else if (status && !titleError && !priceError && !detailError) {
       const token = localStorage.getItem('token');
       const hashtag = '';
-
 
       const userId = localStorage.getItem('userId');
       const nickname = localStorage.getItem('nickname');
