@@ -16,7 +16,9 @@ import Favorite from '../../../components/favorite/Favorite';
 import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
+import ReportModal from '../../../components/modal/report/ReportModal';
 import CompleteBtn from '../../../components/artwork/CompleteBtn';
+
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -55,7 +57,6 @@ function ArtworkDetail() {
       // 3. 유저 정보 불러오기
       const userRes = await getUser(res.result.authorId);
       setUserInfo(userRes.result);
-      console.log(userInfo);
 
       // 찜하기
       setFavorite(res.result.favor);
@@ -81,12 +82,6 @@ function ArtworkDetail() {
     }
   };
 
-  useEffect(() => {
-    const cursorId = null;
-    const paging = 6;
-    getProductId(productId);
-    getProducts({ cursorId, paging });
-  }, [productId]);
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
@@ -101,6 +96,13 @@ function ArtworkDetail() {
     }
   };
 
+  useEffect(() => {
+    const cursorId = null;
+    const paging = 6;
+    getProductId(productId);
+    getProducts({ cursorId, paging });
+  }, [productId]);
+
   return (
     <Wrapper>
       <Topbar />
@@ -108,7 +110,7 @@ function ArtworkDetail() {
       <A.Wrapper>
         <A.TitleWrapper>
           <A.Title>{productInfo.title}</A.Title>
-          <A.Report src={IMAGES.emergency} />
+          <ReportModal author={productInfo.authorId} />
         </A.TitleWrapper>
         <A.Artist>{productInfo.authorNickname}</A.Artist>
         <A.Description>{productInfo.description}</A.Description>
@@ -146,6 +148,7 @@ function ArtworkDetail() {
         )}
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
+
         {Number(userId) === productInfo.authorId ? 
           <A.BottomWrapper>
             <CompleteBtn />
@@ -153,10 +156,10 @@ function ArtworkDetail() {
           <A.BottomWrapper>
             <A.FavoriteBtn>
             <Favorite favorStatus={favorite} productId={productId} />
-            </A.FavoriteBtn>
-            <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
-          </A.BottomWrapper>
-        }
+          </A.FavoriteBtn>
+          <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
+        </A.BottomWrapper>
+      )}
     </Wrapper>
   );
 }
