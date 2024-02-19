@@ -8,12 +8,13 @@ const Wrapper = styled.div`
   margin-bottom: 6rem;
 `;
 
-export default function ArtWorksList() {
+export default function ArtWorksList({authorId}) {
   const [productList, setProductList] = useState([{}]);
-  const getProducts = async ({ cursorId, paging }) => {
+  const getProducts = async({ cursorId, paging, author }) => {
     try {
-      const res = await getProductList({ cursorId, paging });
+      const res = await getProductList({ cursorId, paging, author });
       setProductList(res.result.categoryData);
+      console.log(res.result.categoryData);
     } catch (error) {
       console.log(error);
     }
@@ -21,8 +22,9 @@ export default function ArtWorksList() {
 
   useEffect(() => {
     const cursorId = null;
-    const paging = 6;
-    getProducts({ cursorId, paging });
+    const paging = 1000;
+    const author = authorId;
+    getProducts({ cursorId, paging, author });
   }, []);
 
   return (

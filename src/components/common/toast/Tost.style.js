@@ -14,14 +14,16 @@ const slideUp = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 90%;
   height: 4.7rem;
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  position: absolute;
-  bottom: 80px;
+  position: fixed;
+  top: 70%;
+  left: 0%;
+  transform: translate(-50%, -50%);
   margin: 0 2rem;
 
   opacity: 0.9;

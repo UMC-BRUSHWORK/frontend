@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
 import IMAGES from '../../../assets';
@@ -7,6 +8,8 @@ import Topbar from '../../../components/common/topbar/Topbar';
 import categoryDummy from '../../../constants/categoryDummy';
 import deliveryDummy from '../../../constants/deliveryDummy';
 import { postProduct } from '../../../apis/postProduct';
+import LoginModal from '../../../components/modal/LoginModal';
+import { isLogin } from '../../../utils/isLogin';
 
 function ArtworkUpload() {
   const navigate = useNavigate();
@@ -16,41 +19,60 @@ function ArtworkUpload() {
   const [details, setDetails] = useState('');
   const [uploadImage, setUploadImage] = useState(null);
   const [status, setStatus] = useState(false);
-  const [hashtag, setHashtag] = useState('');
+  const [delivery, setDelivery] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  const [titleError, setTitleError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
+  const [detailError, setDetailError] = useState(false);
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     setImages(file);
     const imageUrl = URL.createObjectURL(file);
     setUploadImage(imageUrl);
   };
 
-  const handleHashtagClick = (selectedHashtag) => {
-    console.log(selectedHashtag);
-    setHashtag(selectedHashtag);
+  const handleCategoryClick = (selectedCategory) => {
+    if (category.includes(selectedCategory)) {
+      setCategory((prev) => prev.filter((value) => value !== selectedCategory));
+      return;
+    }
+    setCategory((prev) => [...prev, selectedCategory]);
+  };
+
+  const handleDeliveryClick = (selectedDelivery) => {
+    console.log(selectedDelivery - 1);
+    if (delivery.includes(selectedDelivery)) {
+      setDelivery((prev) => prev.filter((value) => value !== selectedDelivery));
+      return;
+    }
+    setDelivery((prev) => [...prev, selectedDelivery]);
   };
 
   const handleSubmit = async () => {
-    if (status) {
+    if (title.length < 3 || title.length > 30) {
+      setTitleError(true);
+    } else if (price <= 0 || price > 100000 || Number.isNaN(price)) {
+      setPriceError(true);
+    } else if (details.length < 10 || details.length > 500) {
+      setDetailError(true);
+    } else if (status && !titleError && !priceError && !detailError) {
       const token = localStorage.getItem('token');
+      const hashtag = '';
 
-      // dummy
-      const authorId = 1;
-      const authorNickname = 'brushwork';
-      const delivery = 0;
-      const category = '1,2,3';
-
+      const userId = localStorage.getItem('userId');
+      const nickname = localStorage.getItem('nickname');
       const formData = new FormData();
       formData.append('images', images);
       formData.append('title', title);
-      formData.append('authorId', authorId);
-      formData.append('authorNickname', authorNickname);
-      formData.append('delivery', delivery);
+      formData.append('authorId', userId);
+      formData.append('authorNickname', nickname);
+      formData.append('delivery', delivery - 1);
       formData.append('price', price);
       formData.append('details', details);
-      formData.append('hashtag', hashtag);
       formData.append('category', category);
+      formData.append('hashtag', hashtag);
 
       try {
         const res = await postProduct({ formData, token });
@@ -63,14 +85,22 @@ function ArtworkUpload() {
   };
 
   useEffect(() => {
-    if (uploadImage && title && price && details) {
+    if (
+      uploadImage &&
+      title &&
+      price &&
+      details.length >= 10 &&
+      details.length <= 500 &&
+      category.length > 0 &&
+      delivery.length > 0
+    ) {
       setStatus(true);
     } else {
       setStatus(false);
     }
-  }, [title, price, details, uploadImage]);
+  }, [title, price, details, uploadImage, category, delivery]);
 
-  return (
+  return isLogin() ? (
     <>
       <Topbar />
       <U.Wrapper>
@@ -79,20 +109,22 @@ function ArtworkUpload() {
           <U.Photo src={IMAGES.photo} />
           {uploadImage && <U.UploadImage src={uploadImage} />}
         </U.UploadWrapper>
-        <U.SectionTitle>작품 제목</U.SectionTitle>
+        <U.SectionTitle isError={titleError}>작품 제목</U.SectionTitle>
         <U.InputText
           placeholder="최소 3자 ~ 최대 30자"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <U.BottomLine active={title !== ''} />
+        <U.BottomLine active={title !== ''} isError={titleError} />
         <CategoryList
           data={categoryDummy}
           title="카테고리"
-          onHashtagClick={handleHashtagClick}
+          selectedItems={category}
+          onClick={handleCategoryClick}
         />
         <U.SectionTitle>작품 가격</U.SectionTitle>
         <U.InputText
+          type="number"
           placeholder="￦"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -101,10 +133,13 @@ function ArtworkUpload() {
         <CategoryList
           data={deliveryDummy}
           title="배송 방식"
+          selectedItems={delivery}
           style={{ marginBottom: '2rem' }}
+          onClick={handleDeliveryClick}
         />
-        <U.SectionTitle>상세 설명</U.SectionTitle>
+        <U.SectionTitle isError={detailError}>상세 설명</U.SectionTitle>
         <U.Description
+          isError={detailError}
           placeholder="최소 10자 ~ 최대 500자"
           value={details}
           onChange={(e) => setDetails(e.target.value)}
@@ -114,6 +149,8 @@ function ArtworkUpload() {
         작성 완료
       </U.WriteCompleteBtn>
     </>
+  ) : (
+    <LoginModal />
   );
 }
 

@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Category from './Category';
 import * as C from './Category.style';
 
-function CategoryList({ data, title, onHashtagClick }) {
-  const [selectedHashtag, setSelectedHashtag] = useState('');
-
-  const handleHashtagClick = (hashtag) => {
-    setSelectedHashtag(hashtag);
-    if (onHashtagClick) {
-      onHashtagClick(hashtag);
-    }
-  };
-
+function CategoryList({ data, title, selectedItems, onClick }) {
   return (
     <>
       <C.Title>{title}</C.Title>
@@ -23,8 +14,8 @@ function CategoryList({ data, title, onHashtagClick }) {
               <Category
                 key={item.id}
                 chipName={item.label}
-                onClick={() => handleHashtagClick(item.label)}
-                isSelected={selectedHashtag === item.label}
+                onClick={() => onClick(item.id)}
+                isSelected={selectedItems.includes(item.id)}
               />
             ))}
       </C.ChipTop>
@@ -36,8 +27,8 @@ function CategoryList({ data, title, onHashtagClick }) {
               <Category
                 key={item.id}
                 chipName={item.label}
-                onClick={() => handleHashtagClick(item.label)}
-                isSelected={selectedHashtag === item.label}
+                onClick={() => onClick(item.id)}
+                isSelected={selectedItems.includes(item.id)}
               />
             ))}
       </C.ChipBottom>

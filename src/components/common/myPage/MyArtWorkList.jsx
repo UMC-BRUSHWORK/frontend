@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import ArtWork from '../artwork/ArtWork';
 
 export default function MyArtWorkList({ data }) {
-  console.log(data);
   return (
     <Wrapper>
       {data.map((item) => (
         <ArtWork
+          key={item.productId}
           image={item.image}
           title={item.title}
           authorNickname={item.authorNickname}

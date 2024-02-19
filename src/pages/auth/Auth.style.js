@@ -67,6 +67,7 @@ export const Button = styled.button`
   color: ${color.white};
   ${() => font.medium_17};
   margin-bottom: 1.6rem;
+  cursor: pointer;
 `;
 export const Txt = styled.div`
   text-align: center;

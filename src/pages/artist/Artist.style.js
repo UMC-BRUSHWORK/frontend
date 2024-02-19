@@ -16,7 +16,7 @@ export const Button = styled.button`
   color: ${(props) => (props.selected ? color.primary_dark : color.grey)};
   ${() => font.medium_17}
 
-  border-bottom: ${(props) => (props.selected ? ' 0.2rem' : '0.1rem')} solid
+  border-bottom: ${(props) => (props.selected ? ' 0.3rem' : '0.1rem')} solid
     ${(props) => (props.selected ? color.primary_dark : color.grey)};
   ${() => font.medium_17};
   width: 50%;

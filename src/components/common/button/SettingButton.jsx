@@ -3,7 +3,7 @@ import * as S from './SettingButton.style';
 import IMAGES from '../../../assets';
 import ModifyProfile from '../../modal/ModifyProfile';
 
-function SettingButton() {
+function SettingButton({ userData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -20,7 +20,7 @@ function SettingButton() {
         <S.SettingButtonImg src={IMAGES.settings} alt="setting-button-image" />
       </S.StyledSettingButton>
       {isModalOpen && (
-        <ModifyProfile onSave={closeModal} onClose={closeModal} />
+        <ModifyProfile userData={userData} onClose={closeModal} />
       )}
     </>
   );

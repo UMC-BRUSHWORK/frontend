@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useRecoilState } from 'recoil';
-import { loginState } from '../../recoil/atom';
+import { useInView } from 'react-intersection-observer';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Favorites.style';
-import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
-import { getProductList } from '../../apis/getProductList';
 import LoginModal from '../../components/modal/LoginModal';
+import { isLogin } from '../../utils/isLogin';
+import { getFavorite } from '../../apis/getFavorite';
+import FavorArtworkList from '../../components/common/artworkList/FavorList';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -16,30 +16,44 @@ const Wrapper = styled.div`
 `;
 
 export default function Favorites() {
-  const [isLogin] = useRecoilState(loginState);
   const [productList, setProductList] = useState([{}]);
+  const [ref, inView] = useInView();
+  const [cursor, setCursor] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const getProducts = async ({ cursorId, paging }) => {
-    try {
-      const res = await getProductList({ cursorId, paging });
-      setProductList(res.result.categoryData);
-    } catch (error) {
-      console.log(error);
-    }
+  const getFavoriteList = async (userId, token, cursorId, paging) => {
+    const { result } = await getFavorite({ userId, token, cursorId, paging });
+    setProductList(prevData => [...prevData, ...result.userLikeList]);
+    setCursor(result.cursorId);
+    setLoading(false);
   };
 
   useEffect(() => {
-    const cursorId = null;
-    const paging = 6;
-    getProducts({ cursorId, paging });
-  }, []);
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    const cursorId = cursor;
+    const paging = 10;
 
-  return isLogin ? (
+
+    if (loading !== true && inView){
+      setLoading(true);
+      getFavoriteList(userId, token, cursorId, paging);
+    }
+  }, [inView]);
+
+  return isLogin() ? (
     <>
       <Header />
       <Wrapper>
         <S.Text>찜한 작품</S.Text>
-        <ColumnArtworkList data={productList} />
+        {productList.length === 0 ? (
+          '아직 찜한 작품이 존재하지 않습니다!'
+        ) : (
+          <>
+            <FavorArtworkList data={productList} />
+            <div ref={ref} style={{ width: '1px' }} />
+          </>
+        )}
       </Wrapper>
       <BottomNav />
     </>

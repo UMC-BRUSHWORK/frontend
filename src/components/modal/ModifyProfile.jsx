@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
 import * as M from './ModifyProfile.style';
 import IMAGES from '../../assets';
+import { patchUserInfo } from '../../apis/patchUserInfo';
 
-function ModifyProfile({ onSave, onClose }) {
-  const [nickname, setNickname] = useState('');
-  const [introduction, setIntroduction] = useState('');
+function ModifyProfile({ userData, onClose }) {
+  const [userNickname, setNickname] = useState('');
+  const [userIntroduce, setIntroduction] = useState('');
+
+  const patchUser = async ({ newProfileData }) => {
+    const res = await patchUserInfo({ newProfileData });
+    localStorage.setItem('introduce', res.result.userIntroduce);
+    window.location.reload();
+  };
 
   const handleSave = () => {
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     const newProfileData = {
-      nickname,
-      introduction,
+      token,
+      userId,
+      userNickname,
+      userIntroduce,
     };
-    onSave(newProfileData);
+
+    patchUser({ newProfileData });
   };
+
+  const placeholder =
+    userData.introduce === ''
+      ? '소개글을 자유롭게 작성해주세요. (최대 300자)'
+      : userData.introduce;
 
   return (
     <>
@@ -25,14 +42,14 @@ function ModifyProfile({ onSave, onClose }) {
         </M.ProfileContainer>
 
         <M.Nickname
-          placeholder="내 닉네임"
-          value={nickname}
+          placeholder={userData.nickname}
+          value={userNickname}
           onChange={(e) => setNickname(e.target.value)}
         />
         <M.Separator />
         <M.Introduction
-          placeholder="소개글을 자유롭게 작성해주세요. (최대 300자)"
-          value={introduction}
+          placeholder={placeholder}
+          value={userIntroduce}
           onChange={(e) => setIntroduction(e.target.value)}
         />
 

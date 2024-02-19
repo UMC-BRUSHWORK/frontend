@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  position: sticky;
+  position: fixed;
 `;
 
 export const TitleWrapper = styled.div`
@@ -113,6 +113,18 @@ export const Margin = styled.div`
   margin-bottom: 2.4rem;
 `;
 
+export const ProfileWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const RightButton = styled.img`
+  width: 4rem;
+  height: 4rem;
+`;
+
 export const Text = styled.div`
   ${font.medium_14};
   margin-bottom: 1rem;
@@ -157,6 +169,7 @@ export const AskBtn = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 `;
 
 export const CompleteBtn = styled.div`

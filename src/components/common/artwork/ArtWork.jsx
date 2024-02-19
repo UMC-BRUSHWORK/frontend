@@ -11,6 +11,7 @@ export default function ArtWork({
   favorStatus,
   direction = 'row',
   size = '12rem',
+  hideFavorite = false,
 }) {
   const url = `/product/${productId}`;
 
@@ -26,7 +27,9 @@ export default function ArtWork({
       </Link>
       <S.InfoWrapper>
         <S.ArtName>{title}</S.ArtName>
-        <Favorite favorStatus={favorStatus} productId={productId} />
+        {!hideFavorite && (
+          <Favorite favorStatus={favorStatus} productId={productId} />
+        )}
       </S.InfoWrapper>
       <S.Artist>{authorNickname}</S.Artist>
     </S.Wrapper>
