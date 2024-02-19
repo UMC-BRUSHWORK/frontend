@@ -38,7 +38,6 @@ export default function Messages({
           let displayDate = false;
           let today = null;
           let displayProfile = false;
-
           const isDate = new Date(data.date);
 
           if (index !== allData.length - 1) {
@@ -108,6 +107,7 @@ export default function Messages({
                   buyerProfile={buyerProfile}
                   sellerProfile={sellerProfile}
                   profile={displayProfile}
+                  isRead={data.isRead}
                 />
               )}
             </div>

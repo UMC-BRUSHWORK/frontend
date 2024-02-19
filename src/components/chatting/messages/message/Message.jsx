@@ -9,9 +9,11 @@ export default function Message({
   profile,
   buyerProfile,
   sellerProfile,
+  isRead,
 }) {
   const userId = localStorage.getItem('userId');
   let imgSrc = sellerProfile;
+  const read = !!isRead;
 
   let isSentByCurrentUser = false;
 
@@ -19,10 +21,12 @@ export default function Message({
     isSentByCurrentUser = true;
     imgSrc = buyerProfile;
   }
+
   return (
     <div>
       {isSentByCurrentUser ? (
         <M.MessageWrapper right>
+          <M.Read visible={!isRead}>1</M.Read>
           <M.Time right>{time}</M.Time>
           <M.MessageBox right>
             {ReactEmoji.emojify(message.message)}
@@ -33,6 +37,7 @@ export default function Message({
           <M.ProfileImage visible={profile} src={imgSrc} />
           <M.MessageBox>{ReactEmoji.emojify(message.message)}</M.MessageBox>
           <M.Time>{time}</M.Time>
+          <M.Read visible={!read}>1</M.Read>
         </M.MessageWrapper>
       )}
       <M.Date>{today}</M.Date>

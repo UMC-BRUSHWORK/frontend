@@ -21,7 +21,7 @@ export default function Chatting() {
   const [chatLogData, setChatLogData] = useState([]);
   const [receiverId, setReceiverId] = useState(null);
   const [page, setPage] = useState(25);
-  const [readRes, setReadRes] = useState('');
+  // const [readRes, setReadRes] = useState('');
 
   const [ref, inView] = useInView();
 
@@ -76,11 +76,12 @@ export default function Chatting() {
   }, []);
 
   // 메세지 읽기
-  useEffect(() => {
-    socket.on('read-message', (res) => {
-      setReadRes(res);
-    });
-  }, []);
+  // useEffect(() => {
+  //   socket.on('read-message', (res) => {
+  //     setReadRes(res);
+  //   });
+  // }, []);
+  // console.log(readRes);
 
   // 채팅 전송
   const sendMessage = (event) => {

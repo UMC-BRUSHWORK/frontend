@@ -5,6 +5,18 @@ export const MessageWrapper = styled.div`
   align-items: end;
   justify-content: ${(props) => (props.right ? `flex-end` : `flex-start`)};
 `;
+export const Read = styled.div`
+  font-family: Pretendard;
+  font-size: 1rem;
+  margin-bottom: 0.1rem;
+  opacity: 0;
+
+  ${(props) =>
+    props.visible &&
+    css`
+      opacity: 1;
+    `}
+`;
 
 export const Time = styled.div`
   font-family: Pretendard;
