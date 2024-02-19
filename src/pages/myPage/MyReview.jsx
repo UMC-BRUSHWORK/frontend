@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PurchasedBar from '../../components/common/bar/PurchasedBar';
-import PurchasedTopbar from '../../components/common/topbar/PurchasedTopbar';
 import WrittenReview from '../../components/common/myPage/WrittenReview';
 import writtenReviewDummy from '../../constants/writtenReviewDummy';
 import font from '../../styles/font';
@@ -24,8 +22,6 @@ export default function MyReview() {
 
   return (
     <>
-      <PurchasedTopbar />
-      <PurchasedBar />
       <ReviewLength>
         {`${numberofReviews}`}
         <ReviewText>개의 후기</ReviewText>

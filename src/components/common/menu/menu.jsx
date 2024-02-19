@@ -16,11 +16,11 @@ function Menu() {
   const navigate = useNavigate();
 
   const handleMoveToPurchased = () => {
-    navigate('/purchased');
+    navigate('/my-history');
   };
 
   const handleMoveToMyReview = () => {
-    navigate('/myReview');
+    navigate('/my-history');
   };
 
   const handleMoveToSettings = () => {

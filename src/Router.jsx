@@ -16,6 +16,7 @@ import WriteReviewPage from './pages/myPage/WriteReviewPage';
 import ImageList from './pages/ImageList';
 import ChattingList from './pages/chatting/ChattingList';
 import Chatting from './pages/chatting/Chatting';
+import MyHistory from './pages/myPage/MyHistory';
 
 export default function Router() {
   return (
@@ -33,6 +34,7 @@ export default function Router() {
         <Route path="/my-review" element={<MyReview />} />
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />
+        <Route path="/my-history" element={<MyHistory />} />
         <Route path="/write-review" element={<WriteReviewPage />} />
         <Route path="/chatting-list" element={<ChattingList />} />
         <Route path="/chatting-list/chatting" element={<Chatting />} />
