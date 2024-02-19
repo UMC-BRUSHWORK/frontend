@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Main.style';
@@ -18,22 +19,31 @@ const Wrapper = styled.div`
 
 export default function Main() {
   const [productList, setProductList] = useState([{}]);
+  const [ref, inView] = useInView();
+  const [cursor, setCursor] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
-      setProductList(res.result.categoryData);
+      setProductList(prevData => [...prevData, ...res.result.categoryData]);
+      setCursor(res.result.cursorId);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    const cursorId = null;
-    const paging = 18;
+    const cursorId = cursor;
+    const paging = 10;
 
-    getProducts({ cursorId, paging });
-  }, []);
+    if (loading !== true && inView){
+      setLoading(true);
+      getProducts({ cursorId, paging });
+    }
+  }, [inView]);
 
   return (
     <>
@@ -50,6 +60,7 @@ export default function Main() {
         <S.Line />
         <S.Text>새로운 작품</S.Text>
         <ColumnArtworkList data={productList} />
+        <div ref={ref} style={{ width: '1px' }} />
       </Wrapper>
       <BottomNav />
     </>
