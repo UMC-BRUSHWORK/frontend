@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import * as S from './Favorite.style';
 import IMAGES from '../../assets';
-import userDummy from '../../constants/userDummy';
 import { postFavorite } from '../../apis/postFavorite';
 
 export default function Favorite({ favorStatus, productId }) {
@@ -18,7 +17,8 @@ export default function Favorite({ favorStatus, productId }) {
 
   const handleClick = () => {
     setFavorite(!favorite);
-    const { userId, token } = userDummy;
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
     postFav({ token, userId, productId });
   };
 

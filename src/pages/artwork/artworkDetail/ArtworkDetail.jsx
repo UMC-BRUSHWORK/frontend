@@ -17,6 +17,8 @@ import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
 import ReportModal from '../../../components/modal/report/ReportModal';
+import CompleteBtn from '../../../components/artwork/CompleteBtn';
+
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -62,6 +64,7 @@ function ArtworkDetail() {
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);
       setCategory(values);
+
       return res;
     } catch (error) {
       console.log(error);
@@ -145,13 +148,13 @@ function ArtworkDetail() {
         )}
         <ReviewList data={reviewDummy} />
       </A.Wrapper>
-      {Number(userId) === productInfo.authorId ? (
-        <A.BottomWrapper>
-          <A.CompleteBtn>판매완료</A.CompleteBtn>
-        </A.BottomWrapper>
-      ) : (
-        <A.BottomWrapper>
-          <A.FavoriteBtn>
+
+        {Number(userId) === productInfo.authorId ? 
+          <A.BottomWrapper>
+            <CompleteBtn />
+          </A.BottomWrapper> : 
+          <A.BottomWrapper>
+            <A.FavoriteBtn>
             <Favorite favorStatus={favorite} productId={productId} />
           </A.FavoriteBtn>
           <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>

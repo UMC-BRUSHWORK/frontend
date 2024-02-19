@@ -37,30 +37,35 @@ export default function ChatList() {
   };
 
   return (
-    <>
+    <C.Scroll>
       {chatListData.map((data, index) => (
         <C.Wrapper key={index} onClick={() => joinChat(data.roomId)}>
-          <C.ProfileImg
-            src={
-              Number(userId) === data.buyerId
-                ? data.sellerProfile
-                : data.buyerProfile
-            }
-          />
-          <C.MessageWrapper>
-            <C.Content>
-              <C.Name>
-                {Number(userId) === data.buyerId
-                  ? data.sellerNickname
-                  : data.buyerNickname}
-              </C.Name>
-              <C.Time>{dateFormat(data.latestMsgDate)}</C.Time>
-            </C.Content>
-            <C.LastMessage>{data.latestMsg}</C.LastMessage>
-          </C.MessageWrapper>
+          <C.ContentWrapper>
+            <C.ProfileImg
+              src={
+                Number(userId) === data.buyerId
+                  ? data.sellerProfile
+                  : data.buyerProfile
+              }
+            />
+            <C.MessageWrapper>
+              <C.Content>
+                <C.Name>
+                  {Number(userId) === data.buyerId
+                    ? data.sellerNickname
+                    : data.buyerNickname}
+                </C.Name>
+                <C.Time>{dateFormat(data.latestMsgDate)}</C.Time>
+              </C.Content>
+              <C.LastMessage>{data.latestMsg}</C.LastMessage>
+            </C.MessageWrapper>
+          </C.ContentWrapper>
+          <C.NotReadMsg $visible={(data.notReadCount > 0).toString()}>
+            {data.notReadCount}
+          </C.NotReadMsg>
         </C.Wrapper>
       ))}
       <div ref={ref} style={{ width: '1px' }} />
-    </>
+    </C.Scroll>
   );
 }
