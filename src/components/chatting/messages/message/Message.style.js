@@ -5,12 +5,14 @@ export const MessageWrapper = styled.div`
   align-items: end;
   justify-content: ${(props) => (props.right ? `flex-end` : `flex-start`)};
 `;
+
 export const Time = styled.div`
   font-family: Pretendard;
   font-size: 1rem;
   font-weight: 400;
   color: var(--Grayscale-88, #888);
-  margin: 0.1rem;
+  margin: ${(props) =>
+    props.right ? `0 0 0.1rem 0.3rem` : `0 0.3rem 0.1rem 0`};
 `;
 export const MessageBox = styled.div`
   max-width: 80%;

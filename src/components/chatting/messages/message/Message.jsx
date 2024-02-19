@@ -23,7 +23,7 @@ export default function Message({
     <div>
       {isSentByCurrentUser ? (
         <M.MessageWrapper right>
-          <M.Time>{time}</M.Time>
+          <M.Time right>{time}</M.Time>
           <M.MessageBox right>
             {ReactEmoji.emojify(message.message)}
           </M.MessageBox>

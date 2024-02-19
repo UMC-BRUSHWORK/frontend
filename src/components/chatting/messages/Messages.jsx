@@ -6,8 +6,15 @@ import Message from './message/Message';
 import { dateFormat } from '../../../utils/dateFormatter';
 
 const ScrollToBottom = styled(BasicScrollToBottom)`
-  overflow: auto;
+  overflow-y: auto;
   flex: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -19,10 +26,9 @@ export default function Messages({
   log,
   buyerProfile,
   sellerProfile,
-  children
+  children,
 }) {
   const allData = [...messages.filter((_, index) => index % 2 === 0), ...log];
-
   return (
     <ScrollToBottom>
       {children}
@@ -34,15 +40,11 @@ export default function Messages({
           let displayProfile = false;
 
           const isDate = new Date(data.date);
-          
+
           if (index !== allData.length - 1) {
             const nextSender = allData[index + 1].senderId;
             const nextDate = new Date(allData[index + 1].date);
 
-            console.log(index, isDate, nextDate);
-            console.log(isDate.getFullYear(), nextDate.getFullYear());
-            console.log(isDate.getMonth(), nextDate.getMonth());
-            console.log(isDate.getDate(), nextDate.getDate());
             if (
               isDate.getFullYear() !== nextDate.getFullYear() ||
               isDate.getMonth() !== nextDate.getMonth() ||
@@ -78,7 +80,6 @@ export default function Messages({
               today = `${nextDate.getFullYear()}년 ${nextDate.getMonth() + 1}월 ${nextDate.getDate()}일 ${day}요일`;
             }
             if (!displayDate) today = null;
-            console.log(today);
 
             if (index !== 0) {
               const prevSender = allData[index - 1].senderId;
@@ -91,7 +92,6 @@ export default function Messages({
               )
                 displayProfile = true;
             } else displayProfile = true;
-            console.log(displayProfile);
 
             const nextTimeValue = dateFormat(allData[index + 1].date);
             if (nextSender === data.senderId) {
