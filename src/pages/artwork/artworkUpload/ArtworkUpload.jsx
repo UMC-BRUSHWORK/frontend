@@ -22,6 +22,10 @@ function ArtworkUpload() {
   const [delivery, setDelivery] = useState([]);
   const [category, setCategory] = useState([]);
 
+  const [titleError, setTitleError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
+  const [detailError, setDetailError] = useState(false);
+
   const onChangeImage = (e) => {
     const file = e.target.files[0];
     setImages(file);
@@ -47,14 +51,19 @@ function ArtworkUpload() {
   };
 
   const handleSubmit = async () => {
-    if (status) {
+    if (title.length < 3 || title.length > 30) {
+      setTitleError(true);
+    } else if (price <= 0 || price > 100000 || isNaN(price)) {
+      setPriceError(true);
+    } else if (details.length < 10 || details.length > 500) {
+      setDetailError(true);
+    } else if (status && !titleError && !priceError && !detailError) {
       const token = localStorage.getItem('token');
-
       const hashtag = '';
+
 
       const userId = localStorage.getItem('userId');
       const nickname = localStorage.getItem('nickname');
-
       const formData = new FormData();
       formData.append('images', images);
       formData.append('title', title);
@@ -77,12 +86,20 @@ function ArtworkUpload() {
   };
 
   useEffect(() => {
-    if (uploadImage && title && price && details) {
+    if (
+      uploadImage &&
+      title &&
+      price &&
+      details.length >= 10 &&
+      details.length <= 500 &&
+      category.length > 0 &&
+      delivery.length > 0
+    ) {
       setStatus(true);
     } else {
       setStatus(false);
     }
-  }, [title, price, details, uploadImage, category]);
+  }, [title, price, details, uploadImage, category, delivery]);
 
   return isLogin() ? (
     <>
@@ -93,13 +110,13 @@ function ArtworkUpload() {
           <U.Photo src={IMAGES.photo} />
           {uploadImage && <U.UploadImage src={uploadImage} />}
         </U.UploadWrapper>
-        <U.SectionTitle>작품 제목</U.SectionTitle>
+        <U.SectionTitle isError={titleError}>작품 제목</U.SectionTitle>
         <U.InputText
           placeholder="최소 3자 ~ 최대 30자"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <U.BottomLine active={title !== ''} />
+        <U.BottomLine active={title !== ''} isError={titleError} />
         <CategoryList
           data={categoryDummy}
           title="카테고리"
@@ -108,6 +125,7 @@ function ArtworkUpload() {
         />
         <U.SectionTitle>작품 가격</U.SectionTitle>
         <U.InputText
+          type="number"
           placeholder="￦"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -120,8 +138,9 @@ function ArtworkUpload() {
           style={{ marginBottom: '2rem' }}
           onClick={handleDeliveryClick}
         />
-        <U.SectionTitle>상세 설명</U.SectionTitle>
+        <U.SectionTitle isError={detailError}>상세 설명</U.SectionTitle>
         <U.Description
+          isError={detailError}
           placeholder="최소 10자 ~ 최대 500자"
           value={details}
           onChange={(e) => setDetails(e.target.value)}
