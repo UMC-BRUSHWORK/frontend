@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import * as U from './ArtworkUpload.style';
 import CategoryList from '../../../components/common/category/CategoryList';
 import IMAGES from '../../../assets';
@@ -84,6 +83,11 @@ function ArtworkUpload() {
     }
   };
 
+  const fileInput = React.useRef(null);
+  const handleButtonClick = () => {
+    fileInput.current.click();
+  };
+
   useEffect(() => {
     if (
       uploadImage &&
@@ -105,8 +109,14 @@ function ArtworkUpload() {
       <Topbar />
       <U.Wrapper>
         <U.UploadWrapper>
-          <U.Image type="file" accept="image/*" onChange={onChangeImage} />
-          <U.Photo src={IMAGES.photo} />
+          <U.Image
+            type="file"
+            accept="image/*"
+            onChange={onChangeImage}
+            ref={fileInput}
+            style={{ display: 'none' }}
+          />
+          <U.Photo src={IMAGES.photo} onClick={() => handleButtonClick()} />
           {uploadImage && <U.UploadImage src={uploadImage} />}
         </U.UploadWrapper>
         <U.SectionTitle isError={titleError}>작품 제목</U.SectionTitle>

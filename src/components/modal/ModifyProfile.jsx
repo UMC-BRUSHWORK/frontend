@@ -4,6 +4,8 @@ import IMAGES from '../../assets';
 import { patchUserInfo } from '../../apis/patchUserInfo';
 
 function ModifyProfile({ userData, onClose }) {
+  const [images, setImages] = useState();
+  const [uploadImage, setUploadImage] = useState(userData.profile);
   const [userNickname, setNickname] = useState('');
   const [userIntroduce, setIntroduction] = useState('');
 
@@ -11,6 +13,13 @@ function ModifyProfile({ userData, onClose }) {
     const res = await patchUserInfo({ newProfileData });
     localStorage.setItem('introduce', res.result.userIntroduce);
     window.location.reload();
+  };
+
+  const onChangeImage = (e) => {
+    const file = e.target.files[0];
+    setImages(file);
+    const imageUrl = URL.createObjectURL(file);
+    setUploadImage(imageUrl);
   };
 
   const handleSave = () => {
@@ -23,6 +32,11 @@ function ModifyProfile({ userData, onClose }) {
       userIntroduce,
     };
 
+    const formData = new FormData();
+    formData.append('images', images);
+    formData.append('userNickname', userNickname);
+    formData.append('userIntroduce', userIntroduce);
+
     patchUser({ newProfileData });
   };
 
@@ -31,14 +45,29 @@ function ModifyProfile({ userData, onClose }) {
       ? '소개글을 자유롭게 작성해주세요. (최대 300자)'
       : userData.introduce;
 
+  const fileInput = React.useRef(null);
+  const handleButtonClick = () => {
+    fileInput.current.click();
+  };
+
   return (
     <>
       <M.ModalBackground />
       <M.ModalWrapper>
         <M.ProfileContainer>
-          <M.ProfileImage src={IMAGES.profile} />
+          <M.ProfileImage src={uploadImage} />
           <M.CameraBackground />
-          <M.CameraIcon src={IMAGES.photo} />
+          <M.CameraIcon
+            src={IMAGES.photo}
+            onClick={() => handleButtonClick()}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={onChangeImage}
+            ref={fileInput}
+            style={{ display: 'none' }}
+          />
         </M.ProfileContainer>
 
         <M.Nickname
