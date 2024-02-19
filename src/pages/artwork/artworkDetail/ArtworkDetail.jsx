@@ -16,6 +16,7 @@ import Favorite from '../../../components/favorite/Favorite';
 import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
+import CompleteBtn from '../../../components/artwork/CompleteBtn';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -62,6 +63,7 @@ function ArtworkDetail() {
 
       const values = res.result.category.map((obj) => Object.values(obj)[0]);
       setCategory(values);
+
       return res;
     } catch (error) {
       console.log(error);
@@ -146,7 +148,7 @@ function ArtworkDetail() {
       </A.Wrapper>
         {Number(userId) === productInfo.authorId ? 
           <A.BottomWrapper>
-            <A.CompleteBtn>판매완료</A.CompleteBtn>
+            <CompleteBtn />
           </A.BottomWrapper> : 
           <A.BottomWrapper>
             <A.FavoriteBtn>
