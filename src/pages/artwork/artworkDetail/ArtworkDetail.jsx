@@ -16,6 +16,7 @@ import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
 import { getArtistReviewList } from '../../../apis/getArtistReviewList';
+import ReportModal from '../../../components/modal/report/ReportModal';
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
@@ -111,6 +112,13 @@ function ArtworkDetail() {
     }
   };
 
+  useEffect(() => {
+    const cursorId = null;
+    const paging = 6;
+    getProductId(productId);
+    getProducts({ cursorId, paging });
+  }, [productId]);
+
   return (
     <Wrapper>
       <Topbar />
@@ -118,7 +126,7 @@ function ArtworkDetail() {
       <A.Wrapper>
         <A.TitleWrapper>
           <A.Title>{productInfo.title}</A.Title>
-          <A.Report src={IMAGES.emergency} />
+          <ReportModal author={productInfo.authorId} />
         </A.TitleWrapper>
         <A.Artist>{productInfo.authorNickname}</A.Artist>
         <A.Description>{productInfo.description}</A.Description>
@@ -156,6 +164,7 @@ function ArtworkDetail() {
         )}
         {reviewList && <ReviewList data={reviewList} />}
       </A.Wrapper>
+
         {Number(userId) === productInfo.authorId ? 
           <A.BottomWrapper>
             <CompleteBtn />
@@ -163,10 +172,10 @@ function ArtworkDetail() {
           <A.BottomWrapper>
             <A.FavoriteBtn>
             <Favorite favorStatus={favorite} productId={productId} />
-            </A.FavoriteBtn>
-            <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
-          </A.BottomWrapper>
-        }
+          </A.FavoriteBtn>
+          <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
+        </A.BottomWrapper>
+      )}
     </Wrapper>
   );
 }
