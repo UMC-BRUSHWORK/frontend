@@ -1,13 +1,6 @@
-import { GET } from "./api2";
-import { getChatBuyer } from "./getChatBuyer";
+import { GET } from './api';
 
-export const getChatBuyerList = async ({productId}) => {
-    let url = getChatBuyer;
-
-    if (productId !== null) {
-        url += `?productId=${productId}`;
-    }
-
-    const { data } = await GET(url);
+export const getChatBuyerList = async ({ AID, PID }) => {
+    const { data } = await GET(`/chat/product-list/${AID}?productId=${PID}`)
     return data;
 }

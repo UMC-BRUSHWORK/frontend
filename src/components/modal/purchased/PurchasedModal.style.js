@@ -16,7 +16,8 @@ export const ModalBackground = styled.div`
 
 export const Wrapper = styled.div`
     width: 328px;
-    height: 265px;
+    max-height: 265px;
+    overflow-y: auto;
     flex-shrink: 0;
     border-radius: 6px;
     background: #FFF;
@@ -41,12 +42,22 @@ export const Divider = styled.div`
     margin-bottom: 1.6rem;
     align-self: center;
 `
+
+export const NoChat = styled.div`
+    display: flex;
+    justify-content: center;
+    ${() => font.medium_13}
+    position: sticky;
+    top: 40%;
+`
 export const BtnWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 1.2rem;
     margin-top: 1.4rem;
+    position: sticky;
+    top: 82%;
 `
 export const CancelBtn = styled.div`
     width: 13.4rem;
