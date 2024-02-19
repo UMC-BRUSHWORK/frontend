@@ -35,7 +35,7 @@ export default function Router() {
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/purchased" element={<Purchased />} />
         <Route path="/my-history" element={<MyHistory />} />
-        <Route path="/write-review" element={<WriteReviewPage />} />
+        <Route path="/write-review/:productId" element={<WriteReviewPage />} />
         <Route path="/chatting-list" element={<ChattingList />} />
         <Route path="/chatting-list/chatting" element={<Chatting />} />
 

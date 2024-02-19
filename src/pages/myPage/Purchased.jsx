@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import PurchasedArtWorkInfo from '../../components/common/artwork/PurchasedArtWorkInfo';
-import IMAGES from '../../assets';
 import { getPurchasedList } from '../../apis/getPurchasedList';
 import font from '../../styles/font';
 import color from '../../styles/color';
+import PurchasedList from '../../components/common/artwork/PurchasedArtWorkInfo';
 
 const EmptyWrapper = styled.div`
   display: flex;
@@ -28,17 +27,10 @@ const Button = styled.div`
 
 export default function Purchased() {
   const [purchasedList, setPurchasedList] = useState();
-  const artworkData = {
-    img: IMAGES.artWork6,
-    name: '작품 이름',
-    artist: '작가명',
-    price: 100000,
-  };
 
   const getPurchased = async (props) => {
     const { result } = await getPurchasedList(props);
     setPurchasedList(result.historyList);
-    console.log(result.historyList);
   };
 
   useEffect(() => {
@@ -60,12 +52,7 @@ export default function Purchased() {
           </Link>
         </EmptyWrapper>
       ) : (
-        <PurchasedArtWorkInfo
-          img={artworkData.img}
-          name={artworkData.name}
-          artist={artworkData.artist}
-          price={artworkData.price.toLocaleString()}
-        />
+        <PurchasedList props={purchasedList} />
       )}
     </div>
   );

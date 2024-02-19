@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import WrittenReview from '../../components/common/myPage/WrittenReview';
 import writtenReviewDummy from '../../constants/writtenReviewDummy';
 import font from '../../styles/font';
 import color from '../../styles/color';
+import { getMyReviewList } from '../../apis/getMyReviewList';
 
 const ReviewLength = styled.div`
   display: flex;
@@ -18,7 +19,21 @@ const ReviewText = styled.div`
 `;
 
 export default function MyReview() {
+  const [reviewList, setReviewList] = useState();
   const numberofReviews = writtenReviewDummy.length;
+
+  const getMyReview = async (userId, token) => {
+    const { result } = await getMyReviewList(userId, token);
+    console.log(result);
+    setReviewList(result.reviewListData);
+    console.log(reviewList);
+  };
+
+  useEffect(() => {
+    const userId = parseInt(localStorage.getItem('userId'), 10);
+    const token = localStorage.getItem('token');
+    getMyReview(userId, token);
+  }, []);
 
   return (
     <>
@@ -26,9 +41,10 @@ export default function MyReview() {
         {`${numberofReviews}`}
         <ReviewText>개의 후기</ReviewText>
       </ReviewLength>
-      {writtenReviewDummy.map((reviewData) => (
-        <WrittenReview reviewData={reviewData} />
-      ))}
+      {reviewList &&
+        reviewList.map((reviewData) => (
+          <WrittenReview reviewData={reviewData} />
+        ))}
     </>
   );
 }

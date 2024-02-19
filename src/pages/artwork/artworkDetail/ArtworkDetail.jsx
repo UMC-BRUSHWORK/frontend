@@ -54,7 +54,6 @@ function ArtworkDetail() {
       // 3. 유저 정보 불러오기
       const userRes = await getUser(res.result.authorId);
       setUserInfo(userRes.result);
-      console.log(userInfo);
 
       // 찜하기
       setFavorite(res.result.favor);
