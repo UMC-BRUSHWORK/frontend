@@ -8,7 +8,6 @@ import IMAGES from '../../../assets';
 import Profile from '../../../components/common/profile/Profile';
 import RowArtworkList from '../../../components/common/artworkList/RowArtWorkList';
 import ReviewList from '../../../components/artist/reviewList/ReviewList';
-import reviewDummy from '../../../constants/reviewsDummy';
 import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
 import Topbar from '../../../components/common/topbar/Topbar';
@@ -16,18 +15,18 @@ import Favorite from '../../../components/favorite/Favorite';
 import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
+import { getArtistReviewList } from '../../../apis/getArtistReviewList';
 import ReportModal from '../../../components/modal/report/ReportModal';
-import CompleteBtn from '../../../components/artwork/CompleteBtn';
-
 
 function ArtworkDetail() {
   const [productInfo, setProductInfo] = useState({});
   const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
   const [sellerId, setSellerId] = useState(null);
-  const navigate = useNavigate();
-  const userId = localStorage.getItem('userId');
   const [userInfo, setUserInfo] = useState();
+  const userId = localStorage.getItem('userId');
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   // 작품조회
   const [productList, setProductList] = useState([]);
@@ -82,6 +81,23 @@ function ArtworkDetail() {
     }
   };
 
+  // 리뷰
+  const [reviewList, setReviewList] = useState();
+
+  const getArtistReview = async (UID, userToken) => {
+    const { result } = await getArtistReviewList(UID, userToken);
+    setReviewList(result.reviewListData);
+    console.log(reviewList);
+  };
+
+  useEffect(() => {
+    const cursorId = null;
+    const paging = 6;
+    getProductId(productId);
+    getProducts({ cursorId, paging });
+
+    getArtistReview(userId, token);
+  }, [productId]);
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
@@ -146,7 +162,7 @@ function ArtworkDetail() {
             <RowArtworkList data={productList} />
           </A.Margin>
         )}
-        <ReviewList data={reviewDummy} />
+        {reviewList && <ReviewList data={reviewList} />}
       </A.Wrapper>
 
         {Number(userId) === productInfo.authorId ? 

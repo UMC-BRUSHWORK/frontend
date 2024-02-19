@@ -36,7 +36,6 @@ export default function ArtistPage() {
   const getUser = async (userId) => {
     try {
       const { result } = await getUserInfo(userId);
-      console.log(result);
 
       setImage(result.userProfile);
       setNickname(result.userNickname);
@@ -56,7 +55,9 @@ export default function ArtistPage() {
     <div>
       <Topbar />
       <Wrapper>
-        <Profile image={image} nickname={nickname} introduce={introduce} />
+        {image && nickname && introduce && (
+          <Profile image={image} nickname={nickname} introduce={introduce} />
+        )}
         <S.ButtonWrapper>
           <S.Button
             selected={selectedTab === 'artworks'}

@@ -6,8 +6,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-
-  margin-top: 3.2rem;
+  margin-top: 1.8rem;
 `;
 
 export const Button = styled.button`

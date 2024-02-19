@@ -4,9 +4,12 @@ import color from '../../../styles/color';
 
 export const ReviewContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 export const GoReviewButton = styled.button`
-  color: ${color.primary_dark};
+  color: ${(props) => (props.status === 0 ? color.primary_dark : color.black)};
   ${() => font.regular_12}
   border: none;
   cursor: pointer;
