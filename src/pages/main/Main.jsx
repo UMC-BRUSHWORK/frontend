@@ -30,7 +30,7 @@ export default function Main() {
 
   useEffect(() => {
     const cursorId = null;
-    const paging = 18;
+    const paging = 100;
 
     getProducts({ cursorId, paging });
   }, []);
