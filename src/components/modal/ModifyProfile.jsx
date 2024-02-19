@@ -23,19 +23,18 @@ function ModifyProfile({ userData, onClose }) {
   };
 
   const handleSave = () => {
+    const formData = new FormData();
+    formData.append('images', images);
+    formData.append('userNickname', userNickname);
+    formData.append('userIntroduce', userIntroduce);
+
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
     const newProfileData = {
       token,
       userId,
-      userNickname,
-      userIntroduce,
+      formData,
     };
-
-    const formData = new FormData();
-    formData.append('images', images);
-    formData.append('userNickname', userNickname);
-    formData.append('userIntroduce', userIntroduce);
 
     patchUser({ newProfileData });
   };
