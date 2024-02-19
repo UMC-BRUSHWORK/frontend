@@ -60,7 +60,7 @@ export default function ChatList() {
               <C.LastMessage>{data.latestMsg}</C.LastMessage>
             </C.MessageWrapper>
           </C.ContentWrapper>
-          <C.NotReadMsg visible={data.notReadCount > 0}>
+          <C.NotReadMsg $visible={(data.notReadCount > 0).toString()}>
             {data.notReadCount}
           </C.NotReadMsg>
         </C.Wrapper>

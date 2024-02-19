@@ -34,7 +34,6 @@ export default function Chatting() {
     });
 
     socket.emit('connect-room', { roomId: roomID }, (error) => {
-      console.log('hi');
       if (error) {
         alert(error);
       }
@@ -57,8 +56,7 @@ export default function Chatting() {
       'read-message',
       {
         roomId: Number(roomID),
-        senderId: Number(userId),
-        receiverId: Number(receiverId),
+        userId: Number(userId),
       },
       (error) => {
         if (error) {
