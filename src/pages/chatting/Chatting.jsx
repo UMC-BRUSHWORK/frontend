@@ -9,7 +9,7 @@ import Messages from '../../components/chatting/messages/Messages';
 import ChattingInput from '../../components/chatting/input/ChattingInput';
 import * as C from './Chatting.style';
 
-const ENDPOINT = 'https://dev.brushwork.shop/';
+const ENDPOINT = process.env.REACT_APP_BASE_URL;
 
 let socket;
 
@@ -21,6 +21,7 @@ export default function Chatting() {
   const [chatLogData, setChatLogData] = useState([]);
   const [receiverId, setReceiverId] = useState(null);
   const [page, setPage] = useState(25);
+  // const [readRes, setReadRes] = useState('');
 
   const [ref, inView] = useInView();
 
@@ -40,13 +41,30 @@ export default function Chatting() {
 
     socket.on('connect-info', (info) => {
       const receiver =
-        Number(userId) !== info.result.buyerId
+        Number(userId) === info.result.buyerId
           ? info.result.sellerId
           : info.result.buyerId;
       setReceiverId(receiver);
       setChattingInfo(info);
     });
   }, [ENDPOINT, window.location.search]);
+
+  useEffect(() => {
+    const { roomID } = queryString.parse(window.location.search);
+
+    socket.emit(
+      'read-message',
+      {
+        roomId: Number(roomID),
+        userId: Number(userId),
+      },
+      (error) => {
+        if (error) {
+          alert(error);
+        }
+      },
+    );
+  }, [receiverId]);
 
   // 메세지 받기
   useEffect(() => {
@@ -55,13 +73,19 @@ export default function Chatting() {
     });
   }, []);
 
+  // 메세지 읽기
+  // useEffect(() => {
+  //   socket.on('read-message', (res) => {
+  //     setReadRes(res);
+  //   });
+  // }, []);
+  // console.log(readRes);
+
   // 채팅 전송
   const sendMessage = (event) => {
     const { roomID } = queryString.parse(window.location.search);
     event.preventDefault();
-
     if (message) {
-      console.log(message);
       socket.emit(
         'send-message',
         {
@@ -100,9 +124,18 @@ export default function Chatting() {
     <C.OuterContainer>
       <C.Container>
         <InfoBar info={chattingInfo.result || {}} />
-        <Messages messages={messages} log={chatLogData}>
-          <div ref={ref} style={{ width: '1px' }} />
-        </Messages>
+        {chattingInfo.result &&
+          chattingInfo.result.buyerProfile &&
+          chattingInfo.result.sellerProfile && (
+            <Messages
+              messages={messages}
+              log={chatLogData}
+              buyerProfile={chattingInfo.result.buyerProfile}
+              sellerProfile={chattingInfo.result.sellerProfile}
+            >
+              <div ref={ref} style={{ width: '1px' }} />
+            </Messages>
+          )}
         <ChattingInput
           message={message}
           setMessage={setMessage}

@@ -97,7 +97,6 @@ function ArtworkDetail() {
 
     getArtistReview(userId, token);
   }, [productId]);
-
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
@@ -157,12 +156,17 @@ function ArtworkDetail() {
         )}
         {reviewList && <ReviewList data={reviewList} />}
       </A.Wrapper>
-      <A.BottomWrapper>
-        <A.FavoriteBtn>
-          <Favorite favorStatus={favorite} productId={productId} />
-        </A.FavoriteBtn>
-        <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
-      </A.BottomWrapper>
+        {Number(userId) === productInfo.authorId ? 
+          <A.BottomWrapper>
+            <CompleteBtn />
+          </A.BottomWrapper> : 
+          <A.BottomWrapper>
+            <A.FavoriteBtn>
+            <Favorite favorStatus={favorite} productId={productId} />
+            </A.FavoriteBtn>
+            <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
+          </A.BottomWrapper>
+        }
     </Wrapper>
   );
 }
