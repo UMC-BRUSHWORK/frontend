@@ -20,7 +20,6 @@ export default function Favorites() {
   const getFavoriteList = async (userId, token) => {
     const { result } = await getFavorite({ userId, token });
     setProductList(result.userLikeList);
-    console.log(result.userLikeList);
   };
 
   useEffect(() => {
