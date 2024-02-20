@@ -1,17 +1,17 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as S from './WriteCompleteButton.style';
 import { postReviewData } from '../../../apis/postReviewData';
 
 function WriteCompleteButton({ data, type }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const postReview = async () => {
     try {
       const token = localStorage.getItem('token');
       console.log(data);
       const { result } = await postReviewData(data, token);
       console.log(result);
-      // navigate('/');
+      navigate('/my-history');
     } catch (error) {
       console.log(error);
     }

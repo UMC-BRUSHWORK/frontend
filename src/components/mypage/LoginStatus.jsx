@@ -9,12 +9,8 @@ import PageLinkButton from '../common/button/PageLinkButton';
 import RowArtWorkList from '../common/artworkList/RowArtWorkList';
 
 export default function LogInStatus() {
-  const [productList, setProductList] = useState([{}]);
-  const [userData, setUserData] = useState({
-    // profile: null,
-    // nickname: '',
-    // introduce: null,
-  });
+  const [productList, setProductList] = useState([]);
+  const [userData, setUserData] = useState({});
 
   const getProducts = async ({ cursorId, paging, author }) => {
     try {
@@ -36,12 +32,6 @@ export default function LogInStatus() {
     const author = parseInt(localStorage.getItem('userId'), 10);
     getProducts({ cursorId, paging, author });
 
-    // setUserData((prevData) => ({
-    //   ...prevData,
-    //   nickname,
-    //   profile,
-    //   introduce,
-    // }));
     setUserData({
       nickname,
       profile,
@@ -62,7 +52,7 @@ export default function LogInStatus() {
       </L.ProfileWrapper>
       <L.Margin />
       <PageLinkButton page="내 작품" userId={userId} />
-      {productList ? (
+      {productList && productList.length !== 0 ? (
         <RowArtWorkList data={productList} />
       ) : (
         <L.Text>아직 작품이 없습니다.</L.Text>

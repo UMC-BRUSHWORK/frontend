@@ -2,6 +2,7 @@ import React from 'react';
 import ArtWork from '../artwork/ArtWork';
 
 export default function ColumnArtworkList({ data }) {
+  console.log(data);
   return (
     <div
       style={{
