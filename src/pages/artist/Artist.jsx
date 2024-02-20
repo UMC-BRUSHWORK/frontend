@@ -36,7 +36,6 @@ export default function ArtistPage() {
   const getUser = async (userId) => {
     try {
       const { result } = await getUserInfo(userId);
-      console.log(result);
 
       setImage(result.userProfile);
       setNickname(result.userNickname);

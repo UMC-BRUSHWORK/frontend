@@ -15,9 +15,9 @@ export const ArtworkImageContainer = styled.div`
 `;
 
 export const ArtworkImage = styled.img`
- width: 100%,
- height: 100%,
- object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const ArtName = styled.h1`

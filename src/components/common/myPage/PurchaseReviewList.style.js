@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import font from '../../../styles/font';
 
 export const ScrollableReviewList = styled.div`
   display: flex;
@@ -9,4 +10,8 @@ export const ScrollableReviewList = styled.div`
 
 export const Wrapper = styled.div`
   overflow-x: auto;
+`;
+
+export const Text = styled.div`
+  ${font.medium_14}
 `;

@@ -8,7 +8,6 @@ import IMAGES from '../../../assets';
 import Profile from '../../../components/common/profile/Profile';
 import RowArtworkList from '../../../components/common/artworkList/RowArtWorkList';
 import ReviewList from '../../../components/artist/reviewList/ReviewList';
-import reviewDummy from '../../../constants/reviewsDummy';
 import { getProductList } from '../../../apis/getProductList';
 import { getProduct } from '../../../apis/getProduct';
 import Topbar from '../../../components/common/topbar/Topbar';
@@ -16,6 +15,8 @@ import Favorite from '../../../components/favorite/Favorite';
 import { postCreateRoom } from '../../../apis/createChattingRoom';
 import { getUserInfo } from '../../../apis/getUserInfo';
 import PageLinkButton from '../../../components/common/button/PageLinkButton';
+import { getArtistReviewList } from '../../../apis/getArtistReviewList';
+import ReportModal from '../../../components/modal/report/ReportModal';
 import CompleteBtn from '../../../components/artwork/CompleteBtn';
 
 function ArtworkDetail() {
@@ -23,9 +24,10 @@ function ArtworkDetail() {
   const [category, setCategory] = useState([]);
   const [favorite, setFavorite] = useState(false);
   const [sellerId, setSellerId] = useState(null);
-  const navigate = useNavigate();
-  const userId = localStorage.getItem('userId');
   const [userInfo, setUserInfo] = useState();
+  const userId = parseInt(localStorage.getItem('userId'), 10);
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   // 작품조회
   const [productList, setProductList] = useState([]);
@@ -55,7 +57,6 @@ function ArtworkDetail() {
       // 3. 유저 정보 불러오기
       const userRes = await getUser(res.result.authorId);
       setUserInfo(userRes.result);
-      console.log(userInfo);
 
       // 찜하기
       setFavorite(res.result.favor);
@@ -81,16 +82,27 @@ function ArtworkDetail() {
     }
   };
 
+  // 리뷰
+  const [reviewList, setReviewList] = useState();
+
+  const getArtistReview = async (UID, userToken) => {
+    const { result } = await getArtistReviewList(UID, userToken);
+    setReviewList(result.reviewListData);
+    console.log(reviewList);
+  };
+
   useEffect(() => {
     const cursorId = null;
     const paging = 6;
     getProductId(productId);
     getProducts({ cursorId, paging });
+
+    getArtistReview(userId, token);
   }, [productId]);
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({
-        buyerId: Number(userId),
+        buyerId: userId,
         sellerId,
         productId,
       });
@@ -101,6 +113,13 @@ function ArtworkDetail() {
     }
   };
 
+  useEffect(() => {
+    const cursorId = null;
+    const paging = 6;
+    getProductId(productId);
+    getProducts({ cursorId, paging });
+  }, [productId]);
+
   return (
     <Wrapper>
       <Topbar />
@@ -108,7 +127,7 @@ function ArtworkDetail() {
       <A.Wrapper>
         <A.TitleWrapper>
           <A.Title>{productInfo.title}</A.Title>
-          <A.Report src={IMAGES.emergency} />
+          <ReportModal author={productInfo.authorId} />
         </A.TitleWrapper>
         <A.Artist>{productInfo.authorNickname}</A.Artist>
         <A.Description>{productInfo.description}</A.Description>
@@ -144,19 +163,21 @@ function ArtworkDetail() {
             <RowArtworkList data={productList} />
           </A.Margin>
         )}
-        <ReviewList data={reviewDummy} />
+        {reviewList && <ReviewList data={reviewList} />}
       </A.Wrapper>
-        {Number(userId) === productInfo.authorId ? 
-          <A.BottomWrapper>
-            <CompleteBtn />
-          </A.BottomWrapper> : 
-          <A.BottomWrapper>
-            <A.FavoriteBtn>
+
+      {userId === productInfo.authorId ? (
+        <A.BottomWrapper>
+          <CompleteBtn />
+        </A.BottomWrapper>
+      ) : (
+        <A.BottomWrapper>
+          <A.FavoriteBtn>
             <Favorite favorStatus={favorite} productId={productId} />
-            </A.FavoriteBtn>
-            <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
-          </A.BottomWrapper>
-        }
+          </A.FavoriteBtn>
+          <A.AskBtn onClick={clickButton}>문의하기</A.AskBtn>
+        </A.BottomWrapper>
+      )}
     </Wrapper>
   );
 }

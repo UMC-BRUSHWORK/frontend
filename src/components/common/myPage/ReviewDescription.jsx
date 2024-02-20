@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as R from './ReviewDescription.style';
-import WriteCompleteButton from '../button/WriteCompleteButton';
 
 function ReviewDescription({ onDescriptionChange }) {
   const [description, setDescription] = useState('');
@@ -14,13 +13,6 @@ function ReviewDescription({ onDescriptionChange }) {
     }
   };
 
-  const renderButton = () => {
-    if (description.length === 0) {
-      return <WriteCompleteButton type="WriteOffButton" />;
-    }
-    return <WriteCompleteButton type="WriteOnMypageButton" />;
-  };
-
   return (
     <>
       <R.DescriptionWrapper>상세 설명</R.DescriptionWrapper>
@@ -30,7 +22,6 @@ function ReviewDescription({ onDescriptionChange }) {
         onChange={handleDescriptionChange}
         maxLength={500}
       />
-      {renderButton()}
     </>
   );
 }

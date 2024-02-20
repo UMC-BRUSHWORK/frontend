@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 import Header from '../../components/common/header/Header';
 import BottomNav from '../../components/common/bottomNav/BottomNav';
 import * as S from './Favorites.style';
@@ -16,17 +17,29 @@ const Wrapper = styled.div`
 
 export default function Favorites() {
   const [productList, setProductList] = useState([{}]);
+  const [ref, inView] = useInView();
+  const [cursor, setCursor] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const getFavoriteList = async (userId, token) => {
-    const { result } = await getFavorite({ userId, token });
-    setProductList(result.userLikeList);
+  const getFavoriteList = async (userId, token, cursorId, paging) => {
+    const { result } = await getFavorite({ userId, token, cursorId, paging });
+    setProductList(prevData => [...prevData, ...result.userLikeList]);
+    setCursor(result.cursorId);
+    setLoading(false);
   };
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
-    getFavoriteList(userId, token);
-  }, []);
+    const cursorId = cursor;
+    const paging = 10;
+
+
+    if (loading !== true && inView){
+      setLoading(true);
+      getFavoriteList(userId, token, cursorId, paging);
+    }
+  }, [inView]);
 
   return isLogin() ? (
     <>
@@ -36,7 +49,10 @@ export default function Favorites() {
         {productList.length === 0 ? (
           '아직 찜한 작품이 존재하지 않습니다!'
         ) : (
-          <FavorArtworkList data={productList} />
+          <>
+            <FavorArtworkList data={productList} />
+            <div ref={ref} style={{ width: '1px' }} />
+          </>
         )}
       </Wrapper>
       <BottomNav />
