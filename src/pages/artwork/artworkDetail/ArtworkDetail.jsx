@@ -25,6 +25,7 @@ function ArtworkDetail() {
   const [favorite, setFavorite] = useState(false);
   const [sellerId, setSellerId] = useState(null);
   const [userInfo, setUserInfo] = useState();
+  const [authorId, setAuthorId] = useState(0);
   const userId = parseInt(localStorage.getItem('userId'), 10);
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ function ArtworkDetail() {
 
       // 작품 정보
       setProductInfo(res.result);
+      setAuthorId(res.result.authorId);
 
       // 3. 유저 정보 불러오기
       const userRes = await getUser(res.result.authorId);
@@ -97,8 +99,9 @@ function ArtworkDetail() {
     getProductId(productId);
     getProducts({ cursorId, paging });
 
-    getArtistReview(userId, token);
-  }, [productId]);
+    getArtistReview(authorId, token);
+  }, [productId, authorId]);
+
   const clickButton = async () => {
     try {
       const createRoomRes = await postCreateRoom({

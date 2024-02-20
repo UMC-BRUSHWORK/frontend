@@ -132,7 +132,7 @@ export const Text = styled.div`
 
 export const BottomWrapper = styled.div`
   width: 100%;
-  position: sticky;
+  position: fixed;
   left: 0;
   bottom: 0;
   display: flex;

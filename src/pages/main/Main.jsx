@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Main() {
-  const [productList, setProductList] = useState([{}]);
+  const [productList, setProductList] = useState([]);
   const [ref, inView] = useInView();
   const [cursor, setCursor] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ export default function Main() {
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
-      setProductList(prevData => [...prevData, ...res.result.categoryData]);
+      setProductList((prevData) => [...prevData, ...res.result.categoryData]);
       setCursor(res.result.cursorId);
       setLoading(false);
     } catch (error) {
@@ -39,7 +39,7 @@ export default function Main() {
     const cursorId = cursor;
     const paging = 10;
 
-    if (loading !== true && inView){
+    if (loading !== true && inView) {
       setLoading(true);
       getProducts({ cursorId, paging });
     }
