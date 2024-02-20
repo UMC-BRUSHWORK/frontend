@@ -44,7 +44,7 @@ function ModifyProfile({ userData, onClose }) {
   };
 
   const placeholder =
-    userData.introduce === ''
+    userData.introduce === null
       ? '소개글을 자유롭게 작성해주세요. (최대 300자)'
       : userData.introduce;
 

@@ -36,7 +36,6 @@ export default function LogInStatus() {
     const author = parseInt(localStorage.getItem('userId'), 10);
     getProducts({ cursorId, paging, author });
 
-    console.log(profile);
     // setUserData((prevData) => ({
     //   ...prevData,
     //   nickname,
@@ -55,7 +54,7 @@ export default function LogInStatus() {
     <L.StyledContainer>
       <L.ProfileWrapper>
         <Profile
-          image={profile || null}
+          image={profile === 'null' ? profile : null}
           nickname={userData.nickname}
           introduce={userData.introduce}
         />
