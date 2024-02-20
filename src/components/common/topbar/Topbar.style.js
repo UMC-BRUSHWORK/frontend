@@ -58,8 +58,8 @@ export const SearchInput = styled.input`
   width: 100%;
   height: 100%;
   margin-left: 1.3rem;
-
   outline: none;
   border: none;
   ${() => font.title}
+  color: ${color.black};
 `;

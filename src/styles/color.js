@@ -13,6 +13,7 @@ const color = {
   grayscale_f5: '#F5F5F5',
   grayscale_6c: '#6C6C6C',
   error: '#EA0000',
+  grayscale_d8: '#D8D8D8',
 };
 
 export default color;

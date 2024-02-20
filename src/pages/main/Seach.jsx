@@ -2,29 +2,56 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import * as S from './Search.style';
 import RowArtWorkList from '../../components/common/artworkList/RowArtWorkList';
-import Category from '../../components/common/category/Category';
 import SearchTopbar from '../../components/common/topbar/SearchTopbar';
 import { getProductList } from '../../apis/getProductList';
+import categoryDummy from '../../constants/categoryDummy';
+import CategoryList from '../../components/common/category/CategoryList';
+import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
+import { getSearchProduct } from '../../apis/getSearchProduct';
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  padding: 1.8rem 2rem;
+  padding: 0rem 2rem;
 
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
   margin-bottom: 6rem;
 `;
 
 export default function Seach() {
-  const [productList, setProductList] = useState([{}]);
+  const [productList, setProductList] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [searchedProducts, setSearchedProducts] = useState([]);
+  const [searched, setSearched] = useState(false);
+
+  const handleCategoryClick = async (selectedCategory) => {
+    if (category.includes(selectedCategory)) {
+      setCategory((prev) => prev.filter((value) => value !== selectedCategory));
+    }
+    setCategory((prev) => [...prev, selectedCategory]);
+    console.log('select', selectedCategory);
+    try {
+      const res = getSearchProduct({ selectedCategory });
+      setProductList(res.result.searchResult);
+      console.log(res.result.searchResult);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
       setProductList(res.result.categoryData);
+      console.log(res.result.categoryData);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSearch = async (searchResult) => {
+    setSearchedProducts(searchResult);
+    setSearched(true);
   };
 
   useEffect(() => {
@@ -35,12 +62,22 @@ export default function Seach() {
 
   return (
     <>
-      <SearchTopbar />
+      <SearchTopbar onSearch={handleSearch} />
       <Wrapper>
         <S.Line />
+        {searched ? (
+          <S.ListWrapper>
+            <S.Text>검색 결과</S.Text>
+            <ColumnArtworkList data={searchedProducts} />
+          </S.ListWrapper>
+        ) : null}
         <S.Text>마음에 드는 작품을 찾아보세요!</S.Text>
-        <Category />
-        <S.Line />
+        <CategoryList
+          data={categoryDummy}
+          selectedItems={category}
+          onClick={handleCategoryClick}
+        />
+        <S.Line style={{ marginTop: '2rem' }} />
         <S.ListWrapper>
           <S.Text>추천 작품</S.Text>
           <RowArtWorkList data={productList} size="9rem" />
