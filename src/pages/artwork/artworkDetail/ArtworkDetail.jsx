@@ -171,7 +171,7 @@ function ArtworkDetail() {
 
       {userId === productInfo.authorId ? (
         <A.BottomWrapper>
-          <CompleteBtn />
+          <CompleteBtn authorId={authorId} productId={productId} />
         </A.BottomWrapper>
       ) : (
         <A.BottomWrapper>

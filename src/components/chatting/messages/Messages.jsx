@@ -28,7 +28,8 @@ export default function Messages({
   sellerProfile,
   children,
 }) {
-  const allData = [...messages.filter((_, index) => index % 2 === 0), ...log];
+  console.log(messages);
+  const allData = [...messages.filter((_, index) => index % 2 !== 0), ...log];
   console.log(allData);
   return (
     <ScrollToBottom>
