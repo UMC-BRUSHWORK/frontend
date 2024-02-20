@@ -7,6 +7,7 @@ import { getProductList } from '../../apis/getProductList';
 import categoryDummy from '../../constants/categoryDummy';
 import CategoryList from '../../components/common/category/CategoryList';
 import ColumnArtworkList from '../../components/common/artworkList/ColumnArtworkList';
+import { getSearchProduct } from '../../apis/getSearchProduct';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -23,12 +24,19 @@ export default function Seach() {
   const [searchedProducts, setSearchedProducts] = useState([]);
   const [searched, setSearched] = useState(false);
 
-  const handleCategoryClick = (selectedCategory) => {
+  const handleCategoryClick = async (selectedCategory) => {
     if (category.includes(selectedCategory)) {
       setCategory((prev) => prev.filter((value) => value !== selectedCategory));
-      return;
     }
     setCategory((prev) => [...prev, selectedCategory]);
+    console.log('select', selectedCategory);
+    try {
+      const res = getSearchProduct({ selectedCategory });
+      setProductList(res.result.searchResult);
+      console.log(res.result.searchResult);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getProducts = async ({ cursorId, paging }) => {
