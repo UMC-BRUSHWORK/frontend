@@ -49,6 +49,7 @@ export default function Chatting() {
       setChattingInfo(info);
     });
   }, [ENDPOINT, window.location.search]);
+  console.log(chattingInfo);
 
   useEffect(() => {
     const { roomID } = queryString.parse(window.location.search);
@@ -127,8 +128,8 @@ export default function Chatting() {
         <InfoBar info={chattingInfo.result || {}} />
         <ProductBar info={chattingInfo.result || {}} />
         {chattingInfo.result &&
-          chattingInfo.result.buyerProfile &&
-          chattingInfo.result.sellerProfile && (
+          chattingInfo.result.buyerId &&
+          chattingInfo.result.sellerId && (
             <Messages
               messages={messages}
               log={chatLogData}

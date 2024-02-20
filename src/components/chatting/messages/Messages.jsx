@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import BasicScrollToBottom from 'react-scroll-to-bottom';
 import Message from './message/Message';
 import { dateFormat } from '../../../utils/dateFormatter';
+import IMAGES from '../../../assets/index';
 
 const ScrollToBottom = styled(BasicScrollToBottom)`
   overflow-y: auto;
@@ -28,7 +29,12 @@ export default function Messages({
   sellerProfile,
   children,
 }) {
+  // 프로필 이미지가 없는 경우
+  const buyerUrl = buyerProfile === null ? IMAGES.profile : buyerProfile;
+  const sellerUrl = sellerProfile === null ? IMAGES.profile : sellerProfile;
+
   const allData = [...messages, ...log];
+  console.log(allData);
   return (
     <ScrollToBottom>
       {children}
@@ -104,8 +110,8 @@ export default function Messages({
                   message={data}
                   time={timeValue}
                   today={today}
-                  buyerProfile={buyerProfile}
-                  sellerProfile={sellerProfile}
+                  buyerProfile={buyerUrl}
+                  sellerProfile={sellerUrl}
                   profile={displayProfile}
                   isRead={data.isRead}
                 />
