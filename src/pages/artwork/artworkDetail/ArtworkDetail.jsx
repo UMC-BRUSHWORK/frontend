@@ -52,7 +52,6 @@ function ArtworkDetail() {
     try {
       const res = await getProduct(Id);
 
-      // 작품 정보
       setProductInfo(res.result);
       setAuthorId(res.result.authorId);
 
@@ -171,7 +170,11 @@ function ArtworkDetail() {
 
       {userId === productInfo.authorId ? (
         <A.BottomWrapper>
-          <CompleteBtn authorId={authorId} productId={productId} />
+          <CompleteBtn
+            authorId={authorId}
+            productId={productId}
+            productInfo={productInfo}
+          />
         </A.BottomWrapper>
       ) : (
         <A.BottomWrapper>

@@ -4,8 +4,9 @@ import font from '../../styles/font';
 export const StyledContainer = styled.div`
   height: 100vh;
   width: 100%;
-  margin-top: 11rem;
   padding: 1.6rem;
+  margin-top: 11rem;
+  margin-bottom: 6rem;
 `;
 
 export const ProfileWrapper = styled.div`

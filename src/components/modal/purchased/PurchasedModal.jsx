@@ -35,6 +35,7 @@ function PurchasedModal({ onClose, authorId, productId }) {
   const patchDealRes = async ({ consumerId = selectedBuyerId }) => {
     try {
       const res = await patchDeal({ token, productId, consumerId, authorId });
+      onClose();
       console.log(res);
     } catch (error) {
       console.error(error);

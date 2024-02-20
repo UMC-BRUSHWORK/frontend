@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import * as A from '../../pages/artwork/artworkDetail/ArtworkDetail.style';
 import PurchasedModal from '../modal/purchased/PurchasedModal';
 
-function CompleteBtn({ authorId, productId }) {
+function CompleteBtn({ authorId, productId, productInfo }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const complete = !!productInfo.status;
+  console.log(complete);
 
   const openModal = () => {
-    setIsModalOpen(true);
+    if (complete) setIsModalOpen(false);
+    else setIsModalOpen(true);
   };
 
   const closeModal = () => {
@@ -15,7 +18,9 @@ function CompleteBtn({ authorId, productId }) {
 
   return (
     <>
-      <A.CompleteBtn onClick={openModal}>판매완료</A.CompleteBtn>
+      <A.CompleteBtn onClick={openModal} complete={complete}>
+        판매완료
+      </A.CompleteBtn>
       {isModalOpen && (
         <PurchasedModal
           onClose={closeModal}

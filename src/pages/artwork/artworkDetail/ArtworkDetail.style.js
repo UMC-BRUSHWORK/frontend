@@ -177,10 +177,8 @@ export const CompleteBtn = styled.div`
   height: 4.4rem;
   flex-shrink: 0;
   border-radius: 0.6rem;
-  background: var(
-    --Gradation_dark,
-    linear-gradient(225deg, #8c4ff2 0%, #4812a3 100%)
-  );
+  background: ${(props) =>
+    props.complete ? color.grayscale_88 : color.primary_dark};
   color: var(--Grayscale-White, #fff);
   text-align: center;
   display: flex;
