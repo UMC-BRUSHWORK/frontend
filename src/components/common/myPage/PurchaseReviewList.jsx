@@ -9,6 +9,7 @@ function PurchaseReviewList() {
   const getArtistReview = async (userId, token) => {
     const { result } = await getArtistReviewList(userId, token);
     setReviewList(result.reviewListData);
+    console.log(reviewList);
   };
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function PurchaseReviewList() {
   return (
     <P.Wrapper>
       <P.ScrollableReviewList>
-        {reviewList && reviewList ? (
+        {reviewList && reviewList.length !== 0 ? (
           reviewList.map((data) => (
             <PurchaseReview
               key={data.reviewId}
