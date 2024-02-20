@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import WrittenReview from '../../components/common/myPage/WrittenReview';
-import writtenReviewDummy from '../../constants/writtenReviewDummy';
 import font from '../../styles/font';
 import color from '../../styles/color';
 import { getMyReviewList } from '../../apis/getMyReviewList';
@@ -20,13 +19,10 @@ const ReviewText = styled.div`
 
 export default function MyReview() {
   const [reviewList, setReviewList] = useState();
-  const numberofReviews = writtenReviewDummy.length;
 
   const getMyReview = async (userId, token) => {
     const { result } = await getMyReviewList(userId, token);
-    console.log(result);
     setReviewList(result.reviewListData);
-    console.log(reviewList);
   };
 
   useEffect(() => {
@@ -36,15 +32,15 @@ export default function MyReview() {
   }, []);
 
   return (
-    <>
+    <div>
       <ReviewLength>
-        {`${numberofReviews}`}
+        {reviewList && reviewList.length ? reviewList.length : 0}
         <ReviewText>개의 후기</ReviewText>
       </ReviewLength>
       {reviewList &&
         reviewList.map((reviewData) => (
           <WrittenReview reviewData={reviewData} />
         ))}
-    </>
+    </div>
   );
 }
