@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as I from './InfoBar.style';
 
 export default function InfoBar({ info }) {
+  console.log(info);
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
   const name =

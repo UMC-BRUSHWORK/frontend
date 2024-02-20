@@ -28,9 +28,7 @@ export default function Messages({
   sellerProfile,
   children,
 }) {
-  console.log(messages);
   const allData = [...messages, ...log];
-  console.log(allData);
   return (
     <ScrollToBottom>
       {children}

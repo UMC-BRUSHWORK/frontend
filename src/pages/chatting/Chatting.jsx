@@ -8,6 +8,7 @@ import InfoBar from '../../components/chatting/infoBar/InfoBar';
 import Messages from '../../components/chatting/messages/Messages';
 import ChattingInput from '../../components/chatting/input/ChattingInput';
 import * as C from './Chatting.style';
+import ProductBar from '../../components/chatting/infoBar/ProductBar';
 
 const ENDPOINT = process.env.REACT_APP_BASE_URL;
 
@@ -124,6 +125,7 @@ export default function Chatting() {
     <C.OuterContainer>
       <C.Container>
         <InfoBar info={chattingInfo.result || {}} />
+        <ProductBar info={chattingInfo.result || {}} />
         {chattingInfo.result &&
           chattingInfo.result.buyerProfile &&
           chattingInfo.result.sellerProfile && (
