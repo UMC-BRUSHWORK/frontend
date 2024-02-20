@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
 `;
 
 export const TitleWrapper = styled.div`

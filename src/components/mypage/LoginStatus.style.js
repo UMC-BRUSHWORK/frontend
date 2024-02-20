@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import font from '../../styles/font';
 
 export const StyledContainer = styled.div`
   height: 100vh;
@@ -15,4 +16,8 @@ export const ProfileWrapper = styled.div`
 
 export const Margin = styled.div`
   height: 3.2rem;
+`;
+
+export const Text = styled.div`
+  ${font.medium_14}
 `;

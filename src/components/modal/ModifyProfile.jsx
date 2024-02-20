@@ -5,12 +5,16 @@ import { patchUserInfo } from '../../apis/patchUserInfo';
 
 function ModifyProfile({ userData, onClose }) {
   const [images, setImages] = useState();
-  const [uploadImage, setUploadImage] = useState(userData.profile);
+  const [uploadImage, setUploadImage] = useState(
+    userData.profile === 'null' ? IMAGES.profile : userData.profile,
+  );
   const [userNickname, setNickname] = useState('');
   const [userIntroduce, setIntroduction] = useState('');
 
   const patchUser = async ({ newProfileData }) => {
     const res = await patchUserInfo({ newProfileData });
+    localStorage.setItem('profile', res.result.userProfile);
+    localStorage.setItem('nickname', res.result.userNickname);
     localStorage.setItem('introduce', res.result.userIntroduce);
     window.location.reload();
   };
@@ -24,7 +28,7 @@ function ModifyProfile({ userData, onClose }) {
 
   const handleSave = () => {
     const formData = new FormData();
-    formData.append('images', images);
+    formData.append('image', images);
     formData.append('userNickname', userNickname);
     formData.append('userIntroduce', userIntroduce);
 
