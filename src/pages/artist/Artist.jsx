@@ -55,9 +55,7 @@ export default function ArtistPage() {
     <div>
       <Topbar />
       <Wrapper>
-        {image && nickname && introduce && (
-          <Profile image={image} nickname={nickname} introduce={introduce} />
-        )}
+        <Profile image={image} nickname={nickname} introduce={introduce} />
         <S.ButtonWrapper>
           <S.Button
             selected={selectedTab === 'artworks'}

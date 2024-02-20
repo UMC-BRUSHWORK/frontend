@@ -16,6 +16,13 @@ export const UploadWrapper = styled.div`
   justify-content: start;
   align-items: center;
   gap: 8px;
+
+  width: 12rem;
+  height: 12rem;
+  flex-shrink: 0;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--Grayscale-BE, #bebebe);
+  background: #fff;
 `;
 
 export const Image = styled.input`
@@ -34,6 +41,9 @@ export const UploadImage = styled.img`
   border-radius: 0.4rem;
   background: #fff;
   object-fit: contain;
+
+  position: absolute;
+  z-index: 20;
 `;
 
 export const Photo = styled.img`
@@ -42,9 +52,11 @@ export const Photo = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+
   position: absolute;
   top: 50%;
-  left: 6rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const SectionTitle = styled.div`

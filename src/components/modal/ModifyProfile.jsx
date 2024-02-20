@@ -4,23 +4,40 @@ import IMAGES from '../../assets';
 import { patchUserInfo } from '../../apis/patchUserInfo';
 
 function ModifyProfile({ userData, onClose }) {
+  const [images, setImages] = useState();
+  const [uploadImage, setUploadImage] = useState(
+    userData.profile === 'null' ? IMAGES.profile : userData.profile,
+  );
   const [userNickname, setNickname] = useState('');
   const [userIntroduce, setIntroduction] = useState('');
 
   const patchUser = async ({ newProfileData }) => {
     const res = await patchUserInfo({ newProfileData });
+    localStorage.setItem('profile', res.result.userProfile);
+    localStorage.setItem('nickname', res.result.userNickname);
     localStorage.setItem('introduce', res.result.userIntroduce);
     window.location.reload();
   };
 
+  const onChangeImage = (e) => {
+    const file = e.target.files[0];
+    setImages(file);
+    const imageUrl = URL.createObjectURL(file);
+    setUploadImage(imageUrl);
+  };
+
   const handleSave = () => {
+    const formData = new FormData();
+    formData.append('image', images);
+    formData.append('userNickname', userNickname);
+    formData.append('userIntroduce', userIntroduce);
+
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
     const newProfileData = {
       token,
       userId,
-      userNickname,
-      userIntroduce,
+      formData,
     };
 
     patchUser({ newProfileData });
@@ -31,14 +48,29 @@ function ModifyProfile({ userData, onClose }) {
       ? '소개글을 자유롭게 작성해주세요. (최대 300자)'
       : userData.introduce;
 
+  const fileInput = React.useRef(null);
+  const handleButtonClick = () => {
+    fileInput.current.click();
+  };
+
   return (
     <>
       <M.ModalBackground />
       <M.ModalWrapper>
         <M.ProfileContainer>
-          <M.ProfileImage src={IMAGES.profile} />
+          <M.ProfileImage src={uploadImage} />
           <M.CameraBackground />
-          <M.CameraIcon src={IMAGES.photo} />
+          <M.CameraIcon
+            src={IMAGES.photo}
+            onClick={() => handleButtonClick()}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={onChangeImage}
+            ref={fileInput}
+            style={{ display: 'none' }}
+          />
         </M.ProfileContainer>
 
         <M.Nickname

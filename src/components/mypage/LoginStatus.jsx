@@ -4,21 +4,21 @@ import Profile from '../common/profile/Profile';
 import SettingButton from '../common/button/SettingButton';
 import PurchaseReviewList from '../common/myPage/PurchaseReviewList';
 import Menu from '../common/menu/menu';
-import MyArtWorkList from '../common/myPage/MyArtWorkList';
 import { getProductList } from '../../apis/getProductList';
 import PageLinkButton from '../common/button/PageLinkButton';
+import RowArtWorkList from '../common/artworkList/RowArtWorkList';
 
 export default function LogInStatus() {
   const [productList, setProductList] = useState([{}]);
   const [userData, setUserData] = useState({
-    profile: null,
-    nickname: '',
-    introduce: null,
+    // profile: null,
+    // nickname: '',
+    // introduce: null,
   });
 
-  const getProducts = async ({ cursorId, paging }) => {
+  const getProducts = async ({ cursorId, paging, author }) => {
     try {
-      const res = await getProductList({ cursorId, paging });
+      const res = await getProductList({ cursorId, paging, author });
       setProductList(res.result.categoryData);
     } catch (error) {
       console.log(error);
@@ -26,28 +26,36 @@ export default function LogInStatus() {
   };
 
   const userId = localStorage.getItem('userId');
+  const nickname = localStorage.getItem('nickname');
+  const profile = localStorage.getItem('profile');
+  const introduce = localStorage.getItem('introduce');
 
   useEffect(() => {
     const cursorId = null;
     const paging = 6;
-    getProducts({ cursorId, paging });
+    const author = parseInt(localStorage.getItem('userId'), 10);
+    getProducts({ cursorId, paging, author });
 
-    const nickname = localStorage.getItem('nickname');
-    const profile = localStorage.getItem('profile');
-    const introduce = localStorage.getItem('introduce');
-    setUserData((prevData) => ({
-      ...prevData,
+    console.log(profile);
+    // setUserData((prevData) => ({
+    //   ...prevData,
+    //   nickname,
+    //   profile,
+    //   introduce,
+    // }));
+    setUserData({
       nickname,
       profile,
       introduce,
-    }));
+    });
+    console.log(userData);
   }, []);
 
   return (
     <L.StyledContainer>
       <L.ProfileWrapper>
         <Profile
-          image={userData.image ? userData.image : null}
+          image={profile || null}
           nickname={userData.nickname}
           introduce={userData.introduce}
         />
@@ -55,7 +63,11 @@ export default function LogInStatus() {
       </L.ProfileWrapper>
       <L.Margin />
       <PageLinkButton page="내 작품" userId={userId} />
-      <MyArtWorkList data={productList} />
+      {productList ? (
+        <RowArtWorkList data={productList} />
+      ) : (
+        <L.Text>아직 작품이 없습니다.</L.Text>
+      )}
       <L.Margin />
       <PageLinkButton page="거래 후기" userId={userId} />
       <PurchaseReviewList />

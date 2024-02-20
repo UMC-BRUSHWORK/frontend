@@ -8,9 +8,9 @@ const Wrapper = styled.div`
   margin-bottom: 6rem;
 `;
 
-export default function ArtWorksList({authorId}) {
+export default function ArtWorksList({ authorId }) {
   const [productList, setProductList] = useState([{}]);
-  const getProducts = async({ cursorId, paging, author }) => {
+  const getProducts = async ({ cursorId, paging, author }) => {
     try {
       const res = await getProductList({ cursorId, paging, author });
       setProductList(res.result.categoryData);
@@ -22,7 +22,7 @@ export default function ArtWorksList({authorId}) {
 
   useEffect(() => {
     const cursorId = null;
-    const paging = 1000;
+    const paging = 10;
     const author = authorId;
     getProducts({ cursorId, paging, author });
   }, []);
