@@ -26,7 +26,8 @@ export default function Main() {
   const getProducts = async ({ cursorId, paging }) => {
     try {
       const res = await getProductList({ cursorId, paging });
-      setProductList((prevData) => [...prevData, ...res.result.categoryData]);
+      const data = res.result.categoryData.filter((item) => item.status === 0);
+      setProductList((prevData) => [...prevData, ...data]);
       setCursor(res.result.cursorId);
       setLoading(false);
     } catch (error) {
