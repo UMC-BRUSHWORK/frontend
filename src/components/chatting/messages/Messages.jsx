@@ -29,7 +29,7 @@ export default function Messages({
   children,
 }) {
   console.log(messages);
-  const allData = [...messages.filter((_, index) => index % 2 === 0), ...log];
+  const allData = [...messages, ...log];
   console.log(allData);
   return (
     <ScrollToBottom>
