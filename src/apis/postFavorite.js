@@ -1,11 +1,7 @@
 import { POST } from './api';
 
-export const postFavorite = async ({ token, userId, PID }) => {
+export const postFavorite = async ({ userId, PID }) => {
   const body = null;
-  const { data } = await POST(
-    `/user/${userId}/like?productId=${PID}`,
-    body,
-    token,
-  );
+  const { data } = await POST(`/user/${userId}/like?productId=${PID}`, body);
   return data;
 };

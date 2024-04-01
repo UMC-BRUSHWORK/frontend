@@ -6,9 +6,9 @@ import { postFavorite } from '../../apis/postFavorite';
 export default function Favorite({ favorStatus, productId }) {
   const [favorite, setFavorite] = useState(favorStatus);
 
-  const postFav = async ({ token, userId, productId: PID }) => {
+  const postFav = async ({ userId, productId: PID }) => {
     try {
-      const res = await postFavorite({ token, userId, PID });
+      const res = await postFavorite({ userId, PID });
       console.log(res.result);
     } catch (error) {
       console.log(error);
@@ -17,9 +17,8 @@ export default function Favorite({ favorStatus, productId }) {
 
   const handleClick = () => {
     setFavorite(!favorite);
-    const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    postFav({ token, userId, productId });
+    postFav({ userId, productId });
   };
 
   return (

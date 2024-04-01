@@ -34,10 +34,9 @@ export default function Purchased() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const type = 1;
-    const props = { token, userId, type };
+    const props = { userId, type };
     getPurchased(props);
   }, []);
 

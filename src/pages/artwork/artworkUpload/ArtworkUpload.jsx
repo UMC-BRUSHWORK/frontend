@@ -57,7 +57,6 @@ function ArtworkUpload() {
     } else if (details.length < 10 || details.length > 500) {
       setDetailError(true);
     } else if (status && !titleError && !priceError && !detailError) {
-      const token = localStorage.getItem('token');
       const hashtag = '';
 
       const userId = localStorage.getItem('userId');
@@ -74,7 +73,7 @@ function ArtworkUpload() {
       formData.append('hashtag', hashtag);
 
       try {
-        const res = await postProduct({ formData, token });
+        const res = await postProduct({ formData });
         console.log(res);
         navigate('/');
       } catch (error) {

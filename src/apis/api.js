@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
-const request = async ({ url, method, body, params, token }) => {
+const request = async ({ url, method, body, params }) => {
   try {
     const config = {
       baseURL,
@@ -11,9 +11,13 @@ const request = async ({ url, method, body, params, token }) => {
         withCredentials: true,
       },
     };
-    if (token && config.headers) {
-      config.headers.Authorization = token;
+
+    const token = localStorage.getItem('accessToken');
+
+    if (token !== null) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
+
     const data =
       (method === 'get' && (await axios.get(url, config))) ||
       (method === 'post' && (await axios.post(url, body, config))) ||

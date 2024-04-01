@@ -15,15 +15,14 @@ const Wrapper = styled.div`
 export default function ArtistReviewList() {
   const [reviewList, setReviewList] = useState();
 
-  const getArtistReview = async (userId, token) => {
-    const { result } = await getArtistReviewList(userId, token);
+  const getArtistReview = async (userId) => {
+    const { result } = await getArtistReviewList(userId);
     setReviewList(result.reviewListData);
   };
 
   useEffect(() => {
     const userId = parseInt(localStorage.getItem('userId'), 10);
-    const token = localStorage.getItem('token');
-    getArtistReview(userId, token);
+    getArtistReview(userId);
   }, []);
   return (
     <Wrapper>

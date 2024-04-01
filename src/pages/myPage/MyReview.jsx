@@ -20,15 +20,14 @@ const ReviewText = styled.div`
 export default function MyReview() {
   const [reviewList, setReviewList] = useState();
 
-  const getMyReview = async (userId, token) => {
-    const { result } = await getMyReviewList(userId, token);
+  const getMyReview = async (userId) => {
+    const { result } = await getMyReviewList(userId);
     setReviewList(result.reviewListData);
   };
 
   useEffect(() => {
     const userId = parseInt(localStorage.getItem('userId'), 10);
-    const token = localStorage.getItem('token');
-    getMyReview(userId, token);
+    getMyReview(userId);
   }, []);
 
   return (

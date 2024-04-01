@@ -1,6 +1,6 @@
 import { POST } from './api';
 
-export const postProduct = async ({ formData, token }) => {
-  const { data } = await POST(`/product/register`, formData, token);
+export const postProduct = async ({ formData }) => {
+  const { data } = await POST(`/product/register`, formData);
   return data;
 };
