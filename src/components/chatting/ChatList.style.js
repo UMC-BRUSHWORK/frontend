@@ -70,7 +70,7 @@ export const NotReadMsg = styled.div`
   opacity: 0;
 
   ${(props) =>
-    props.visible &&
+    props.$visible &&
     css`
       opacity: 1;
     `}

@@ -48,7 +48,7 @@ export const Status = styled.div`
   font-style: normal;
   font-weight: 500;
   border-radius: 1.4rem;
-  color: ${(props) => (props.status ? color.black : color.white)};
+  color: ${(props) => (props.$status ? color.black : color.white)};
   background: ${(props) =>
-    props.status ? color.grayscale_be : color.primary_normal};
+    props.$status ? color.grayscale_be : color.primary_normal};
 `;

@@ -12,7 +12,7 @@ export default function ProductBar({ info }) {
           <P.Price>{info.productName}</P.Price>
         </P.ProductInfo>
       </P.ProductWrapper>
-      <P.Status status={info.productStatus}>
+      <P.Status $status={info.productStatus}>
         {info.productStatus ? '판매완료' : '판매중'}
       </P.Status>
     </P.Wrapper>
