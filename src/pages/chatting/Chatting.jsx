@@ -22,7 +22,6 @@ export default function Chatting() {
   const [chatLogData, setChatLogData] = useState([]);
   const [receiverId, setReceiverId] = useState(null);
   const [page, setPage] = useState(25);
-  // const [readRes, setReadRes] = useState('');
 
   const [ref, inView] = useInView();
 
