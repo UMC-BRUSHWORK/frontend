@@ -25,6 +25,8 @@ export default function Chatting() {
 
   const [ref, inView] = useInView();
 
+  // const sytemMessage = '작가님이 결제를 요청했어요!';
+
   // 채팅방 입장
   useEffect(() => {
     const { roomID } = queryString.parse(window.location.search);
@@ -96,6 +98,13 @@ export default function Chatting() {
         },
         () => setMessage(''),
       );
+    } else {
+      socket.emit('send-message', {
+        roomId: Number(roomID),
+        senderId: Number(userId),
+        receiverId: Number(receiverId),
+        content: 'sytemMessage',
+      });
     }
   };
 
@@ -133,6 +142,7 @@ export default function Chatting() {
               log={chatLogData}
               buyerProfile={chattingInfo.result.buyerProfile}
               sellerProfile={chattingInfo.result.sellerProfile}
+              chattingInfo={chattingInfo.result}
             >
               <div ref={ref} style={{ width: '1px' }} />
             </Messages>

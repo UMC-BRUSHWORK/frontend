@@ -57,6 +57,8 @@ export default function ChattingInput({ setMessage, sendMessage, message }) {
         <PurchasedOrder
           modalRef={modalRef}
           modalOutSideClick={modalOutSideClick}
+          setBillModalShow={setBillModalShow}
+          sendMessage={sendMessage}
         />
       )}
     </>

@@ -32,8 +32,6 @@ export default function ChatList() {
     loadChatList();
   }, [inView]);
 
-  chatListData.map((data) => console.log(data.notReadCount > 0));
-
   const joinChat = (roomId) => {
     navigate(`/chatting-list/chatting?roomID=${roomId}`);
   };

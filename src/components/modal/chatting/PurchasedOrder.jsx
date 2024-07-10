@@ -1,9 +1,16 @@
 import React from 'react';
 import * as S from './PurchasedOrder.style';
 
-export default function PurchasedOrder({ modalRef, modalOutSideClick }) {
-  const handleClickButton = () => {
+export default function PurchasedOrder({
+  modalRef,
+  modalOutSideClick,
+  setBillModalShow,
+  sendMessage,
+}) {
+  const handleClickButton = (e) => {
+    setBillModalShow(false);
     console.log('clicked');
+    sendMessage(e);
   };
   return (
     <>
@@ -26,7 +33,9 @@ export default function PurchasedOrder({ modalRef, modalOutSideClick }) {
             <S.Price>100,000</S.Price>
             <S.Text>원</S.Text>
           </div>
-          <S.Button onClick={() => handleClickButton()}>결제 요청하기</S.Button>
+          <S.Button onClick={(e) => handleClickButton(e)}>
+            결제 요청하기
+          </S.Button>
         </S.Container>
       </S.Wrapper>
     </>

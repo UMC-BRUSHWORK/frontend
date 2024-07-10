@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import BasicScrollToBottom from 'react-scroll-to-bottom';
 import Message from './message/Message';
 import { dateFormat } from '../../../utils/dateFormatter';
+import SytemMessage from './systemMessage/systemMessage';
 
 const ScrollToBottom = styled(BasicScrollToBottom)`
   overflow-y: auto;
@@ -27,6 +28,7 @@ export default function Messages({
   buyerProfile,
   sellerProfile,
   children,
+  chattingInfo,
 }) {
   const allData = [...messages, ...log];
   return (
@@ -97,9 +99,21 @@ export default function Messages({
               if (nextTimeValue === timeValue) timeValue = null;
             }
           }
+
           return (
             <div key={index}>
-              {data.message && (
+              {data.message === 'sytemMessage' ? (
+                <SytemMessage
+                  message={data}
+                  time={timeValue}
+                  today={today}
+                  buyerProfile={buyerProfile}
+                  sellerProfile={sellerProfile}
+                  profile={displayProfile}
+                  isRead={data.isRead}
+                  price={chattingInfo.productPrice}
+                />
+              ) : (
                 <Message
                   message={data}
                   time={timeValue}
