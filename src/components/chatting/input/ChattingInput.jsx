@@ -3,15 +3,18 @@ import { IoIosAdd, IoMdSend } from 'react-icons/io';
 
 import * as I from './ChattingInput.style';
 import ChattingMenu from '../../modal/chatting/ChattingMenu';
+import PurchasedOrder from '../../modal/chatting/PurchasedOrder';
 
 export default function ChattingInput({ setMessage, sendMessage, message }) {
   const modalRef = useRef(null);
 
   const [allSizeModalShow, setAllSizeModalShow] = useState(false);
+  const [billModalShow, setBillModalShow] = useState(false);
 
   const modalOutSideClick = (e) => {
     if (modalRef.current === e.target) {
       setAllSizeModalShow(false);
+      setBillModalShow(false);
     }
   };
 
@@ -44,6 +47,14 @@ export default function ChattingInput({ setMessage, sendMessage, message }) {
       </I.FormWrapper>
       {allSizeModalShow && (
         <ChattingMenu
+          modalRef={modalRef}
+          modalOutSideClick={modalOutSideClick}
+          setAllSizeModalShow={setAllSizeModalShow}
+          setBillModalShow={setBillModalShow}
+        />
+      )}
+      {billModalShow && (
+        <PurchasedOrder
           modalRef={modalRef}
           modalOutSideClick={modalOutSideClick}
         />

@@ -3,10 +3,6 @@ import color from '../../../styles/color';
 import font from '../../../styles/font';
 
 export const Background = styled.div`
-  /* width: 100%;
-  height: 100%;
-  background-color: gray; */
-
   z-index: 1500;
   display: block;
   background: rgba(0, 0, 0, 0.3);

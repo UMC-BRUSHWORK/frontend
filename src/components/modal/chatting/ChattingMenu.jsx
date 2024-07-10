@@ -2,7 +2,17 @@ import React from 'react';
 import * as S from './ChattingMenu.style';
 import IMAGES from '../../../assets';
 
-export default function ChattingMenu({ modalRef, modalOutSideClick }) {
+export default function ChattingMenu({
+  modalRef,
+  modalOutSideClick,
+  setAllSizeModalShow,
+  setBillModalShow,
+}) {
+  const closeModal = () => {
+    setAllSizeModalShow(false);
+    setBillModalShow(true);
+  };
+
   return (
     <>
       <S.Background ref={modalRef} onClick={(e) => modalOutSideClick(e)} />
@@ -10,7 +20,12 @@ export default function ChattingMenu({ modalRef, modalOutSideClick }) {
         <S.Container>
           <S.Line />
           <S.MenuWrapper>
-            <S.Image src={IMAGES.bill} alt="bill" />
+            <S.Image
+              src={IMAGES.bill}
+              alt="bill"
+              //   onClick={() => setBillModalShow(true)}
+              onClick={() => closeModal()}
+            />
             <S.MenuName>주문서</S.MenuName>
           </S.MenuWrapper>
           <S.MenuWrapper>

@@ -17,6 +17,7 @@ const font = {
   medium_19: FONT({ weight: 500, size: 1.9 }),
   regular_10: FONT({ weight: 400, size: 1.0 }),
   regular_12: FONT({ weight: 400, size: 1.2 }),
+  base_16: FONT({ weight: 600, size: 1.6 }),
 };
 
 export default font;
