@@ -2,9 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const MessageWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: end;
-  justify-content: center;
+  justify-content: ${(props) => (props.$right ? `flex-end` : `flex-start`)};
 `;
 
 export const Read = styled.div`

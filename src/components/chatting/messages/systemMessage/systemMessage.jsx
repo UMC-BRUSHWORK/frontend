@@ -40,7 +40,7 @@ export default function SytemMessage({
           <M.MessageBox>
             작가님이 결제를 요청했어요!
             <br />
-            요청 금액 : {price} 원
+            요청 금액 : {price} 원<M.Button>결제하기</M.Button>
           </M.MessageBox>
           <M.Time>{time}</M.Time>
           <M.Read $visible={!read}>1</M.Read>
