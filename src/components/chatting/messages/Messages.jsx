@@ -102,7 +102,7 @@ export default function Messages({
 
           return (
             <div key={index}>
-              {data.message === 'sytemMessage' ? (
+              {data.message === '작가님이 결제를 요청했어요!' ? (
                 <SytemMessage
                   message={data}
                   time={timeValue}

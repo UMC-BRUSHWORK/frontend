@@ -103,7 +103,7 @@ export default function Chatting() {
         roomId: Number(roomID),
         senderId: Number(userId),
         receiverId: Number(receiverId),
-        content: 'sytemMessage',
+        content: '작가님이 결제를 요청했어요!',
       });
     }
   };
