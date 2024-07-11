@@ -36,7 +36,7 @@ export default function Messages({
   const sellerUrl = sellerProfile === null ? IMAGES.profile : sellerProfile;
 
   const allData = [...messages, ...log];
-  console.log(allData);
+
   return (
     <ScrollToBottom>
       {children}

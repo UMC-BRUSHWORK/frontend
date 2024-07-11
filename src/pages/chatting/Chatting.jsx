@@ -50,7 +50,6 @@ export default function Chatting() {
       setChattingInfo(info);
     });
   }, [ENDPOINT, window.location.search]);
-  console.log(chattingInfo);
 
   useEffect(() => {
     const { roomID } = queryString.parse(window.location.search);
