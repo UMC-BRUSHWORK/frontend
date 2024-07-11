@@ -17,6 +17,7 @@ import ImageList from './pages/ImageList';
 import ChattingList from './pages/chatting/ChattingList';
 import Chatting from './pages/chatting/Chatting';
 import MyHistory from './pages/myPage/MyHistory';
+import Success from './components/payments/Success';
 
 export default function Router() {
   return (
@@ -38,6 +39,8 @@ export default function Router() {
         <Route path="/write-review/:productId" element={<WriteReviewPage />} />
         <Route path="/chatting-list" element={<ChattingList />} />
         <Route path="/chatting-list/chatting" element={<Chatting />} />
+
+        <Route path="/success" element={<Success />} />
 
         <Route path="/imageList" element={<ImageList />} />
       </Routes>

@@ -11,6 +11,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@tosspayments/payment-sdk": "^1.8.1",
+    "@tosspayments/payment-widget-sdk": "^0.10.2",
     "axios": "^1.6.3",
     "query-string": "^8.2.0",
     "react": "^18.2.0",
