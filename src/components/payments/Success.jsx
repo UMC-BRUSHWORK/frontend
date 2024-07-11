@@ -9,10 +9,13 @@ export default function Success() {
 
   const baseURL = process.env.REACT_APP_BASE_URL;
   async function confirmPayment() {
-    // NOTE:여기 localhost로 결제창 api 수정
+    const secretKey = 'test_sk_Z1aOwX7K8mX67x5jD7lQryQxzvNP';
+    const encryptedSecretKey = `Basic ${btoa(`${secretKey}:`)}`;
+
     const response = await fetch(`${baseURL}/payment/confirm`, {
       method: 'POST',
       headers: {
+        Authorization: encryptedSecretKey,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -21,10 +24,13 @@ export default function Success() {
         amount,
       }),
     });
+    const json = await response.json();
+    console.log(json);
 
     if (response.ok) {
       setIsConfirmed(true);
     }
+    return json;
   }
 
   return (
