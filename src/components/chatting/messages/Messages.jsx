@@ -104,7 +104,8 @@ export default function Messages({
 
           return (
             <div key={index}>
-              {data.message === '작가님이 결제를 요청했어요!' ? (
+              {data.message === '작가님이 결제를 요청했어요!' ||
+              data.message === '결제 완료' ? (
                 <SytemMessage
                   message={data}
                   time={timeValue}

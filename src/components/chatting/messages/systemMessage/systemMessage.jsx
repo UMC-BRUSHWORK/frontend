@@ -1,5 +1,6 @@
 import React from 'react';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
+import { useNavigate } from 'react-router-dom';
 import * as M from './systemMessage.style';
 
 export default function SytemMessage({
@@ -17,6 +18,8 @@ export default function SytemMessage({
   let imgSrc = sellerProfile;
   const read = !!isRead;
 
+  const navigate = useNavigate();
+
   let isSentByCurrentUser = false;
 
   if (message.senderId === Number(userId)) {
@@ -27,7 +30,7 @@ export default function SytemMessage({
   const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
 
   const clientKey = 'test_ck_E92LAa5PVbJJQoY6logPV7YmpXyJ';
-  const handleClickButton = async () => {
+  const handleClickPayButton = async () => {
     try {
       const tossPayments = await loadTossPayments(clientKey);
       const orderId = generateRandomString();
@@ -48,28 +51,54 @@ export default function SytemMessage({
     }
   };
 
+  const handleClickCheckButton = () => {
+    navigate('/');
+  };
+
   return (
     <div>
       {isSentByCurrentUser ? (
         <M.MessageWrapper $right>
           <M.Read $visible={!isRead}>1</M.Read>
           <M.Time $right>{time}</M.Time>
-          <M.MessageBox $right>
-            작가님이 결제를 요청했어요!
-            <br />
-            요청 금액 : {price} 원
-            <M.Button onClick={() => handleClickButton()}>결제하기</M.Button>
-          </M.MessageBox>
+          {message.message === '작가님이 결제를 요청했어요!' ? (
+            <M.MessageBox $right>
+              작가님이 결제를 요청했어요!
+              <br />
+              요청 금액 : {price} 원
+              <M.Button onClick={() => handleClickPayButton()}>
+                결제하기
+              </M.Button>
+            </M.MessageBox>
+          ) : (
+            <M.MessageBox $right>
+              결제가 완료되었어요!
+              <M.Button onClick={() => handleClickCheckButton()}>
+                결제 내역 보기
+              </M.Button>
+            </M.MessageBox>
+          )}
         </M.MessageWrapper>
       ) : (
         <M.MessageWrapper>
           <M.ProfileImage $visible={profile} src={imgSrc} />
-          <M.MessageBox>
-            작가님이 결제를 요청했어요!
-            <br />
-            요청 금액 : {price} 원
-            <M.Button onClick={() => handleClickButton()}>결제하기</M.Button>
-          </M.MessageBox>
+          {message.message === '작가님이 결제를 요청했어요!' ? (
+            <M.MessageBox $right>
+              작가님이 결제를 요청했어요!
+              <br />
+              요청 금액 : {price} 원
+              <M.Button onClick={() => handleClickPayButton()}>
+                결제하기
+              </M.Button>
+            </M.MessageBox>
+          ) : (
+            <M.MessageBox $right>
+              결제가 완료되었어요!
+              <M.Button onClick={() => handleClickCheckButton()}>
+                결제 내역 보기
+              </M.Button>
+            </M.MessageBox>
+          )}
           <M.Time>{time}</M.Time>
           <M.Read $visible={!read}>1</M.Read>
         </M.MessageWrapper>
