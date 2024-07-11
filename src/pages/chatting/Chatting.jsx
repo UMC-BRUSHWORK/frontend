@@ -22,9 +22,10 @@ export default function Chatting() {
   const [chatLogData, setChatLogData] = useState([]);
   const [receiverId, setReceiverId] = useState(null);
   const [page, setPage] = useState(25);
-  // const [readRes, setReadRes] = useState('');
 
   const [ref, inView] = useInView();
+
+  // const sytemMessage = '작가님이 결제를 요청했어요!';
 
   // 채팅방 입장
   useEffect(() => {
@@ -98,6 +99,13 @@ export default function Chatting() {
         },
         () => setMessage(''),
       );
+    } else {
+      socket.emit('send-message', {
+        roomId: Number(roomID),
+        senderId: Number(userId),
+        receiverId: Number(receiverId),
+        content: '작가님이 결제를 요청했어요!',
+      });
     }
   };
 
@@ -135,6 +143,7 @@ export default function Chatting() {
               log={chatLogData}
               buyerProfile={chattingInfo.result.buyerProfile}
               sellerProfile={chattingInfo.result.sellerProfile}
+              chattingInfo={chattingInfo.result}
             >
               <div ref={ref} style={{ width: '1px' }} />
             </Messages>

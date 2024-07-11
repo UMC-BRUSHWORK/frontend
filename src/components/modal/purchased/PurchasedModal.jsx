@@ -7,7 +7,6 @@ import { patchDeal } from '../../../apis/patchDeal';
 function PurchasedModal({ onClose, authorId, productId }) {
   const [buyerList, setBuyerList] = useState([]);
   const [selectedBuyerId, setSelectedBuyerId] = useState(null);
-  const [token, setToken] = useState(null);
 
   const getChatList = async (AID, PID) => {
     try {
@@ -21,11 +20,6 @@ function PurchasedModal({ onClose, authorId, productId }) {
 
   useEffect(() => {
     getChatList(authorId, productId);
-
-    const storedToken = localStorage.getItem('token');
-    if (storedToken) {
-      setToken(storedToken);
-    }
   }, []);
 
   const handleBuyerSelect = (consumerId) => {
@@ -34,7 +28,7 @@ function PurchasedModal({ onClose, authorId, productId }) {
 
   const patchDealRes = async ({ consumerId = selectedBuyerId }) => {
     try {
-      const res = await patchDeal({ token, productId, consumerId, authorId });
+      const res = await patchDeal({ productId, consumerId, authorId });
       onClose();
       console.log(res);
     } catch (error) {

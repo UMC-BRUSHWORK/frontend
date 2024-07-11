@@ -48,6 +48,8 @@ import rightButtonGrey from './artwork/right_button_grey.svg';
 // chatting
 import send from './chatting/send.svg';
 import add from './chatting/add.svg';
+import bill from './chatting/bill.svg';
+import gallery from './chatting/gallery.svg';
 
 const IMAGES = {
   // dummy
@@ -98,6 +100,8 @@ const IMAGES = {
   // chatting
   send,
   add,
+  bill,
+  gallery,
 };
 
 export default IMAGES;

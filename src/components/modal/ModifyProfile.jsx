@@ -33,9 +33,7 @@ function ModifyProfile({ userData, onClose }) {
     formData.append('userIntroduce', userIntroduce);
 
     const userId = localStorage.getItem('userId');
-    const token = localStorage.getItem('token');
     const newProfileData = {
-      token,
       userId,
       formData,
     };

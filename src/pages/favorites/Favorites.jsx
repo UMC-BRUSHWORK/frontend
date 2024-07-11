@@ -21,23 +21,21 @@ export default function Favorites() {
   const [cursor, setCursor] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getFavoriteList = async (userId, token, cursorId, paging) => {
-    const { result } = await getFavorite({ userId, token, cursorId, paging });
-    setProductList(prevData => [...prevData, ...result.userLikeList]);
+  const getFavoriteList = async (userId, cursorId, paging) => {
+    const { result } = await getFavorite({ userId, cursorId, paging });
+    setProductList((prevData) => [...prevData, ...result.userLikeList]);
     setCursor(result.cursorId);
     setLoading(false);
   };
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
-    const token = localStorage.getItem('token');
     const cursorId = cursor;
     const paging = 10;
 
-
-    if (loading !== true && inView){
+    if (loading !== true && inView) {
       setLoading(true);
-      getFavoriteList(userId, token, cursorId, paging);
+      getFavoriteList(userId, cursorId, paging);
     }
   }, [inView]);
 

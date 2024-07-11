@@ -1,4 +1,4 @@
-import { POST } from './api2';
+import { POST } from './api';
 
 export const postCreateRoom = async ({ buyerId, sellerId, productId }) => {
   const body = {

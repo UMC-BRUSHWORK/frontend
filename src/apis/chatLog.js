@@ -1,4 +1,4 @@
-import { POST } from './api2';
+import { POST } from './api';
 
 export const postChatLog = async ({ roomId, paging = 25 }) => {
   const body = {

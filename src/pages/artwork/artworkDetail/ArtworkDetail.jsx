@@ -27,7 +27,6 @@ function ArtworkDetail() {
   const [userInfo, setUserInfo] = useState();
   const [authorId, setAuthorId] = useState(0);
   const userId = parseInt(localStorage.getItem('userId'), 10);
-  const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
   // 작품조회
@@ -86,8 +85,8 @@ function ArtworkDetail() {
   // 리뷰
   const [reviewList, setReviewList] = useState();
 
-  const getArtistReview = async (UID, userToken) => {
-    const { result } = await getArtistReviewList(UID, userToken);
+  const getArtistReview = async (UID) => {
+    const { result } = await getArtistReviewList(UID);
     setReviewList(result.reviewListData);
     console.log(reviewList);
   };
@@ -98,7 +97,7 @@ function ArtworkDetail() {
     getProductId(productId);
     getProducts({ cursorId, paging });
 
-    getArtistReview(authorId, token);
+    getArtistReview(authorId);
   }, [productId, authorId]);
 
   const clickButton = async () => {

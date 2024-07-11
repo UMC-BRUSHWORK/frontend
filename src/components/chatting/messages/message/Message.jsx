@@ -25,19 +25,19 @@ export default function Message({
   return (
     <div>
       {isSentByCurrentUser ? (
-        <M.MessageWrapper right>
-          <M.Read visible={!isRead}>1</M.Read>
-          <M.Time right>{time}</M.Time>
-          <M.MessageBox right>
+        <M.MessageWrapper $right>
+          <M.Read $visible={!isRead}>1</M.Read>
+          <M.Time $right>{time}</M.Time>
+          <M.MessageBox $right>
             {ReactEmoji.emojify(message.message)}
           </M.MessageBox>
         </M.MessageWrapper>
       ) : (
         <M.MessageWrapper>
-          <M.ProfileImage visible={profile} src={imgSrc} />
+          <M.ProfileImage $visible={profile} src={imgSrc} />
           <M.MessageBox>{ReactEmoji.emojify(message.message)}</M.MessageBox>
           <M.Time>{time}</M.Time>
-          <M.Read visible={!read}>1</M.Read>
+          <M.Read $visible={!read}>1</M.Read>
         </M.MessageWrapper>
       )}
       <M.Date>{today}</M.Date>

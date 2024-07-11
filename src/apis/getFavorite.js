@@ -1,11 +1,6 @@
 import { GET } from './api';
 
-export const getFavorite = async ({
-  userId,
-  token,
-  cursorId = null,
-  paging = 10,
-}) => {
+export const getFavorite = async ({ userId, cursorId = null, paging = 10 }) => {
   let url = `/user/${userId}/like`;
 
   if (cursorId !== null) {
@@ -16,6 +11,6 @@ export const getFavorite = async ({
     url += `${cursorId !== null ? '&' : '?'}paging=${paging}`;
   }
 
-  const { data } = await GET(url, token);
+  const { data } = await GET(url);
   return data;
 };

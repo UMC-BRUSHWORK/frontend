@@ -7,9 +7,7 @@ function WriteCompleteButton({ data, type }) {
   const navigate = useNavigate();
   const postReview = async () => {
     try {
-      const token = localStorage.getItem('token');
-      console.log(data);
-      const { result } = await postReviewData(data, token);
+      const { result } = await postReviewData(data);
       console.log(result);
       navigate('/my-history');
     } catch (error) {

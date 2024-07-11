@@ -6,16 +6,15 @@ import { getArtistReviewList } from '../../../apis/getArtistReviewList';
 function PurchaseReviewList() {
   const [reviewList, setReviewList] = useState();
 
-  const getArtistReview = async (userId, token) => {
-    const { result } = await getArtistReviewList(userId, token);
+  const getArtistReview = async (userId) => {
+    const { result } = await getArtistReviewList(userId);
     setReviewList(result.reviewListData);
     console.log(reviewList);
   };
 
   useEffect(() => {
     const userId = parseInt(localStorage.getItem('userId'), 10);
-    const token = localStorage.getItem('token');
-    getArtistReview(userId, token);
+    getArtistReview(userId);
   }, []);
 
   return (

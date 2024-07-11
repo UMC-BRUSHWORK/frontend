@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BasicScrollToBottom from 'react-scroll-to-bottom';
 import Message from './message/Message';
 import { dateFormat } from '../../../utils/dateFormatter';
-import IMAGES from '../../../assets/index';
+import SytemMessage from './systemMessage/systemMessage';
 
 const ScrollToBottom = styled(BasicScrollToBottom)`
   overflow-y: auto;
@@ -28,6 +28,7 @@ export default function Messages({
   buyerProfile,
   sellerProfile,
   children,
+  chattingInfo,
 }) {
   // 프로필 이미지가 없는 경우
   const buyerUrl = buyerProfile === null ? IMAGES.profile : buyerProfile;
@@ -82,7 +83,9 @@ export default function Messages({
                 default:
                   break;
               }
-              today = `${nextDate.getFullYear()}년 ${nextDate.getMonth() + 1}월 ${nextDate.getDate()}일 ${day}요일`;
+              today = `${nextDate.getFullYear()}년 ${
+                nextDate.getMonth() + 1
+              }월 ${nextDate.getDate()}일 ${day}요일`;
             }
             if (!displayDate) today = null;
 
@@ -103,9 +106,23 @@ export default function Messages({
               if (nextTimeValue === timeValue) timeValue = null;
             }
           }
+
           return (
             <div key={index}>
-              {data.message && (
+              {data.message === '작가님이 결제를 요청했어요!' ||
+              data.message === '결제 완료' ? (
+                <SytemMessage
+                  message={data}
+                  time={timeValue}
+                  today={today}
+                  buyerProfile={buyerProfile}
+                  sellerProfile={sellerProfile}
+                  profile={displayProfile}
+                  isRead={data.isRead}
+                  price={chattingInfo.productPrice}
+                  chattingInfo={chattingInfo}
+                />
+              ) : (
                 <Message
                   message={data}
                   time={timeValue}
