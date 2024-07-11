@@ -1,8 +1,9 @@
 import queryString from 'query-string';
 import React, { useState } from 'react';
+import './success.css';
 
 export default function Success() {
-  const { orderId, paymentKey, amount } = queryString.parse(
+  const { roomID, orderId, paymentKey, amount } = queryString.parse(
     window.location.search,
   );
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -26,6 +27,7 @@ export default function Success() {
     });
     const json = await response.json();
     console.log(json);
+    console.log(roomID);
 
     if (response.ok) {
       setIsConfirmed(true);
@@ -57,23 +59,26 @@ export default function Success() {
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="response-label">주문번호</span>
-              <span id="orderId" className="response-text">
-                {orderId}
-              </span>
-            </div>
-            <div className="flex justify-between">
               <span className="response-label">paymentKey</span>
               <span id="paymentKey" className="response-text">
                 {paymentKey}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="response-label">주문번호</span>
+              <span id="orderId" className="response-text">
+                {orderId}
               </span>
             </div>
           </div>
 
           <div className="w-100 button-group">
             <div className="flex" style={{ gap: '16px' }}>
-              <a className="btn w-100" href="/">
-                다시 테스트하기
+              <a
+                className="btn w-100"
+                href={`/chatting-list/chatting?roomID=${roomID}`}
+              >
+                채팅으로 돌아가기
               </a>
             </div>
           </div>
