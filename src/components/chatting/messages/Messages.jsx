@@ -5,6 +5,7 @@ import BasicScrollToBottom from 'react-scroll-to-bottom';
 import Message from './message/Message';
 import { dateFormat } from '../../../utils/dateFormatter';
 import SytemMessage from './systemMessage/systemMessage';
+import IMAGES from '../../../assets';
 
 const ScrollToBottom = styled(BasicScrollToBottom)`
   overflow-y: auto;
