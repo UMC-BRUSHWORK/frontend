@@ -6,7 +6,7 @@ export default function ProductBar({ info }) {
   return (
     <P.Wrapper>
       <P.ProductWrapper>
-        <P.ProductImg />
+        <P.ProductImg src={info.productImg} />
         <P.ProductInfo>
           <P.Name>{info.productName}</P.Name>
           <P.Price>{info.productName}</P.Price>

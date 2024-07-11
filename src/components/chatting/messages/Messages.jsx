@@ -30,7 +30,12 @@ export default function Messages({
   children,
   chattingInfo,
 }) {
+  // 프로필 이미지가 없는 경우
+  const buyerUrl = buyerProfile === null ? IMAGES.profile : buyerProfile;
+  const sellerUrl = sellerProfile === null ? IMAGES.profile : sellerProfile;
+
   const allData = [...messages, ...log];
+  console.log(allData);
   return (
     <ScrollToBottom>
       {children}
@@ -122,8 +127,8 @@ export default function Messages({
                   message={data}
                   time={timeValue}
                   today={today}
-                  buyerProfile={buyerProfile}
-                  sellerProfile={sellerProfile}
+                  buyerProfile={buyerUrl}
+                  sellerProfile={sellerUrl}
                   profile={displayProfile}
                   isRead={data.isRead}
                 />

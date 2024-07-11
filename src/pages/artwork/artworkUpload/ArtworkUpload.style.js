@@ -136,4 +136,5 @@ export const WriteCompleteBtn = styled.div`
   color: ${color.white};
   background-color: ${(props) =>
     props.status ? color.primary_dark : color.primary_light};
+  cursor: pointer;
 `;

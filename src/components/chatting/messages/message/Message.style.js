@@ -41,6 +41,7 @@ export const ProfileImage = styled.img`
   width: 4rem;
   height: 4rem;
   margin: 0 8px 0 0;
+  border-radius: 50%;
   opacity: 0;
 
   ${(props) =>
