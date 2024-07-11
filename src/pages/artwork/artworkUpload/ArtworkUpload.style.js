@@ -126,6 +126,9 @@ export const BottomLine = styled.div`
 `;
 
 export const WriteCompleteBtn = styled.div`
+  position: fixed;
+  bottom: 0;
+
   display: flex;
   width: 100%;
   height: 6rem;

@@ -13,6 +13,7 @@ export const Image = styled.img`
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   padding: 2rem;
   margin-top: 28rem;
   background-color: white;
@@ -131,10 +132,12 @@ export const Text = styled.div`
 `;
 
 export const BottomWrapper = styled.div`
-  width: 100%;
   position: fixed;
-  left: 0;
+  left: 50%;
   bottom: 0;
+  transform: translate(-50%, 0);
+
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
