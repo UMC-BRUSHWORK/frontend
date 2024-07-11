@@ -26,8 +26,6 @@ export default function Success() {
       }),
     });
     const json = await response.json();
-    console.log(json);
-    console.log(roomID);
 
     if (response.ok) {
       setIsConfirmed(true);

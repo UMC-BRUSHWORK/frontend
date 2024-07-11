@@ -18,6 +18,8 @@ import ChattingList from './pages/chatting/ChattingList';
 import Chatting from './pages/chatting/Chatting';
 import MyHistory from './pages/myPage/MyHistory';
 import Success from './components/payments/Success';
+import Fail from './components/payments/Fail';
+import Bill from './components/payments/Bill';
 
 export default function Router() {
   return (
@@ -41,6 +43,8 @@ export default function Router() {
         <Route path="/chatting-list/chatting" element={<Chatting />} />
 
         <Route path="/success" element={<Success />} />
+        <Route path="/fail" element={<Fail />} />
+        <Route path="/bill" element={<Bill />} />
 
         <Route path="/imageList" element={<ImageList />} />
       </Routes>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 import * as M from './systemMessage.style';
 
 export default function SytemMessage({
@@ -14,6 +15,7 @@ export default function SytemMessage({
   price,
   chattingInfo,
 }) {
+  const { roomID } = queryString.parse(window.location.search);
   const userId = localStorage.getItem('userId');
   let imgSrc = sellerProfile;
   const read = !!isRead;
@@ -52,7 +54,7 @@ export default function SytemMessage({
   };
 
   const handleClickCheckButton = () => {
-    navigate('/');
+    navigate(`/bill?id=${roomID}`);
   };
 
   return (
