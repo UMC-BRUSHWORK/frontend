@@ -78,7 +78,9 @@ export default function Messages({
                 default:
                   break;
               }
-              today = `${nextDate.getFullYear()}년 ${nextDate.getMonth() + 1}월 ${nextDate.getDate()}일 ${day}요일`;
+              today = `${nextDate.getFullYear()}년 ${
+                nextDate.getMonth() + 1
+              }월 ${nextDate.getDate()}일 ${day}요일`;
             }
             if (!displayDate) today = null;
 
@@ -112,6 +114,7 @@ export default function Messages({
                   profile={displayProfile}
                   isRead={data.isRead}
                   price={chattingInfo.productPrice}
+                  chattingInfo={chattingInfo}
                 />
               ) : (
                 <Message

@@ -11,6 +11,7 @@ export default function SytemMessage({
   sellerProfile,
   isRead,
   price,
+  chattingInfo,
 }) {
   const userId = localStorage.getItem('userId');
   let imgSrc = sellerProfile;
@@ -30,9 +31,9 @@ export default function SytemMessage({
     try {
       const tossPayments = await loadTossPayments(clientKey);
       const orderId = generateRandomString();
-      const amount = 20000;
-      const orderName = '토스 티셔츠';
-      const customerName = '김토스';
+      const amount = price;
+      const orderName = chattingInfo.productName;
+      const customerName = chattingInfo.sellerNickname;
 
       await tossPayments.requestPayment('카드', {
         amount,
